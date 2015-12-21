@@ -5,6 +5,8 @@
 #include <locale.h>
 #include <wchar.h>
 
+#define TAMTAB 3 /*tamanho da tabela para o jogo*/
+
 /* Bordas UTF 8 */
 
 #define WUL L'\u2518' /* ^VU2518 ┘ */
@@ -26,7 +28,7 @@
 
 typedef struct
 {
-    int tabuleiro[3][3]; /* posicoes dos elementos do mapa */
+    int tab[3][3]; /* posicoes dos elementos do mapa */
     int nivel; /* nivel de dificuldade */
 }dados;
 
@@ -38,11 +40,52 @@ int nivelfacil(int tab[3][3],int vez); /* funcao do nivel facil */
 int nivelmedio(int tab[3][3],int vez); /* funcao do nivel medio */
 int niveldificil(int tab[3][3],int vez); /* funcao do nivel dificil */
 int imprimetab(void); /* imprime tabuleiro de jogo da velha */
+int imprimemenu(void); /* imprime o menu de selecao de nivel */
 
 int main(void)
 {
     imprimetab();
-    inicio();
+    imprimemenu();
     return EXIT_SUCCESS;
 }
+
+int inicio(void)
+{
+    int i, j;
+
+    for(i=0,i<TAMTAB,i++)      /*faz todas as casas receberem 0 para deixar o tabuleiro em branco */
+        for(j=0,j<TAMTAB,j++)
+            d.tab[i][j]=0;
+    return 0;
+}
+
+int imprimemenu(void)
+{
+    int nivel;
+    printf("Escolha um nivel de dificuldade: \n");
+    printf("1-facil \n2-medio \n3-dificil");
+    scanf("%d", &nivel);
+    switch(nivel)
+    {
+        case 1:
+            nivelfacil();
+            break;
+        case 2:
+            nivelmedio();
+            break;
+        case 3:
+            niveldificil();
+            break;
+        default:
+            printf("ERRO.\nObrigado por jogar");
+            break;
+    }
+    return nivel;
+}
+
+int imprimetab(void)
+{
+    return 0;
+}
+
 
