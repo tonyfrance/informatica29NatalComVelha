@@ -29,7 +29,7 @@
 typedef struct
 {
     int tab[3][3]; /* posicoes dos elementos do mapa */
-    int nivel, vez; /*  nivel de dificuldade */
+    int nivel; /*  nivel de dificuldade */
 }dados;
 
 int vez;
@@ -47,6 +47,8 @@ int imprimemenu(void); /* imprime o menu principal */
 int humanoVShumano(void); /*chama a funcao multiplayer*/
 int humanoVSpc(void); /*chama a funcao humano contra o computador*/
 int pcVSpc(void); /*chama a funcao computador contra o computador*/
+int vence(void);
+int entrada(void);
 
 int main(void)
 {
@@ -117,7 +119,7 @@ int imprimetab(void)
     putchar('\n');
     return 0;
 }
-int vence(int vez)
+int vence(void)
 {
     int n1;
     for(n1=0; n1<3; n1++)/* Analisa se tem linha completa */
@@ -137,7 +139,7 @@ int vence(int vez)
     return 0;
 }
 
-int entrada(int vez)
+int entrada(void)
 {
     int numero;
     do
