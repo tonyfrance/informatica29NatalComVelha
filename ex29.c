@@ -28,11 +28,12 @@
 
 typedef struct
 {
-    int tab[3][3]; /* posicoes dos elementos do mapa */
-    int nivel; /* nivel de dificuldade */
+    int tab[3][3];  posicoes dos elementos do mapa 
+    int nivel;  nivel de dificuldade 
 }dados;
 
 dados d;
+
 
 /* Prototipos */
 int inicio(void); /* escolha de nivel */
@@ -51,7 +52,7 @@ int main(void)
 
 int inicio(void)
 {
-    int i, j;
+    int i,j;
 
     for(i=0,i<TAMTAB,i++)      /*faz todas as casas receberem 0 para deixar o tabuleiro em branco */
         for(j=0,j<TAMTAB,j++)
@@ -88,4 +89,57 @@ int imprimetab(void)
     return 0;
 }
 
+int entrada(int vez)
+{
+    int numero;
+    do
+    {
+        printf("Escolha valores entre 0 e 8");
+        scanf("%d",&numero);
+        switch(numero);
+        {
+            case 1:
+                d.tab[0][0]=vez;               
+                break;
+            case 2:
+                d.tab[0][1]=vez;
+                break;
+            case 3:
+                d.tab[0][2]=vez;
+                break;
+            case 4:
+                d.tab[1][0]=vez;
+                break;
+            case 5:
+                d.tab[1][1]=vez;
+                break;
+            case 6:
+                d.tab[1][2]=vez;
+                break;
+            case 7:
+                d.tab[2][0]=vez;
+                break;
+            case 8:
+                d.tab[2][1]=vez;
+                break;
+            case 9:
+                d.tab[2][2]=vez;
+                break;
+            default:
+                printf("Opcao invalida...escolha uma opcao valida!!!");
+                break;
+        }          
+    }while(numero < 0 || numero > 9);
+}
+
+int humanojoga(void)
+{
+    int numero;
+    do
+    {
+        imprimetab();
+        numero=entrada();
+    }
+
+}
 
