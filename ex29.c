@@ -54,8 +54,8 @@ int inicio(void)
 {
     int i,j;
 
-    for(i=0,i<TAMTAB,i++)      /*faz todas as casas receberem 0 para deixar o tabuleiro em branco */
-        for(j=0,j<TAMTAB,j++)
+    for(i=0;i<TAMTAB;i++)      /*faz todas as casas receberem 0 para deixar o tabuleiro em branco */
+        for(j=0;j<TAMTAB;j++)
             d.tab[i][j]=0;
     return 0;
 }
@@ -87,6 +87,24 @@ int imprimemenu(void)
 int imprimetab(void)
 {
     return 0;
+}
+int vence(vez)
+{
+     for(n1=0; n1<3; n1++)/* Analisa se tem linha completa */
+          {
+                if((tab[n1][0] == vez && tab[n1][1] == vez) && tab[n1][2] == vez)
+                    return 1;
+          }
+      for(n1=0; n1<3; n1++)/* Analisa se tem coluna completa */
+           {
+                 if((tab[0][n1] == vez && tab[1][n1] == vez) && tab[2][n1] == vez)
+                    return 1;  
+           }
+       if((tab[0][0] == vez && tab[1][1] == vez) && tab[2][2])
+            return 1;
+       else if((tab[0][2] == vez && tab[1][1] == vez) && tab[2][0])
+            return 1;
+            return 0;
 }
 
 int entrada(int vez)
