@@ -49,11 +49,13 @@ int humanoVSpc(void); /*chama a funcao humano contra o computador*/
 int pcVSpc(void); /*chama a funcao computador contra o computador*/
 int vence(void);
 int entrada(void);
+char start(void);
 
 int main(void)
 {
     imprimetab();
     imprimemenu();
+
     return EXIT_SUCCESS;
 }
 
@@ -75,13 +77,14 @@ int imprimemenunivel(void)
     scanf("%d", &nivel);
     switch(nivel)
     {
-        case 1:
+        case 1:            
             /*nivelfacil();*/
             break;
         case 2:
+            
             /*nivelmedio();*/
             break;
-        case 3:
+        case 3:           
             /*niveldificil();*/
             break;
         default:
@@ -205,12 +208,10 @@ int imprimemenu(void)
         case 1:
             humanoVShumano();
             break;
-        case 2:
-            /*imprimemenunivel();*/
-            humanoVSpc();
+        case 2:            
+            humanoVSpc();          
             break;
-        case 3:
-            /*imprimemenunivel();*/
+        case 3:            
             pcVSpc();
             break;
         default:
@@ -220,6 +221,19 @@ int imprimemenu(void)
     return 0;
 }
 
+char start(void)
+{
+    char r;
+
+    printf("\nVoce quer começar jogando?\n s-sim\nn-nao\n");
+    do
+    {
+        r=getchar();       
+    }while(r=='\n' || (r!= 's' && r!='n'));
+
+    return r;
+}
+
 int humanoVShumano(void)
 {
     printf("O primeiro Player sera X e o segundo Player sera O\n");
@@ -227,11 +241,14 @@ int humanoVShumano(void)
 
 int humanoVSpc(void)
 {
-    printf("O primeiro Player sera X e o segundo Player sera O\n");
+    imprimemenunivel();
+    start();
+    printf("O primeiro Player sera X e o segundo Player sera O\n");    
 }
 
 int pcVSpc(void)
 {
+    imprimemenunivel();
     printf("O primeiro Player sera X e o segundo Player sera O\n");
 }
 
