@@ -193,12 +193,12 @@ int imprimemenu(void)
     int opt;
     printf("Bem vindo ao jogo da velha de NATALi\n");
     printf("Escolha seu tipo de jogo: ");
-    printf("1-Player vs Player \n2-Player vs PC \n3-PC vs PC\n");
+    printf("\n1-Player vs Player \n2-Player vs PC \n3-PC vs PC\n");
     scanf("%d", &opt);
     switch(opt)
     {
         case 1:
-            /* coloca alguma funcao aqui */
+            humanoVShumano();
             break;
         case 2:
             imprimemenunivel();
@@ -212,4 +212,7 @@ int imprimemenu(void)
     }
     return 0;
 }
-
+int humanoVShumano(void)
+{
+    printf("O primeiro Player sera X e o segundo sera O\n");
+}
