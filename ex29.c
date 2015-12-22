@@ -32,6 +32,7 @@ typedef struct
     int nivel, vez; /*  nivel de dificuldade */
 }dados;
 
+int vez;
 dados d;
 
 
