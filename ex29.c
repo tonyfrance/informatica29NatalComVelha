@@ -66,18 +66,18 @@ int imprimemenunivel(void)
 {
     int nivel;
     printf("Escolha um nivel de dificuldade: \n");
-    printf("1-facil \n2-medio \n3-dificil");
+    printf("1-facil \n2-medio \n3-dificil\n");
     scanf("%d", &nivel);
     switch(nivel)
     {
         case 1:
-            //nivelfacil();
+            /*nivelfacil();*/
             break;
         case 2:
-            //nivelmedio();
+            /*nivelmedio();*/
             break;
         case 3:
-            //niveldificil();
+            /*niveldificil();*/
             break;
         default:
             printf("ERRO.\nObrigado por jogar");
@@ -92,9 +92,9 @@ int imprimetab(void)
     int linha, coluna;
     putchar('\n');
 
-    for(linha = 0 ; linha < TAMTAB ; linha++)
+    for(linha=0; linha<TAMTAB; linha++)
     {
-        for(coluna = 0 ; coluna < TAMTAB ; coluna++)
+        for(coluna=0; coluna<TAMTAB; coluna++)
         {
             if(d.tab[linha][coluna] == 0)
                 printf("    ");
@@ -191,7 +191,7 @@ int humanojoga(void)
 int imprimemenu(void)
 {
     int opt;
-    printf("Bem vindo ao jogo da velha de NATALi\n");
+    printf("Bem vindo ao jogo da velha de NATAL\n");
     printf("Escolha seu tipo de jogo: ");
     printf("\n1-Player vs Player \n2-Player vs PC \n3-PC vs PC\n");
     scanf("%d", &opt);
@@ -216,3 +216,4 @@ int humanoVShumano(void)
 {
     printf("O primeiro Player sera X e o segundo sera O\n");
 }
+
