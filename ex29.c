@@ -32,21 +32,21 @@ typedef struct
     int nivel; /*  nivel de dificuldade */
 }dados;
 
+int vez;
 dados d;
 
 
 /* Prototipos */
 int inicio(void); /* escolha de nivel */
-int nivelfacil(int tab[3][3],int vez); /* funcao do nivel facil */
-int nivelmedio(int tab[3][3],int vez); /* funcao do nivel medio */
-int niveldificil(int tab[3][3],int vez); /* funcao do nivel dificil */
+int nivelfacil(int tab[3][3]); /* funcao do nivel facil */
+int nivelmedio(int tab[3][3]); /* funcao do nivel medio */
+int niveldificil(int tab[3][3]); /* funcao do nivel dificil */
 int imprimetab(void); /* imprime tabuleiro de jogo da velha */
 int imprimemenunivel(void); /* imprime o menu de selecao de nivel */
 int imprimemenu(void); /* imprime o menu principal */
 
 int main(void)
 {
-    int vez;
     imprimetab();
     imprimemenu();
     return EXIT_SUCCESS;
