@@ -29,7 +29,7 @@
 typedef struct
 {
     int tab[3][3]; /* posicoes dos elementos do mapa */
-    int nivel; /*  nivel de dificuldade */
+    int nivel, vez; /*  nivel de dificuldade */
 }dados;
 
 dados d;
@@ -37,16 +37,18 @@ dados d;
 
 /* Prototipos */
 int inicio(void); /* escolha de nivel */
-int nivelfacil(int tab[3][3],int vez); /* funcao do nivel facil */
-int nivelmedio(int tab[3][3],int vez); /* funcao do nivel medio */
-int niveldificil(int tab[3][3],int vez); /* funcao do nivel dificil */
+int nivelfacil(int tab[3][3]); /* funcao do nivel facil */
+int nivelmedio(int tab[3][3]); /* funcao do nivel medio */
+int niveldificil(int tab[3][3]); /* funcao do nivel dificil */
 int imprimetab(void); /* imprime tabuleiro de jogo da velha */
 int imprimemenunivel(void); /* imprime o menu de selecao de nivel */
 int imprimemenu(void); /* imprime o menu principal */
+int humanoVShumano(void); /*chama a funcao multiplayer*/
+int humanoVSpc(void); /*chama a funcao humano contra o computador*/
+int pcVSpc(void); /*chama a funcao computador contra o computador*/
 
 int main(void)
 {
-    int vez;
     imprimetab();
     imprimemenu();
     return EXIT_SUCCESS;
@@ -174,7 +176,7 @@ int entrada(int vez)
                 printf("Opcao invalida...escolha uma opcao valida!!!");
                 break;
         }          
-    }while(numero < 0 || numero > 9);
+    }while(numero>0 || numero<10);
 }
 
 int humanojoga(void)
@@ -191,7 +193,7 @@ int humanojoga(void)
 int imprimemenu(void)
 {
     int opt;
-    printf("Bem vindo ao jogo da velha de NATAL\n");
+    printf("Bem vindo ao jogo da velha de NATAL!\n");
     printf("Escolha seu tipo de jogo: ");
     printf("\n1-Player vs Player \n2-Player vs PC \n3-PC vs PC\n");
     scanf("%d", &opt);
@@ -201,19 +203,32 @@ int imprimemenu(void)
             humanoVShumano();
             break;
         case 2:
-            imprimemenunivel();
+            /*imprimemenunivel();*/
+            humanoVSpc();
             break;
         case 3:
-            imprimemenunivel();
+            /*imprimemenunivel();*/
+            pcVSpc();
             break;
         default:
-            printf("ERRO. Obrigado por jogari\n");
+            printf("ERRO. Obrigado por jogar!\n");
             return 0;
     }
     return 0;
 }
+
 int humanoVShumano(void)
 {
-    printf("O primeiro Player sera X e o segundo sera O\n");
+    printf("O primeiro Player sera X e o segundo Player sera O\n");
+}
+
+int humanoVSpc(void)
+{
+    printf("O primeiro Player sera X e o segundo Player sera O\n");
+}
+
+int pcVSpc(void)
+{
+    printf("O primeiro Player sera X e o segundo Player sera O\n");
 }
 
