@@ -28,8 +28,8 @@
 
 typedef struct
 {
-    int tab[3][3];  posicoes dos elementos do mapa 
-    int nivel;  nivel de dificuldade 
+    int tab[3][3]; /* posicoes dos elementos do mapa */
+    int nivel; /*  nivel de dificuldade */
 }dados;
 
 dados d;
@@ -41,10 +41,12 @@ int nivelfacil(int tab[3][3],int vez); /* funcao do nivel facil */
 int nivelmedio(int tab[3][3],int vez); /* funcao do nivel medio */
 int niveldificil(int tab[3][3],int vez); /* funcao do nivel dificil */
 int imprimetab(void); /* imprime tabuleiro de jogo da velha */
-int imprimemenu(void); /* imprime o menu de selecao de nivel */
+int imprimemenunivel(void); /* imprime o menu de selecao de nivel */
+int imprimemenu(void); /* imprime o menu principal */
 
 int main(void)
 {
+    int vez;
     imprimetab();
     imprimemenu();
     return EXIT_SUCCESS;
@@ -60,7 +62,7 @@ int inicio(void)
     return 0;
 }
 
-int imprimemenu(void)
+int imprimemenunivel(void)
 {
     int nivel;
     printf("Escolha um nivel de dificuldade: \n");
@@ -69,13 +71,13 @@ int imprimemenu(void)
     switch(nivel)
     {
         case 1:
-            nivelfacil();
+            //nivelfacil();
             break;
         case 2:
-            nivelmedio();
+            //nivelmedio();
             break;
         case 3:
-            niveldificil();
+            //niveldificil();
             break;
         default:
             printf("ERRO.\nObrigado por jogar");
@@ -86,25 +88,50 @@ int imprimemenu(void)
 
 int imprimetab(void)
 {
+    /* Lembrar de implementar UTF-8 depois */
+    int linha, coluna;
+    putchar('\n');
+
+    for(linha = 0 ; linha < TAMTAB ; linha++)
+    {
+        for(coluna = 0 ; coluna < TAMTAB ; coluna++)
+        {
+            if(d.tab[linha][coluna] == 0)
+                printf("    ");
+            else
+                if(d.tab[linha][coluna] == 1)
+                    printf("  X ");
+                else
+                    printf("  O ");
+
+            if(coluna!=(TAMTAB-1))
+                printf("|");
+        }
+        putchar('\n');
+        if(linha<TAMTAB-1)
+            printf(" ---+----+---\n");
+    }
+    putchar('\n');
     return 0;
 }
-int vence(vez)
+int vence(int vez)
 {
-     for(n1=0; n1<3; n1++)/* Analisa se tem linha completa */
-          {
-                if((tab[n1][0] == vez && tab[n1][1] == vez) && tab[n1][2] == vez)
-                    return 1;
-          }
-      for(n1=0; n1<3; n1++)/* Analisa se tem coluna completa */
-           {
-                 if((tab[0][n1] == vez && tab[1][n1] == vez) && tab[2][n1] == vez)
-                    return 1;  
-           }
-       if((tab[0][0] == vez && tab[1][1] == vez) && tab[2][2])
+    int n1;
+    for(n1=0; n1<3; n1++)/* Analisa se tem linha completa */
+    {
+        if((d.tab[n1][0] == vez && d.tab[n1][1] == vez) && d.tab[n1][2] == vez)
             return 1;
-       else if((tab[0][2] == vez && tab[1][1] == vez) && tab[2][0])
-            return 1;
-            return 0;
+    }
+    for(n1=0; n1<3; n1++)/* Analisa se tem coluna completa */
+    {
+        if((d.tab[0][n1] == vez && d.tab[1][n1] == vez) && d.tab[2][n1] == vez)
+            return 1;  
+    }
+    if((d.tab[0][0] == vez && d.tab[1][1] == vez) && d.tab[2][2])
+        return 1;
+    else if((d.tab[0][2] == vez && d.tab[1][1] == vez) && d.tab[2][0])
+        return 1;
+    return 0;
 }
 
 int entrada(int vez)
@@ -114,7 +141,7 @@ int entrada(int vez)
     {
         printf("Escolha valores entre 0 e 8");
         scanf("%d",&numero);
-        switch(numero);
+        switch(numero)
         {
             case 1:
                 d.tab[0][0]=vez;               
@@ -152,12 +179,37 @@ int entrada(int vez)
 
 int humanojoga(void)
 {
-    int numero;
+    int numero, vez;
     do
     {
         imprimetab();
-        numero=entrada();
-    }
+        numero=entrada(vez);
+    }while(0==0); /*coloque uma condicao aqui*/
 
+}
+
+int imprimemenu(void)
+{
+    int opt;
+    printf("Bem vindo ao jogo da velha de NATALi\n");
+    printf("Escolha seu tipo de jogo: ");
+    printf("1-Player vs Player \n2-Player vs PC \n3-PC vs PC\n");
+    scanf("%d", &opt);
+    switch(opt)
+    {
+        case 1:
+            /* coloca alguma funcao aqui */
+            break;
+        case 2:
+            imprimemenunivel();
+            break;
+        case 3:
+            imprimemenunivel();
+            break;
+        default:
+            printf("ERRO. Obrigado por jogari\n");
+            return 0;
+    }
+    return 0;
 }
 
