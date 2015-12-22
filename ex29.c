@@ -188,3 +188,28 @@ int humanojoga(void)
 
 }
 
+int imprimemenu(void)
+{
+    int opt;
+    printf("Bem vindo ao jogo da velha de NATALi\n");
+    printf("Escolha seu tipo de jogo: ");
+    printf("1-Player vs Player \n2-Player vs PC \n3-PC vs PC\n");
+    scanf("%d", &opt);
+    switch(opt)
+    {
+        case 1:
+            /* coloca alguma funcao aqui */
+            break;
+        case 2:
+            imprimemenunivel();
+            break;
+        case 3:
+            imprimemenunivel();
+            break;
+        default:
+            printf("ERRO. Obrigado por jogari\n");
+            return 0;
+    }
+    return 0;
+}
+
