@@ -32,7 +32,7 @@ typedef struct
     int nivel; /*  nivel de dificuldade */
 }dados;
 
-int vez;
+int vez,opt;
 dados d;
 
 
@@ -53,8 +53,78 @@ char start(void);
 
 int main(void)
 {
-    imprimetab();
+    int jogada=0,x;
+    vez=-1;
     imprimemenu();
+    imprimetab();
+
+    do
+    {
+        vez*=-1;
+        if(vez==1)
+        {
+            switch(opt)
+            {
+                case 1:
+                    humanoVShumano();
+                    break;
+                case 2:
+                    humanoVSpc();
+                    break;
+                case 3:
+                    pcVSpc();
+                    break;
+                default:
+                    printf("ERRO. Obrigado por jogar!\n");
+                    return 0;
+            }
+            jogada++;
+            x=vence();
+            if(x==1)
+                vez++;
+        }
+        if(vez==-1)
+        {
+            switch(opt)
+            {
+                case 1:
+                    humanoVShumano();
+                    break;
+                case 2:
+                    humanoVSpc();
+                    break;
+                case 3:
+                    pcVSpc();
+                    break;
+                default:
+                    printf("ERRO. Obrigado por jogar!\n");
+                    return 0;
+            }
+            jogada++;
+            x=vence();
+            if(x==1)
+                vez++;
+        }
+        if(jogada==9) /* se o contador de jogadas for 9, sai do laço e testa empate */
+            vez=3;
+    }while(vez==1 || vez==-1);
+
+    switch(vez)
+    {
+        case 0:
+            printf("O ganhou\n");
+            break;
+        case 2:
+            printf("X ganhou\n");
+            break;
+        case 3:
+            printf("DEU VELHA\n");
+            break;
+        default:
+            break;
+    }
+    printf("Obrigado por jogar o Jogo da Velha\n");
+
 
     return EXIT_SUCCESS;
 }
@@ -74,25 +144,29 @@ int imprimemenunivel(void)
     int nivel;
     printf("Escolha um nivel de dificuldade: \n");
     printf("1-facil \n2-medio \n3-dificil\n");
-    scanf("%d", &nivel);
-    switch(nivel)
+    scanf("%d", &d.nivel);
+    switch(d.nivel)
     {
-        case 1:            
+        case 1:
+            printf("nivel facil\n");
             /*nivelfacil();*/
             break;
         case 2:
-            
+            printf("nivel medio\n");
             /*nivelmedio();*/
             break;
-        case 3:           
+        case 3:
+            printf("nivel dificil\n");
             /*niveldificil();*/
             break;
         default:
-            printf("ERRO.\nObrigado por jogar");
+            printf("ERRO.\nObrigado por jogar\n");
             break;
     }
-    return nivel;
+
+    return 0;
 }
+
 
 int imprimetab(void)
 {
@@ -147,7 +221,7 @@ int entrada(void)
     int numero;
     do
     {
-        printf("Escolha valores entre 0 e 8");
+        printf("Escolha valores entre 0 e 8\n");
         scanf("%d",&numero);
         switch(numero)
         {
@@ -179,7 +253,7 @@ int entrada(void)
                 d.tab[2][2]=vez;
                 break;
             default:
-                printf("Opcao invalida...escolha uma opcao valida!!!");
+                printf("Opcao invalida...escolha uma opcao valida!!!\n");
                 break;
         }          
     }while(numero>0 || numero<10);
@@ -206,13 +280,13 @@ int imprimemenu(void)
     switch(opt)
     {
         case 1:
-            humanoVShumano();
+            printf("Player vs Player\n")
+                break;
+        case 2:
+            printf("Player vs PC\n");
             break;
-        case 2:            
-            humanoVSpc();          
-            break;
-        case 3:            
-            pcVSpc();
+        case 3:
+            printf("PC vs PC\n");
             break;
         default:
             printf("ERRO. Obrigado por jogar!\n");
