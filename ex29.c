@@ -86,25 +86,49 @@ int imprimemenu(void)
 
 int imprimetab(void)
 {
+    /* Lembrar de implementar UTF-8 depois */
+    int linha, coluna;
+    putchar('\n');
+
+    for(linha = 0 ; linha < TAMTAB ; linha++)
+    {
+        for(coluna = 0 ; coluna < TAMTAB ; coluna++)
+        {
+            if(d.tab[linha][coluna] == 0)
+                printf("    ");
+            else
+                if(d.tab[linha][coluna] == 1)
+                    printf("  X ");
+                else
+                    printf("  O ");
+
+            if(coluna!=(TAMTAB-1))
+                printf("|");
+        }
+        putchar('\n');
+        if(linha<TAMTAB-1)
+            printf(" ---+----+---\n");
+    }
+    putchar('\n');
     return 0;
 }
 int vence(vez)
 {
-     for(n1=0; n1<3; n1++)/* Analisa se tem linha completa */
-          {
-                if((tab[n1][0] == vez && tab[n1][1] == vez) && tab[n1][2] == vez)
-                    return 1;
-          }
-      for(n1=0; n1<3; n1++)/* Analisa se tem coluna completa */
-           {
-                 if((tab[0][n1] == vez && tab[1][n1] == vez) && tab[2][n1] == vez)
-                    return 1;  
-           }
-       if((tab[0][0] == vez && tab[1][1] == vez) && tab[2][2])
+    for(n1=0; n1<3; n1++)/* Analisa se tem linha completa */
+    {
+        if((tab[n1][0] == vez && tab[n1][1] == vez) && tab[n1][2] == vez)
             return 1;
-       else if((tab[0][2] == vez && tab[1][1] == vez) && tab[2][0])
-            return 1;
-            return 0;
+    }
+    for(n1=0; n1<3; n1++)/* Analisa se tem coluna completa */
+    {
+        if((tab[0][n1] == vez && tab[1][n1] == vez) && tab[2][n1] == vez)
+            return 1;  
+    }
+    if((tab[0][0] == vez && tab[1][1] == vez) && tab[2][2])
+        return 1;
+    else if((tab[0][2] == vez && tab[1][1] == vez) && tab[2][0])
+        return 1;
+    return 0;
 }
 
 int entrada(int vez)
