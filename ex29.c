@@ -47,9 +47,10 @@ int imprimemenu(void); /* imprime o menu principal */
 int humanoVShumano(void); /*chama a funcao multiplayer*/
 int humanoVSpc(void); /*chama a funcao humano contra o computador*/
 int pcVSpc(void); /*chama a funcao computador contra o computador*/
-int vence(void);
-int entrada(void);
-char start(void);
+int vence(void);/*chama a funcao q determinara o final do jogo*/
+int entrada(void);/*chama a funcao de entrada de dados do usuario(jogador)*/
+char start(void);/*chama a funcao qm ira fazer a primeira jogada*/
+int geradordenumeros(void);
 
 int main(void)
 {
@@ -80,8 +81,7 @@ int imprimemenunivel(void)
         case 1:            
             /*nivelfacil();*/
             break;
-        case 2:
-            
+        case 2:            
             /*nivelmedio();*/
             break;
         case 3:           
@@ -122,7 +122,7 @@ int imprimetab(void)
     putchar('\n');
     return 0;
 }
-int vence(void)
+int vence(void)/*Determina como finalizara o jogo*/
 {
     int n1;
     for(n1=0; n1<3; n1++)/* Analisa se tem linha completa */
@@ -142,7 +142,7 @@ int vence(void)
     return 0;
 }
 
-int entrada(void)
+int entrada(void)/*Determina a entrada de dados do jogador por tecla para cada espaço livre no #*/
 {
     int numero;
     do
@@ -185,25 +185,25 @@ int entrada(void)
     }while(numero>0 || numero<10);
 }
 
-int humanojoga(void)
+/*int humanojoga(void)
 {
     int numero, vez;
     do
     {
         imprimetab();
-        numero=entrada(vez);
-    }while(0==0); /*coloque uma condicao aqui*/
+        numero=entrada();
+    }while(0==0); coloque uma condicao aqui
 
-}
+}*/
 
-int imprimemenu(void)
+int imprimemenu(void)/*imprime menu*/
 {
     int opt;
     printf("Bem vindo ao jogo da velha de NATAL!\n");
     printf("Escolha seu tipo de jogo: ");
     printf("\n1-Player vs Player \n2-Player vs PC \n3-PC vs PC\n");
     scanf("%d", &opt);
-    switch(opt)
+    switch(opt)/*opcoes para modo de jogo*/
     {
         case 1:
             humanoVShumano();
@@ -221,7 +221,7 @@ int imprimemenu(void)
     return 0;
 }
 
-char start(void)
+char start(void)/*Seleciona qm ira fazer a primeira jogada*/
 {
     char r;
 
@@ -246,9 +246,48 @@ int humanoVSpc(void)
     printf("O primeiro Player sera X e o segundo Player sera O\n");    
 }
 
-int pcVSpc(void)
+int pcVSpc(void)/*modo de jogo pc vs pc*/
 {
+    int x,y,r=1,jogada=0;
+
     imprimemenunivel();
     printf("O primeiro Player sera X e o segundo Player sera O\n");
+
+    do
+    {
+        if(vez==1)
+        {
+            printf("\nJogador 1:\n");
+            x=geradordenumeros();
+            y=geradordenumeros();
+            if(d.tab[x][y]==0)
+                d.tab[x][y] = 1;
+            jogada=jogada+1;
+        }
+        else
+        {
+            printf("\nJogador 2:\n");
+            x=geradordenumeros();
+            y=geradordenumeros();
+            if(d.tab[x][y]==0)
+                d.tab[x][y] = 2;
+            jogada=jogada+1;
+        }
+        vez=vez*-1;
+        imprimetab();
+
+    }while(jogada<9);
+
+    return 0;
 }
+
+int geradordenumeros(void)
+{
+    int x;
+
+    x = rand()%3;
+
+    return x;
+}
+
 
