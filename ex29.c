@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <wchar.h>
+#include <time.h>
 
 #define TAMTAB 3 /*tamanho da tabela para o jogo*/
 
@@ -56,10 +57,11 @@ int main(void)
 {
     int jogada=0,x;
     vez=-1;
+    srand(time(NULL));
     imprimemenu();
     imprimetab();
 
-    do
+    /*do
     {
         vez*=-1;
         if(vez==1)
@@ -106,7 +108,7 @@ int main(void)
             if(x==1)
                 vez++;
         }
-        if(jogada==9 && x==0) /* se o contador de jogadas for 9, sai do laço e testa empate */
+        if(jogada==9 && x==0)  se o contador de jogadas for 9, sai do laço e testa empate 
             vez=3;
     }while(vez==1 || vez==-1);
 
@@ -123,7 +125,7 @@ int main(void)
             break;
         default:
             break;
-    }
+    }*/
     printf("Obrigado por jogar o Jogo da Velha\n");
 
 
@@ -219,10 +221,20 @@ int vence(void)/*Determina como finalizara o jogo*/
 
 int entrada(void)/*Determina a entrada de dados do jogador por tecla para cada espaço livre no #*/
 {
-    int numero;
+    int numero,linha,coluna,x;
     do
     {
         printf("Escolha valores entre 0 e 8\n");
+        for(linha=0; linha<TAMTAB; linha++)
+            {
+                for(coluna=0; coluna<TAMTAB; coluna++)
+                    {
+                        x++;
+                        if(d.tab[linha][coluna] == 0)
+                        printf("%d",x);
+                    }
+            }
+                                                         
         scanf("%d",&numero);
         switch(numero)
         {
@@ -273,7 +285,7 @@ int entrada(void)/*Determina a entrada de dados do jogador por tecla para cada e
 
 int imprimemenu(void)/*imprime menu*/
 {
-    int opt;
+    
     printf("Bem vindo ao jogo da velha de NATAL!\n");
     printf("Escolha seu tipo de jogo: ");
     printf("\n1-Player vs Player \n2-Player vs PC \n3-PC vs PC\n");
@@ -281,31 +293,40 @@ int imprimemenu(void)/*imprime menu*/
     switch(opt)/*opcoes para modo de jogo*/
     {
         case 1:
-            printf("Player vs Player\n")
-                break;
+            printf("Player vs Player\n");
+            humanoVShumano();
+            break;
         case 2:
             printf("Player vs PC\n");
+            humanoVSpc();
             break;
         case 3:
             printf("PC vs PC\n");
+            pcVSpc();
             break;
         default:
             printf("ERRO. Obrigado por jogar!\n");
-            return 0;
+            
     }
     return 0;
 }
 
 char start(void)/*Seleciona qm ira fazer a primeira jogada*/
 {
-    char r;
+    char r,x;
 
     printf("\nVoce quer começar jogando?\n s-sim\nn-nao\n");
     do
     {
-        r=getchar();       
-    }while(r=='\n' || (r!= 's' && r!='n'));
-
+        r=getchar();
+        if(r=='s')
+            x=3;
+        else if(r=='n')
+            x=3;
+        else               
+            x=2;
+    }while(x==2);
+    
     return r;
 }
 
@@ -333,8 +354,8 @@ int pcVSpc(void)/*modo de jogo pc vs pc*/
         if(vez==1)
         {
             printf("\nJogador 1:\n");
-            x=geradordenumeros();
-            y=geradordenumeros();
+            x=rand()%3;
+            y=rand()%3;
             if(d.tab[x][y]==0)
                 d.tab[x][y] = 1;
             jogada=jogada+1;
@@ -342,8 +363,8 @@ int pcVSpc(void)/*modo de jogo pc vs pc*/
         else
         {
             printf("\nJogador 2:\n");
-            x=geradordenumeros();
-            y=geradordenumeros();
+            x=rand()%3;
+            y=rand()%3;
             if(d.tab[x][y]==0)
                 d.tab[x][y] = 2;
             jogada=jogada+1;
@@ -354,15 +375,6 @@ int pcVSpc(void)/*modo de jogo pc vs pc*/
     }while(jogada<9);
 
     return 0;
-}
-
-int geradordenumeros(void)
-{
-    int x;
-
-    x = rand()%3;
-
-    return x;
 }
 
 
