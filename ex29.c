@@ -64,7 +64,7 @@ int main(void)
     /*do
     {
         vez*=-1;
-        if(vez==1)
+        if(vez==1)  /* vez do X */
         {
             switch(opt)
             {
@@ -84,9 +84,9 @@ int main(void)
             jogada++;
             x=vence();
             if(x==1)
-                vez++;
+                vez++;  /* se X ganhar, vez recebe 2 */
         }
-        if(vez==-1)
+        if(vez==-1)   /* vez do O */
         {
             switch(opt)
             {
@@ -106,7 +106,7 @@ int main(void)
             jogada++;
             x=vence();
             if(x==1)
-                vez++;
+                vez++; /* se O ganhar, vez recebe 0 */
         }
         if(jogada==9 && x==0)  se o contador de jogadas for 9, sai do laço e testa empate 
             vez=3;
