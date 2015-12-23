@@ -106,7 +106,7 @@ int main(void)
             if(x==1)
                 vez++;
         }
-        if(jogada==9) /* se o contador de jogadas for 9, sai do laço e testa empate */
+        if(jogada==9 && x==0) /* se o contador de jogadas for 9, sai do laço e testa empate */
             vez=3;
     }while(vez==1 || vez==-1);
 
