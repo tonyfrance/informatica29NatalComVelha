@@ -1,4 +1,14 @@
-/* Fazer um jogo da velha */
+/*ex29 - Jogo da Velha 
+AUTORES:
+        Antonio Francelino
+        Hericles Escoteiro
+        Priscila de Sousa Silva
+        Thiago Rodrigo
+
+ORIENTADOR:
+        Prof. Ruben Carlo Benante
+OBS: Esse programa e protegido pela GNU LICENSE V2.0, para maiores informacoes consulte o arquivo LICENSE*/
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -33,7 +43,7 @@ typedef struct
     int nivel; /*  nivel de dificuldade */
 }dados;
 
-int vez,opt;
+int vez, opt;
 dados d;
 
 
