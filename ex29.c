@@ -239,31 +239,85 @@ int entrada(void)/*Determina a entrada de dados do jogador por tecla para cada e
         switch(numero)
         {
             case 1:
-                d.tab[0][0]=vez;               
+                if(d.tab[0][0]==0)
+                    d.tab[0][0]=vez;     
+                else
+                {
+                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
+                    numero=11;
+                }
                 break;
             case 2:
-                d.tab[0][1]=vez;
+                if(d.tab[0][1]==0)
+                    d.tab[0][1]=vez;
+                else
+                {
+                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
+                    numero=11;
+                }
                 break;
             case 3:
-                d.tab[0][2]=vez;
+                if(d.tab[0][2]==0)
+                    d.tab[0][2]=vez;
+                else
+                {
+                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
+                    numero=11;
+                }
                 break;
             case 4:
-                d.tab[1][0]=vez;
+                if(d.tab[1][0]==0)
+                    d.tab[1][0]=vez;
+                else
+                {
+                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
+                    numero=11;
+                }
                 break;
             case 5:
-                d.tab[1][1]=vez;
+                if(d.tab[1][1]==0)
+                    d.tab[1][1]=vez;
+                else
+                {
+                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
+                    numero=11;
+                }
                 break;
             case 6:
-                d.tab[1][2]=vez;
+                if(d.tab[1][2]==0)
+                    d.tab[1][2]=vez;
+                else
+                {
+                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
+                    numero=11;
+                }
                 break;
             case 7:
-                d.tab[2][0]=vez;
+                if(d.tab[2][0]==0)
+                    d.tab[2][0]=vez;
+                else
+                {
+                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
+                    numero=11;
+                }
                 break;
             case 8:
-                d.tab[2][1]=vez;
+                if(d.tab[2][1]==0)
+                    d.tab[2][1]=vez;
+                else
+                {
+                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
+                    numero=11;
+                }
                 break;
             case 9:
-                d.tab[2][2]=vez;
+                if(d.tab[2][2]==0)
+                    d.tab[2][2]=vez;
+                else
+                {
+                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
+                    numero=11;
+                }
                 break;
             default:
                 printf("Opcao invalida...escolha uma opcao valida!!!\n");
