@@ -5,9 +5,9 @@ Desenvolvimento de um jogo da velha para a disciplina de informática para autom
 ## detalhamento
 
 Neste programa haverá 3 modos principais: 
-1- humano vs humano
-2- humano vs computador
-3- computador vs cmputador
+1- Humano vs Humano
+2- Humano vs Computador
+3- Computador vs Computador
 
 Deve-se escolher as casas de acordo com o seguinte tabuleiro:
 
@@ -22,3 +22,4 @@ Deve-se escolher as casas de acordo com o seguinte tabuleiro:
 1- Hericles Gabriel Escoteiro e Silva
 2- Antonio Francelino
 3- Priscila de Sousa Silva
+4- Thiago Rodrigo de Oliveira Queiroz 
