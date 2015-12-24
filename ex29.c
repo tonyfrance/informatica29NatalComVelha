@@ -47,8 +47,8 @@ int imprimetab(int tab[3][3]); /* imprime tabuleiro de jogo da velha */
 int imprimemenunivel(int arg); /* imprime o menu de selecao de nivel */
 int imprimemenu(int tab[3][3]); /* imprime o menu principal */
 int humanoVShumano(int tab[3][3]); /*chama a funcao multiplayer*/
-int humanoVSpc(int tab); /*chama a funcao humano contra o computador*/
-int pcVSpc(void); /*chama a funcao computador contra o computador*/
+int humanoVSpc(int tab[3][3]); /*chama a funcao humano contra o computador*/
+int pcVSpc(int tab[3][3]); /*chama a funcao computador contra o computador*/
 int vence(int tab[3][3],int vez);/*chama a funcao q determinara o final do jogo*/
 void entrada(int vez);/*chama a funcao de entrada de dados do usuario(jogador)*/
 char start(void);/*chama a funcao qm ira fazer a primeira jogada*/
@@ -360,12 +360,12 @@ void entrada(int vez)/*Determina a entrada de dados do jogador por tecla para ca
     }while(numero>0 && numero<10);
 }
 
-int humanojoga(int vez)
+int humanojoga(int tab[3][3], int vez)
 { 
     int artifico;
     entrada(vez);
     //imprimetab();// caso for usar tem que entrar com a tabela como argumento ou seja imprimetab(tab);
-    artificio = vence();
+    artificio = vence(tab);
     if(artificio == 1)
         return 1
     else
@@ -397,9 +397,10 @@ int humanoVShumano(int tab[3][3])
     printf("O primeiro Player sera X e o segundo Player sera O\n");
     while(parada != 1)
     {
-        parada = humanojoga(vez);      
+        parada = humanojoga(tab, vez);      
         vez = vez *(-1);
     }
+    printf(" Parabens jogaror voce venceu! \n");
 }
 
 int humanoVSpc(void)
