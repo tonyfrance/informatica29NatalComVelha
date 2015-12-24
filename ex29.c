@@ -400,7 +400,11 @@ int humanoVShumano(int tab[3][3])
         parada = humanojoga(tab, vez);      
         vez = vez *(-1);
     }
-    printf(" Parabens jogaror voce venceu! \n");
+    vez = vez*(-1); // Para anular o mesmo comando anterior 
+    if( vez == XIS )
+        printf(" Parabens jogador xis voce venceu! \n");
+    if( vez == BOLA)
+        printf(" Parabens jogador bola voce venceu! \n");
 }
 
 int humanoVSpc(void)
