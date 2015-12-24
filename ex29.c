@@ -61,7 +61,7 @@ int pcVSpc(void); /*chama a funcao computador contra o computador*/
 int vence(void);/*chama a funcao q determinara o final do jogo*/
 int entrada(void);/*chama a funcao de entrada de dados do usuario(jogador)*/
 char start(void);/*chama a funcao qm ira fazer a primeira jogada*/
-int geradordenumeros(void);
+
 
 int main(void)
 {
