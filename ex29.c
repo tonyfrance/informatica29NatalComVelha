@@ -17,7 +17,8 @@ OBS: Esse programa e protegido pela GNU LICENSE V2.0, para maiores informacoes c
 #include <time.h>
 
 #define TAMTAB 3 /*tamanho da tabela para o jogo*/
-
+#define BOLA  -1 /* referente a bola */
+#define XIS    1 /* referente a xis  */
 /* Bordas UTF 8 */
 
 #define WUL L'\u2518' /* ^VU2518 ┘ */
