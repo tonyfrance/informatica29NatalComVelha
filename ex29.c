@@ -258,13 +258,13 @@ int entrada(void)/*Determina a entrada de dados do jogador por tecla para cada e
     int numero,linha,coluna,x;
     do
     {
-        printf("Escolha valores entre 0 e 8\n");
+        printf("Escolha valores entre 1 e 9\n");
         for(linha=0; linha<TAMTAB; linha++)
         {
             for(coluna=0; coluna<TAMTAB; coluna++)
             {
                 x++;
-                if(d.tab[linha][coluna] == 0)
+                if(tab[linha][coluna] == 0)
                     printf("%d",x);
             }
         }
@@ -273,12 +273,11 @@ int entrada(void)/*Determina a entrada de dados do jogador por tecla para cada e
         switch(numero)
         {
             case 1:
-                if(d.tab[0][0]==0)
-                    d.tab[0][0]=vez;     
+                if(tab[0][0]==0)
+                    tab[0][0]=vez;     
                 else
                 {
-                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
-                    numero=11;
+       //             printf("Opcao invalida.. Faca outro movimento \n");
                 }
                 break;
             case 2:
@@ -357,19 +356,20 @@ int entrada(void)/*Determina a entrada de dados do jogador por tecla para cada e
                 printf("Opcao invalida...escolha uma opcao valida!!!\n");
                 break;
         }          
-    }while(numero>0 || numero<10);
+    }while(numero>0 && numero<10);
 }
 
-/*int humanojoga(void)
-  {
-  int numero, vez;
-  do
-  {
-  imprimetab();
-  numero=entrada();
-  }while(0==0); coloque uma condicao aqui
+int humanojoga(int vez)
+{
+  int numero;
+  
+    do
+    {
+    imprimetab();
+    numero=entrada();
+    }while(0==0);// coloque uma condicao aqui
 
-  }*/
+}
 
 char start(void)/*Seleciona qm ira fazer a primeira jogada*/
 {
@@ -393,6 +393,7 @@ char start(void)/*Seleciona qm ira fazer a primeira jogada*/
 int humanoVShumano(void)
 {
     printf("O primeiro Player sera X e o segundo Player sera O\n");
+    humanojoga(bola);      
 }
 
 int humanoVSpc(void)
