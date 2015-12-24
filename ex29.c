@@ -44,6 +44,7 @@ int nivelfacil(int tab[TAMTAB][TAMTAB]); /* funcao do nivel facil */
 int nivelmedio(int tab[TAMTAB][TAMTAB]); /* funcao do nivel medio */
 int niveldificil(int tab[TAMTAB][TAMTAB]); /* funcao do nivel dificil */
 int imprimetab(int tab[TAMTAB][TAMTAB]); /* imprime tabuleiro de jogo da velha */
+int tabaux(int tab[TAMTAB][TAMTAB]); /* auxiliar para a funcao imprimetab */
 int imprimemenunivel(int arg); /* imprime o menu de selecao de nivel */
 int imprimemenu(int tab[TAMTAB][TAMTAB]); /* imprime o menu principal */
 int humanoVShumano(int tab[TAMTAB][TAMTAB]); /*chama a funcao multiplayer*/
@@ -174,6 +175,7 @@ int imprimetab(int tab[TAMTAB][TAMTAB])
 {
     setlocale(LC_ALL, ""); /* para caracteres UTF-8 */
     int linha, coluna;
+    tabaux(tab);
     putchar('\n');
 
     for(linha=0; linha<TAMTAB; linha++)
@@ -198,6 +200,31 @@ int imprimetab(int tab[TAMTAB][TAMTAB])
     putchar('\n');
     return 0;
 }
+
+int tabaux(int tab[TAMTAB][TAMTAB])  /*auxiliar para a funcao imprimetab para mostrar a localizacao de cada casa */
+{
+    setlocale(LC_ALL, ""); /* para caracteres UTF-8 */
+    int linha, coluna, x=0;
+    putchar('\n');
+
+    for(linha=0; linha<TAMTAB; linha++)
+    {
+        for(coluna=0; coluna<TAMTAB; coluna++)
+        {
+            x++;
+            printf(" %d ", x);
+
+            if(coluna!=(TAMTAB-1))
+                printf("%lc",WVV);
+        }
+        putchar('\n');
+        if(linha<TAMTAB-1)
+            printf("%lc%lc%lc%lc%lc%lc%lc%lc%lc%lc%lc\n", WHH, WHH, WHH, WVH, WHH, WHH, WHH, WVH, WHH, WHH, WHH);
+    }
+    putchar('\n');
+    return 0;
+}
+
 
 int imprimemenunivel(int arg)
 {
