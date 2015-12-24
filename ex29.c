@@ -172,7 +172,7 @@ int imprimemenu(int tab[TAMTAB][TAMTAB])/*imprime menu*/
 }
 int imprimetab(int tab[TAMTAB][TAMTAB])
 {
-    /* Lembrar de implementar UTF-8 depois */
+    setlocale(LC_ALL, ""); /* para caracteres UTF-8 */
     int linha, coluna;
     putchar('\n');
 
@@ -181,19 +181,19 @@ int imprimetab(int tab[TAMTAB][TAMTAB])
         for(coluna=0; coluna<TAMTAB; coluna++)
         {
             if(tab[linha][coluna] == 0)
-                printf("    ");
+                printf("   ");
             else
                 if(tab[linha][coluna] == 1)
-                    printf("  X ");
+                    printf(" X ");
                 else
-                    printf("  O ");
+                    printf(" O ");
 
             if(coluna!=(TAMTAB-1))
-                printf("|");
+                printf("%lc",WVV);
         }
         putchar('\n');
         if(linha<TAMTAB-1)
-            printf(" ---+----+---\n");
+            printf("%lc%lc%lc%lc%lc%lc%lc%lc%lc%lc%lc\n", WHH, WHH, WHH, WVH, WHH, WHH, WHH, WVH, WHH, WHH, WHH);
     }
     putchar('\n');
     return 0;
