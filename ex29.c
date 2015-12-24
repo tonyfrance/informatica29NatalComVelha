@@ -142,6 +142,62 @@ void inicio(int tab[3][3])
     return 0;
 }
 
+int imprimemenu(void)/*imprime menu*/
+{
+
+    printf("Bem vindo ao jogo da velha de NATAL!\n");
+    printf("Escolha seu tipo de jogo: ");
+    printf("\n1-Player vs Player \n2-Player vs PC \n3-PC vs PC\n");
+    scanf("%d", &opt);
+    switch(opt)/*opcoes para modo de jogo*/
+    {
+        case 1:
+            printf("Player vs Player\n");
+            humanoVShumano();
+            break;
+        case 2:
+            printf("Player vs PC\n");
+            humanoVSpc();
+            break;
+        case 3:
+            printf("PC vs PC\n");
+            pcVSpc();
+            break;
+        default:
+            printf("ERRO. Obrigado por jogar!\n");
+
+    }
+    return 0;
+}
+int imprimetab(void)
+{
+    /* Lembrar de implementar UTF-8 depois */
+    int linha, coluna;
+    putchar('\n');
+
+    for(linha=0; linha<TAMTAB; linha++)
+    {
+        for(coluna=0; coluna<TAMTAB; coluna++)
+        {
+            if(d.tab[linha][coluna] == 0)
+                printf("    ");
+            else
+                if(d.tab[linha][coluna] == 1)
+                    printf("  X ");
+                else
+                    printf("  O ");
+
+            if(coluna!=(TAMTAB-1))
+                printf("|");
+        }
+        putchar('\n');
+        if(linha<TAMTAB-1)
+            printf(" ---+----+---\n");
+    }
+    putchar('\n');
+    return 0;
+}
+
 int imprimemenunivel(int arg)
 {
     int *nivel;
@@ -172,35 +228,6 @@ int imprimemenunivel(int arg)
     return 0;
 }
 
-
-int imprimetab(void)
-{
-    /* Lembrar de implementar UTF-8 depois */
-    int linha, coluna;
-    putchar('\n');
-
-    for(linha=0; linha<TAMTAB; linha++)
-    {
-        for(coluna=0; coluna<TAMTAB; coluna++)
-        {
-            if(d.tab[linha][coluna] == 0)
-                printf("    ");
-            else
-                if(d.tab[linha][coluna] == 1)
-                    printf("  X ");
-                else
-                    printf("  O ");
-
-            if(coluna!=(TAMTAB-1))
-                printf("|");
-        }
-        putchar('\n');
-        if(linha<TAMTAB-1)
-            printf(" ---+----+---\n");
-    }
-    putchar('\n');
-    return 0;
-}
 int vence(void)/*Determina como finalizara o jogo*/
 {
     int n1;
@@ -228,15 +255,15 @@ int entrada(void)/*Determina a entrada de dados do jogador por tecla para cada e
     {
         printf("Escolha valores entre 0 e 8\n");
         for(linha=0; linha<TAMTAB; linha++)
+        {
+            for(coluna=0; coluna<TAMTAB; coluna++)
             {
-                for(coluna=0; coluna<TAMTAB; coluna++)
-                    {
-                        x++;
-                        if(d.tab[linha][coluna] == 0)
-                        printf("%d",x);
-                    }
+                x++;
+                if(d.tab[linha][coluna] == 0)
+                    printf("%d",x);
             }
-                                                         
+        }
+
         scanf("%d",&numero);
         switch(numero)
         {
@@ -329,43 +356,15 @@ int entrada(void)/*Determina a entrada de dados do jogador por tecla para cada e
 }
 
 /*int humanojoga(void)
-{
-    int numero, vez;
-    do
-    {
-        imprimetab();
-        numero=entrada();
-    }while(0==0); coloque uma condicao aqui
+  {
+  int numero, vez;
+  do
+  {
+  imprimetab();
+  numero=entrada();
+  }while(0==0); coloque uma condicao aqui
 
-}*/
-
-int imprimemenu(void)/*imprime menu*/
-{
-    
-    printf("Bem vindo ao jogo da velha de NATAL!\n");
-    printf("Escolha seu tipo de jogo: ");
-    printf("\n1-Player vs Player \n2-Player vs PC \n3-PC vs PC\n");
-    scanf("%d", &opt);
-    switch(opt)/*opcoes para modo de jogo*/
-    {
-        case 1:
-            printf("Player vs Player\n");
-            humanoVShumano();
-            break;
-        case 2:
-            printf("Player vs PC\n");
-            humanoVSpc();
-            break;
-        case 3:
-            printf("PC vs PC\n");
-            pcVSpc();
-            break;
-        default:
-            printf("ERRO. Obrigado por jogar!\n");
-            
-    }
-    return 0;
-}
+  }*/
 
 char start(void)/*Seleciona qm ira fazer a primeira jogada*/
 {
@@ -382,7 +381,7 @@ char start(void)/*Seleciona qm ira fazer a primeira jogada*/
         else               
             x=2;
     }while(x==2);
-    
+
     return r;
 }
 
