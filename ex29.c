@@ -45,12 +45,12 @@ int nivelmedio(int tab[3][3]); /* funcao do nivel medio */
 int niveldificil(int tab[3][3]); /* funcao do nivel dificil */
 int imprimetab(int tab[3][3]); /* imprime tabuleiro de jogo da velha */
 int imprimemenunivel(int arg); /* imprime o menu de selecao de nivel */
-int imprimemenu(void); /* imprime o menu principal */
-int humanoVShumano(void); /*chama a funcao multiplayer*/
-int humanoVSpc(void); /*chama a funcao humano contra o computador*/
+int imprimemenu(int tab[3][3]); /* imprime o menu principal */
+int humanoVShumano(int tab[3][3]); /*chama a funcao multiplayer*/
+int humanoVSpc(int tab); /*chama a funcao humano contra o computador*/
 int pcVSpc(void); /*chama a funcao computador contra o computador*/
-int vence(void);/*chama a funcao q determinara o final do jogo*/
-int entrada(void);/*chama a funcao de entrada de dados do usuario(jogador)*/
+int vence(int tab[3][3],int vez);/*chama a funcao q determinara o final do jogo*/
+void entrada(int vez);/*chama a funcao de entrada de dados do usuario(jogador)*/
 char start(void);/*chama a funcao qm ira fazer a primeira jogada*/
 
 int main(void)
@@ -59,7 +59,7 @@ int main(void)
     vez=-1;
     srand(time(NULL));
     incio(tab);
-    imprimemenu(nivel);
+    imprimemenu(tab);
     imprimetab(tab);
 
     /*do
@@ -143,7 +143,7 @@ void inicio(int tab[3][3])
     return 0;
 }
 
-int imprimemenu(void)/*imprime menu*/
+int imprimemenu(int tab[3][3])/*imprime menu*/
 {
 
     printf("Bem vindo ao jogo da velha de NATAL!\n");
@@ -154,15 +154,15 @@ int imprimemenu(void)/*imprime menu*/
     {
         case 1:
             printf("Player vs Player\n");
-            humanoVShumano();
+            humanoVShumano(tab);
             break;
         case 2:
             printf("Player vs PC\n");
-            humanoVSpc();
+            humanoVSpc(tab);
             break;
         case 3:
             printf("PC vs PC\n");
-            pcVSpc();
+            pcVSpc(tab);
             break;
         default:
             printf("ERRO. Obrigado por jogar!\n");
@@ -229,24 +229,24 @@ int imprimemenunivel(int arg)
     return 0;
 }
 
-int vence(void)/*Determina como finalizara o jogo*/
+int vence(int tab[3][3], vez)/*Determina como finalizara o jogo*/
 {
     int n1;
     for(n1=0; n1<3; n1++)/* Analisa se tem linha completa */
     {
-        if((d.tab[n1][0] == vez && d.tab[n1][1] == vez) && d.tab[n1][2] == vez)
+        if((tab[n1][0] == vez && tab[n1][1] == vez) && tab[n1][2] == vez)
             return 1;
     }
     for(n1=0; n1<3; n1++)/* Analisa se tem coluna completa */
     {
-        if((d.tab[0][n1] == vez && d.tab[1][n1] == vez) && d.tab[2][n1] == vez)
+        if((tab[0][n1] == vez && tab[1][n1] == vez) && tab[2][n1] == vez)
             return 1;  
     }
-    if((d.tab[0][0] == vez && d.tab[1][1] == vez) && d.tab[2][2])/* Analisa se as casas da diagonal principal estão todas preenchidas */
+    if((tab[0][0] == vez && tab[1][1] == vez) && tab[2][2])/* Analisa se as casas da diagonal principal estão todas preenchidas */
     {
         return 1;
     }
-    else if((d.tab[0][2] == vez && d.tab[1][1] == vez) && d.tab[2][0]) /* Analisa se as casas da diagonal secundaria estão todas preenchidas */
+    else if((tab[0][2] == vez && tab[1][1] == vez) && tab[2][0]) /* Analisa se as casas da diagonal secundaria estão todas preenchidas */
     {
         return 1;
     }
@@ -254,7 +254,7 @@ int vence(void)/*Determina como finalizara o jogo*/
     return 0;
 }
 
-int entrada(void)/*Determina a entrada de dados do jogador por tecla para cada espaço livre no #*/
+void entrada(int vez)/*Determina a entrada de dados do jogador por tecla para cada espaço livre no #*/
 {
     int numero,linha,coluna,x;
     do
@@ -361,15 +361,15 @@ int entrada(void)/*Determina a entrada de dados do jogador por tecla para cada e
 }
 
 int humanojoga(int vez)
-{
-  int numero;
-  
-    do
-    {
-    imprimetab();
-    numero=entrada();
-    }while(0==0);// coloque uma condicao aqui
-
+{ 
+    int artifico;
+    entrada(vez);
+    //imprimetab();// caso for usar tem que entrar com a tabela como argumento ou seja imprimetab(tab);
+    artificio = vence();
+    if(artificio == 1)
+        return 1
+    else
+        return 0;
 }
 
 char start(void)/*Seleciona qm ira fazer a primeira jogada*/
@@ -391,10 +391,15 @@ char start(void)/*Seleciona qm ira fazer a primeira jogada*/
     return r;
 }
 
-int humanoVShumano(void)
+int humanoVShumano(int tab[3][3])
 {
+    int paradai=0, vez = XIS;
     printf("O primeiro Player sera X e o segundo Player sera O\n");
-    humanojoga(bola);      
+    while(parada != 1)
+    {
+        parada = humanojoga(vez);      
+        vez = vez *(-1);
+    }
 }
 
 int humanoVSpc(void)
