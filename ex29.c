@@ -42,7 +42,7 @@ void inicio(int tab[3][3]); /* zera o tabuleiro */
 int nivelfacil(int tab[3][3]); /* funcao do nivel facil */
 int nivelmedio(int tab[3][3]); /* funcao do nivel medio */
 int niveldificil(int tab[3][3]); /* funcao do nivel dificil */
-int imprimetab(void); /* imprime tabuleiro de jogo da velha */
+int imprimetab(int tab[3][3]); /* imprime tabuleiro de jogo da velha */
 int imprimemenunivel(int arg); /* imprime o menu de selecao de nivel */
 int imprimemenu(void); /* imprime o menu principal */
 int humanoVShumano(void); /*chama a funcao multiplayer*/
@@ -59,7 +59,7 @@ int main(void)
     srand(time(NULL));
     incio(tab);
     imprimemenu(nivel);
-    imprimetab();
+    imprimetab(tab);
 
     /*do
     {
@@ -169,7 +169,7 @@ int imprimemenu(void)/*imprime menu*/
     }
     return 0;
 }
-int imprimetab(void)
+int imprimetab(int tab[3][3])
 {
     /* Lembrar de implementar UTF-8 depois */
     int linha, coluna;
@@ -179,10 +179,10 @@ int imprimetab(void)
     {
         for(coluna=0; coluna<TAMTAB; coluna++)
         {
-            if(d.tab[linha][coluna] == 0)
+            if(tab[linha][coluna] == 0)
                 printf("    ");
             else
-                if(d.tab[linha][coluna] == 1)
+                if(tab[linha][coluna] == 1)
                     printf("  X ");
                 else
                     printf("  O ");
@@ -241,10 +241,15 @@ int vence(void)/*Determina como finalizara o jogo*/
         if((d.tab[0][n1] == vez && d.tab[1][n1] == vez) && d.tab[2][n1] == vez)
             return 1;  
     }
-    if((d.tab[0][0] == vez && d.tab[1][1] == vez) && d.tab[2][2])
+    if((d.tab[0][0] == vez && d.tab[1][1] == vez) && d.tab[2][2])/* Analisa se as casas da diagonal principal estão todas preenchidas */
+    {
         return 1;
-    else if((d.tab[0][2] == vez && d.tab[1][1] == vez) && d.tab[2][0])
+    }
+    else if((d.tab[0][2] == vez && d.tab[1][1] == vez) && d.tab[2][0]) /* Analisa se as casas da diagonal secundaria estão todas preenchidas */
+    {
         return 1;
+    }
+    
     return 0;
 }
 
