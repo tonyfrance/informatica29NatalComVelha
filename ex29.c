@@ -1,12 +1,12 @@
 /*ex29 - Jogo da Velha 
 AUTORES:
-        Antonio Francelino
-        Hericles Escoteiro
-        Priscila de Sousa Silva
-        Thiago Rodrigo
+Antonio Francelino
+Hericles Escoteiro
+Priscila de Sousa Silva
+Thiago Rodrigo
 
 ORIENTADOR:
-        Prof. Ruben Carlo Benante
+Prof. Ruben Carlo Benante
 OBS: Esse programa e protegido pela GNU LICENSE V2.0, para maiores informacoes consulte o arquivo LICENSE*/
 
 
@@ -63,70 +63,70 @@ int main(void)
     imprimetab(tab);
 
     /*do
-    {
-        vez*=-1;
-        if(vez==1)   vez do X 
-        {
-            switch(opt)
-            {
-                case 1:
-                    humanoVShumano();
-                    break;
-                case 2:
-                    humanoVSpc();
-                    break;
-                case 3:
-                    pcVSpc();
-                    break;
-                default:
-                    printf("ERRO. Obrigado por jogar!\n");
-                    return 0;
-            }
-            jogada++;
-            x=vence();
-            if(x==1)
-                vez++;   se X ganhar, vez recebe 2 
-        }
-        if(vez==-1)    vez do O 
-        {
-            switch(opt)
-            {
-                case 1:
-                    humanoVShumano();
-                    break;
-                case 2:
-                    humanoVSpc();
-                    break;
-                case 3:
-                    pcVSpc();
-                    break;
-                default:
-                    printf("ERRO. Obrigado por jogar!\n");
-                    return 0;
-            }
-            jogada++;
-            x=vence();
-            if(x==1)
-                vez++;  se O ganhar, vez recebe 0 
-        }
-        if(jogada==9 && x==0)  se o contador de jogadas for 9, sai do laço e testa empate 
-            vez=3;
-    }while(vez==1 || vez==-1);
+      {
+      vez*=-1;
+      if(vez==1)   vez do X 
+      {
+      switch(opt)
+      {
+      case 1:
+      humanoVShumano();
+      break;
+      case 2:
+      humanoVSpc();
+      break;
+      case 3:
+      pcVSpc();
+      break;
+      default:
+      printf("ERRO. Obrigado por jogar!\n");
+      return 0;
+      }
+      jogada++;
+      x=vence();
+      if(x==1)
+      vez++;   se X ganhar, vez recebe 2 
+      }
+      if(vez==-1)    vez do O 
+      {
+      switch(opt)
+      {
+      case 1:
+      humanoVShumano();
+      break;
+      case 2:
+      humanoVSpc();
+      break;
+      case 3:
+      pcVSpc();
+      break;
+      default:
+      printf("ERRO. Obrigado por jogar!\n");
+      return 0;
+      }
+      jogada++;
+      x=vence();
+      if(x==1)
+      vez++;  se O ganhar, vez recebe 0 
+      }
+      if(jogada==9 && x==0)  se o contador de jogadas for 9, sai do laço e testa empate 
+      vez=3;
+      }while(vez==1 || vez==-1);
 
-    switch(vez)
-    {
-        case 0:
-            printf("O ganhou\n");
-            break;
-        case 2:
-            printf("X ganhou\n");
-            break;
-        case 3:
-            printf("DEU VELHA\n");
-            break;
-        default:
-            break;
-    }*/
+      switch(vez)
+      {
+      case 0:
+      printf("O ganhou\n");
+      break;
+      case 2:
+      printf("X ganhou\n");
+      break;
+      case 3:
+      printf("DEU VELHA\n");
+      break;
+      default:
+      break;
+      }*/
     printf("Obrigado por jogar o Jogo da Velha\n");
 
 
@@ -250,7 +250,7 @@ int vence(int tab[TAMTAB][TAMTAB], vez)/*Determina como finalizara o jogo*/
     {
         return 1;
     }
-    
+
     return 0;
 }
 
@@ -278,7 +278,7 @@ void entrada(int vez)/*Determina a entrada de dados do jogador por tecla para ca
                     tab[0][0]=vez;     
                 else
                 {
-       //             printf("Opcao invalida.. Faca outro movimento \n");
+                    printf("Opcao invalida.. Faca outro movimento \n");
                 }
                 break;
             case 2:
@@ -286,8 +286,7 @@ void entrada(int vez)/*Determina a entrada de dados do jogador por tecla para ca
                     d.tab[0][1]=vez;
                 else
                 {
-                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
-                    numero=11;
+                    printf("Opcao invalida.. Faca outro movimento \n");
                 }
                 break;
             case 3:
@@ -295,8 +294,7 @@ void entrada(int vez)/*Determina a entrada de dados do jogador por tecla para ca
                     d.tab[0][2]=vez;
                 else
                 {
-                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
-                    numero=11;
+                    printf("Opcao invalida.. Faca outro movimento \n");
                 }
                 break;
             case 4:
@@ -304,8 +302,7 @@ void entrada(int vez)/*Determina a entrada de dados do jogador por tecla para ca
                     d.tab[1][0]=vez;
                 else
                 {
-                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
-                    numero=11;
+                    printf("Opcao invalida.. Faca outro movimento \n");
                 }
                 break;
             case 5:
@@ -313,8 +310,7 @@ void entrada(int vez)/*Determina a entrada de dados do jogador por tecla para ca
                     d.tab[1][1]=vez;
                 else
                 {
-                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
-                    numero=11;
+                    printf("Opcao invalida.. Faca outro movimento \n");
                 }
                 break;
             case 6:
@@ -322,8 +318,7 @@ void entrada(int vez)/*Determina a entrada de dados do jogador por tecla para ca
                     d.tab[1][2]=vez;
                 else
                 {
-                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
-                    numero=11;
+                    printf("Opcao invalida.. Faca outro movimento \n");
                 }
                 break;
             case 7:
@@ -331,8 +326,7 @@ void entrada(int vez)/*Determina a entrada de dados do jogador por tecla para ca
                     d.tab[2][0]=vez;
                 else
                 {
-                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
-                    numero=11;
+                    printf("Opcao invalida.. Faca outro movimento \n");
                 }
                 break;
             case 8:
@@ -340,8 +334,7 @@ void entrada(int vez)/*Determina a entrada de dados do jogador por tecla para ca
                     d.tab[2][1]=vez;
                 else
                 {
-                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
-                    numero=11;
+                    printf("Opcao invalida.. Faca outro movimento \n");
                 }
                 break;
             case 9:
@@ -349,8 +342,7 @@ void entrada(int vez)/*Determina a entrada de dados do jogador por tecla para ca
                     d.tab[2][2]=vez;
                 else
                 {
-                    printf("Opcao invalida...escolha uma opcao valida!!!\n");
-                    numero=11;
+                    printf("Opcao invalida.. Faca outro movimento \n");
                 }
                 break;
             default:
