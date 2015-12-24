@@ -43,7 +43,7 @@ int nivelfacil(int tab[3][3]); /* funcao do nivel facil */
 int nivelmedio(int tab[3][3]); /* funcao do nivel medio */
 int niveldificil(int tab[3][3]); /* funcao do nivel dificil */
 int imprimetab(void); /* imprime tabuleiro de jogo da velha */
-int imprimemenunivel(int nivel); /* imprime o menu de selecao de nivel */
+int imprimemenunivel(int arg); /* imprime o menu de selecao de nivel */
 int imprimemenu(void); /* imprime o menu principal */
 int humanoVShumano(void); /*chama a funcao multiplayer*/
 int humanoVSpc(void); /*chama a funcao humano contra o computador*/
@@ -54,11 +54,11 @@ char start(void);/*chama a funcao qm ira fazer a primeira jogada*/
 
 int main(void)
 {
-    int tab[3][3],jogada=0,x,nivel;
+    int tab[3][3], jogada=0, x, nivel;
     vez=-1;
     srand(time(NULL));
     incio(tab);
-    imprimemenu();
+    imprimemenu(nivel);
     imprimetab();
 
     /*do
@@ -142,12 +142,15 @@ void inicio(int tab[3][3])
     return 0;
 }
 
-int imprimemenunivel(int nivel)
+int imprimemenunivel(int arg)
 {
+    int *nivel;
+    nivel = arg;
+
     printf("Escolha um nivel de dificuldade: \n");
     printf("1-facil \n2-medio \n3-dificil\n");
     scanf("%d", &nivel);
-    switch(nivel)
+    switch(*nivel)
     {
         case 1:
             printf("nivel facil\n");
