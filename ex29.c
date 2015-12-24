@@ -39,23 +39,23 @@ OBS: Esse programa e protegido pela GNU LICENSE V2.0, para maiores informacoes c
 #define PRINTGRAF_OFF ;
 
 /* Prototipos */
-void inicio(int tab[3][3]); /* zera o tabuleiro */
-int nivelfacil(int tab[3][3]); /* funcao do nivel facil */
-int nivelmedio(int tab[3][3]); /* funcao do nivel medio */
-int niveldificil(int tab[3][3]); /* funcao do nivel dificil */
-int imprimetab(int tab[3][3]); /* imprime tabuleiro de jogo da velha */
+void inicio(int tab[TAMTAB][TAMTAB]); /* zera o tabuleiro */
+int nivelfacil(int tab[TAMTAB][TAMTAB]); /* funcao do nivel facil */
+int nivelmedio(int tab[TAMTAB][TAMTAB]); /* funcao do nivel medio */
+int niveldificil(int tab[TAMTAB][TAMTAB]); /* funcao do nivel dificil */
+int imprimetab(int tab[TAMTAB][TAMTAB]); /* imprime tabuleiro de jogo da velha */
 int imprimemenunivel(int arg); /* imprime o menu de selecao de nivel */
-int imprimemenu(int tab[3][3]); /* imprime o menu principal */
-int humanoVShumano(int tab[3][3]); /*chama a funcao multiplayer*/
-int humanoVSpc(int tab[3][3]); /*chama a funcao humano contra o computador*/
-int pcVSpc(int tab[3][3]); /*chama a funcao computador contra o computador*/
-int vence(int tab[3][3],int vez);/*chama a funcao q determinara o final do jogo*/
+int imprimemenu(int tab[TAMTAB][TAMTAB]); /* imprime o menu principal */
+int humanoVShumano(int tab[TAMTAB][TAMTAB]); /*chama a funcao multiplayer*/
+int humanoVSpc(int tab[TAMTAB][TAMTAB]); /*chama a funcao humano contra o computador*/
+int pcVSpc(int tab[TAMTAB][TAMTAB]); /*chama a funcao computador contra o computador*/
+int vence(int tab[TAMTAB][TAMTAB],int vez);/*chama a funcao q determinara o final do jogo*/
 void entrada(int vez);/*chama a funcao de entrada de dados do usuario(jogador)*/
 char start(void);/*chama a funcao qm ira fazer a primeira jogada*/
 
 int main(void)
 {
-    int tab[3][3], jogada=0, x, nivel;
+    int tab[TAMTAB][TAMTAB], jogada=0, x, nivel;
     vez=-1;
     srand(time(NULL));
     incio(tab);
@@ -133,7 +133,7 @@ int main(void)
     return EXIT_SUCCESS;
 }
 
-void inicio(int tab[3][3])
+void inicio(int tab[TAMTAB][TAMTAB])
 {
     int i,j;
 
@@ -143,7 +143,7 @@ void inicio(int tab[3][3])
     return 0;
 }
 
-int imprimemenu(int tab[3][3])/*imprime menu*/
+int imprimemenu(int tab[TAMTAB][TAMTAB])/*imprime menu*/
 {
 
     printf("Bem vindo ao jogo da velha de NATAL!\n");
@@ -170,7 +170,7 @@ int imprimemenu(int tab[3][3])/*imprime menu*/
     }
     return 0;
 }
-int imprimetab(int tab[3][3])
+int imprimetab(int tab[TAMTAB][TAMTAB])
 {
     /* Lembrar de implementar UTF-8 depois */
     int linha, coluna;
@@ -229,7 +229,7 @@ int imprimemenunivel(int arg)
     return 0;
 }
 
-int vence(int tab[3][3], vez)/*Determina como finalizara o jogo*/
+int vence(int tab[TAMTAB][TAMTAB], vez)/*Determina como finalizara o jogo*/
 {
     int n1;
     for(n1=0; n1<3; n1++)/* Analisa se tem linha completa */
@@ -360,7 +360,7 @@ void entrada(int vez)/*Determina a entrada de dados do jogador por tecla para ca
     }while(numero>0 && numero<10);
 }
 
-int humanojoga(int tab[3][3], int vez)
+int humanojoga(int tab[TAMTAB][TAMTAB], int vez)
 { 
     int artifico;
     entrada(vez);
@@ -448,5 +448,4 @@ int pcVSpc(void)/*modo de jogo pc vs pc*/
 
     return 0;
 }
-
 
