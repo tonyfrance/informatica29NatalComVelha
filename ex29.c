@@ -37,18 +37,8 @@ OBS: Esse programa e protegido pela GNU LICENSE V2.0, para maiores informacoes c
 #define PRINTGRAF_ON ;
 #define PRINTGRAF_OFF ;
 
-typedef struct
-{
-    int tab[3][3]; /* posicoes dos elementos do mapa */
-    int nivel; /*  nivel de dificuldade */
-}dados;
-
-int vez, opt;
-dados d;
-
-
 /* Prototipos */
-int inicio(void); /* escolha de nivel */
+void inicio(int tab[3][3]); /* zera o tabuleiro */
 int nivelfacil(int tab[3][3]); /* funcao do nivel facil */
 int nivelmedio(int tab[3][3]); /* funcao do nivel medio */
 int niveldificil(int tab[3][3]); /* funcao do nivel dificil */
@@ -62,12 +52,12 @@ int vence(void);/*chama a funcao q determinara o final do jogo*/
 int entrada(void);/*chama a funcao de entrada de dados do usuario(jogador)*/
 char start(void);/*chama a funcao qm ira fazer a primeira jogada*/
 
-
 int main(void)
 {
-    int jogada=0,x;
+    int tab[3][3],jogada=0,x;
     vez=-1;
     srand(time(NULL));
+    incio(tab);
     imprimemenu();
     imprimetab();
 
@@ -142,13 +132,13 @@ int main(void)
     return EXIT_SUCCESS;
 }
 
-int inicio(void)
+void inicio(int tab[3][3])
 {
     int i,j;
 
     for(i=0;i<TAMTAB;i++)      /*faz todas as casas receberem 0 para deixar o tabuleiro em branco */
         for(j=0;j<TAMTAB;j++)
-            d.tab[i][j]=0;
+            tab[i][j]=0;
     return 0;
 }
 
