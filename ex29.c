@@ -49,7 +49,7 @@ int imprimemenunivel(int arg); /* imprime o menu de selecao de nivel */
 int imprimemenu(int tab[TAMTAB][TAMTAB]); /* imprime o menu principal */
 int humanoVShumano(int tab[TAMTAB][TAMTAB]); /*chama a funcao multiplayer*/
 int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez); /*chama a funcao humano contra o computador*/
-int pcVSpc(int tab[TAMTAB][TAMTAB]); /*chama a funcao computador contra o computador*/
+int pcVSpc(int tab[TAMTAB][TAMTAB], int vez); /*chama a funcao computador contra o computador*/
 int vence(int tab[TAMTAB][TAMTAB],int vez);/*chama a funcao q determinara o final do jogo*/
 void entrada(int tab[TAMTAB][TAMTAB], int vez);/*chama a funcao de entrada de dados do usuario(jogador)*/
 char start(void);/*chama a funcao qm ira fazer a primeira jogada*/
@@ -158,7 +158,7 @@ int imprimemenu(int tab[TAMTAB][TAMTAB])/*imprime menu*/
             break;
         case 2:
             printf("Player vs PC\n");
-            humanoVSpc(tab);
+            humanoVSpc(tab, vez);
             break;
         case 3:
             printf("PC vs PC\n");
@@ -362,12 +362,12 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
 
 int humanojoga(int tab[TAMTAB][TAMTAB], int vez)
 { 
-    int artifico;
+    int artificio;
     entrada(tab, vez);
     //imprimetab();// caso for usar tem que entrar com a tabela como argumento ou seja imprimetab(tab);
-    artificio = vence(tab);
+    artificio = vence(tab, vez);
     if(artificio == 1)
-        return 1
+        return 1;
     else
         return 0;
 }
@@ -409,16 +409,16 @@ int humanoVShumano(int tab[3][3])
 
 int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez)
 {
-    imprimemenunivel(int arg);
+    imprimemenunivel(arg);
     start();
     printf("O primeiro Player sera X e o segundo Player sera O\n");    
 }
 
-int pcVSpc(void)/*modo de jogo pc vs pc*/
+int pcVSpc(int tab[TAMTAB][TAMTAB], int vez)/*modo de jogo pc vs pc*/
 {
     int x,y,r=1,jogada=0;
 
-    imprimemenunivel();
+    imprimemenunivel(arg);
     printf("O primeiro Player sera X e o segundo Player sera O\n");
 
     do
@@ -428,8 +428,8 @@ int pcVSpc(void)/*modo de jogo pc vs pc*/
             printf("\nJogador 1:\n");
             x=rand()%3;
             y=rand()%3;
-            if(d.tab[x][y]==0)
-                d.tab[x][y] = 1;
+            if(tab[x][y]==0)
+                tab[x][y] = 1;
             jogada=jogada+1;
         }
         else
@@ -437,12 +437,12 @@ int pcVSpc(void)/*modo de jogo pc vs pc*/
             printf("\nJogador 2:\n");
             x=rand()%3;
             y=rand()%3;
-            if(d.tab[x][y]==0)
-                d.tab[x][y] = 2;
+            if(tab[x][y]==0)
+                tab[x][y] = 2;
             jogada=jogada+1;
         }
         vez=vez*-1;
-        imprimetab();
+        imprimetab(tab);
 
     }while(jogada<9);
 
