@@ -48,16 +48,15 @@ int tabaux(int tab[TAMTAB][TAMTAB]); /* auxiliar para a funcao imprimetab */
 int imprimemenunivel(int arg); /* imprime o menu de selecao de nivel */
 int imprimemenu(int tab[TAMTAB][TAMTAB]); /* imprime o menu principal */
 int humanoVShumano(int tab[TAMTAB][TAMTAB]); /*chama a funcao multiplayer*/
-int humanoVSpc(int tab[TAMTAB][TAMTAB]); /*chama a funcao humano contra o computador*/
+int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez); /*chama a funcao humano contra o computador*/
 int pcVSpc(int tab[TAMTAB][TAMTAB]); /*chama a funcao computador contra o computador*/
 int vence(int tab[TAMTAB][TAMTAB],int vez);/*chama a funcao q determinara o final do jogo*/
-void entrada(int vez);/*chama a funcao de entrada de dados do usuario(jogador)*/
+void entrada(int tab[TAMTAB][TAMTAB], int vez);/*chama a funcao de entrada de dados do usuario(jogador)*/
 char start(void);/*chama a funcao qm ira fazer a primeira jogada*/
 
 int main(void)
 {
-    int tab[TAMTAB][TAMTAB], jogada=0, x, nivel;
-    vez=-1;
+    int tab[TAMTAB][TAMTAB], jogada=0, x, nivel, vez=-1;
     srand(time(NULL));
     incio(tab);
     imprimemenu(tab);
@@ -146,7 +145,7 @@ void inicio(int tab[TAMTAB][TAMTAB])
 
 int imprimemenu(int tab[TAMTAB][TAMTAB])/*imprime menu*/
 {
-
+    int opt;
     printf("Bem vindo ao jogo da velha de NATAL!\n");
     printf("Escolha seu tipo de jogo: ");
     printf("\n1-Player vs Player \n2-Player vs PC \n3-PC vs PC\n");
@@ -256,7 +255,7 @@ int imprimemenunivel(int arg)
     return 0;
 }
 
-int vence(int tab[TAMTAB][TAMTAB], vez)/*Determina como finalizara o jogo*/
+int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
 {
     int n1;
     for(n1=0; n1<3; n1++)/* Analisa se tem linha completa */
@@ -281,7 +280,7 @@ int vence(int tab[TAMTAB][TAMTAB], vez)/*Determina como finalizara o jogo*/
     return 0;
 }
 
-void entrada(int vez)/*Determina a entrada de dados do jogador por tecla para cada espaço livre no #*/
+void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do jogador por tecla para cada espaço livre no #*/
 {
     int numero,linha,coluna,x;
     do
@@ -304,73 +303,55 @@ void entrada(int vez)/*Determina a entrada de dados do jogador por tecla para ca
                 if(tab[0][0]==0)
                     tab[0][0]=vez;     
                 else
-                {
                     printf("Opcao invalida.. Faca outro movimento \n");
-                }
                 break;
             case 2:
-                if(d.tab[0][1]==0)
-                    d.tab[0][1]=vez;
+                if(tab[0][1]==0)
+                    tab[0][1]=vez;
                 else
-                {
                     printf("Opcao invalida.. Faca outro movimento \n");
-                }
                 break;
             case 3:
-                if(d.tab[0][2]==0)
-                    d.tab[0][2]=vez;
+                if(tab[0][2]==0)
+                    tab[0][2]=vez;
                 else
-                {
                     printf("Opcao invalida.. Faca outro movimento \n");
-                }
                 break;
             case 4:
-                if(d.tab[1][0]==0)
-                    d.tab[1][0]=vez;
+                if(tab[1][0]==0)
+                    tab[1][0]=vez;
                 else
-                {
                     printf("Opcao invalida.. Faca outro movimento \n");
-                }
                 break;
             case 5:
-                if(d.tab[1][1]==0)
-                    d.tab[1][1]=vez;
+                if(tab[1][1]==0)
+                    tab[1][1]=vez;
                 else
-                {
                     printf("Opcao invalida.. Faca outro movimento \n");
-                }
                 break;
             case 6:
-                if(d.tab[1][2]==0)
-                    d.tab[1][2]=vez;
+                if(tab[1][2]==0)
+                    tab[1][2]=vez;
                 else
-                {
                     printf("Opcao invalida.. Faca outro movimento \n");
-                }
                 break;
             case 7:
-                if(d.tab[2][0]==0)
-                    d.tab[2][0]=vez;
+                if(tab[2][0]==0)
+                    tab[2][0]=vez;
                 else
-                {
                     printf("Opcao invalida.. Faca outro movimento \n");
-                }
                 break;
             case 8:
-                if(d.tab[2][1]==0)
-                    d.tab[2][1]=vez;
+                if(tab[2][1]==0)
+                    tab[2][1]=vez;
                 else
-                {
                     printf("Opcao invalida.. Faca outro movimento \n");
-                }
                 break;
             case 9:
-                if(d.tab[2][2]==0)
-                    d.tab[2][2]=vez;
+                if(tab[2][2]==0)
+                    tab[2][2]=vez;
                 else
-                {
                     printf("Opcao invalida.. Faca outro movimento \n");
-                }
                 break;
             default:
                 printf("Opcao invalida...escolha uma opcao valida!!!\n");
@@ -382,7 +363,7 @@ void entrada(int vez)/*Determina a entrada de dados do jogador por tecla para ca
 int humanojoga(int tab[TAMTAB][TAMTAB], int vez)
 { 
     int artifico;
-    entrada(vez);
+    entrada(tab, vez);
     //imprimetab();// caso for usar tem que entrar com a tabela como argumento ou seja imprimetab(tab);
     artificio = vence(tab);
     if(artificio == 1)
@@ -412,7 +393,7 @@ char start(void)/*Seleciona qm ira fazer a primeira jogada*/
 
 int humanoVShumano(int tab[3][3])
 {
-    int paradai=0, vez = XIS;
+    int parada=0, vez = XIS;
     printf("O primeiro Player sera X e o segundo Player sera O\n");
     while(parada != 1)
     {
@@ -426,9 +407,9 @@ int humanoVShumano(int tab[3][3])
         printf(" Parabens jogador bola voce venceu! \n");
 }
 
-int humanoVSpc(void)
+int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez)
 {
-    imprimemenunivel();
+    imprimemenunivel(int arg);
     start();
     printf("O primeiro Player sera X e o segundo Player sera O\n");    
 }
