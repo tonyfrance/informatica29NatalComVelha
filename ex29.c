@@ -46,7 +46,7 @@ int niveldificil(int tab[TAMTAB][TAMTAB]); /* funcao do nivel dificil */
 int imprimetab(int tab[TAMTAB][TAMTAB]); /* imprime tabuleiro de jogo da velha */
 int tabaux(int tab[TAMTAB][TAMTAB]); /* auxiliar para a funcao imprimetab */
 int imprimemenunivel(int arg); /* imprime o menu de selecao de nivel */
-int imprimemenu(int tab[TAMTAB][TAMTAB]); /* imprime o menu principal */
+int imprimemenu(int tab[TAMTAB][TAMTAB], int vez); /* imprime o menu principal */
 int humanoVShumano(int tab[TAMTAB][TAMTAB]); /*chama a funcao multiplayer*/
 int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez); /*chama a funcao humano contra o computador*/
 int pcVSpc(int tab[TAMTAB][TAMTAB], int vez); /*chama a funcao computador contra o computador*/
@@ -59,76 +59,10 @@ int main(void)
     int tab[TAMTAB][TAMTAB], jogada=0, x, nivel, vez=-1;
     srand(time(NULL));
     incio(tab);
-    imprimemenu(tab);
+    imprimemenu(tab, vez);
     imprimetab(tab);
 
-    /*do
-      {
-      vez*=-1;
-      if(vez==1)   vez do X 
-      {
-      switch(opt)
-      {
-      case 1:
-      humanoVShumano();
-      break;
-      case 2:
-      humanoVSpc();
-      break;
-      case 3:
-      pcVSpc();
-      break;
-      default:
-      printf("ERRO. Obrigado por jogar!\n");
-      return 0;
-      }
-      jogada++;
-      x=vence();
-      if(x==1)
-      vez++;   se X ganhar, vez recebe 2 
-      }
-      if(vez==-1)    vez do O 
-      {
-      switch(opt)
-      {
-      case 1:
-      humanoVShumano();
-      break;
-      case 2:
-      humanoVSpc();
-      break;
-      case 3:
-      pcVSpc();
-      break;
-      default:
-      printf("ERRO. Obrigado por jogar!\n");
-      return 0;
-      }
-      jogada++;
-      x=vence();
-      if(x==1)
-      vez++;  se O ganhar, vez recebe 0 
-      }
-      if(jogada==9 && x==0)  se o contador de jogadas for 9, sai do laço e testa empate 
-      vez=3;
-      }while(vez==1 || vez==-1);
-
-      switch(vez)
-      {
-      case 0:
-      printf("O ganhou\n");
-      break;
-      case 2:
-      printf("X ganhou\n");
-      break;
-      case 3:
-      printf("DEU VELHA\n");
-      break;
-      default:
-      break;
-      }*/
     printf("Obrigado por jogar o Jogo da Velha\n");
-
 
     return EXIT_SUCCESS;
 }
@@ -143,7 +77,7 @@ void inicio(int tab[TAMTAB][TAMTAB])
     return 0;
 }
 
-int imprimemenu(int tab[TAMTAB][TAMTAB])/*imprime menu*/
+int imprimemenu(int tab[TAMTAB][TAMTAB], int vez)/*imprime menu*/
 {
     int opt;
     printf("Bem vindo ao jogo da velha de NATAL!\n");
@@ -162,7 +96,7 @@ int imprimemenu(int tab[TAMTAB][TAMTAB])/*imprime menu*/
             break;
         case 3:
             printf("PC vs PC\n");
-            pcVSpc(tab);
+            pcVSpc(tab, vez);
             break;
         default:
             printf("ERRO. Obrigado por jogar!\n");
@@ -227,6 +161,8 @@ int tabaux(int tab[TAMTAB][TAMTAB])  /*auxiliar para a funcao imprimetab para mo
 
 int imprimemenunivel(int arg)
 {
+    /* qual a utilidade da variavel arg?? */
+    
     int *nivel;
     nivel = arg;
 
