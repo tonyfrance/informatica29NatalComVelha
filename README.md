@@ -12,11 +12,11 @@ Neste programa haverá 3 modos principais:
 
 3- Computador vs Computador
 
-    | 1 | 2 | 3 |
-    |---|---|---|
-    | 4 | 5 | 6 |
-    |---|---|---|
-    | 7 | 8 | 9 |
+     1 | 2 | 3 
+    ---|---|---
+     4 | 5 | 6 
+    ---|---|---
+     7 | 8 | 9 
 
 
 ## autores
