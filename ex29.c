@@ -219,6 +219,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
     int numero,linha,coluna,x;
     do
     {
+        imprimetab(tab);
         printf("Escolha valores entre 1 e 9\n");
        /* for(linha=0; linha<TAMTAB; linha++)
         {
@@ -236,7 +237,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
             case 1:
                 if(tab[0][0]==0)
                 {
-                    imprimetab();
+                    /*imprimetab(tab);*/
                     tab[0][0]=vez;
                     vez*=-1;
                 }
@@ -246,7 +247,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
             case 2:
                 if(tab[0][1]==0)
                 {
-                    imprimetab();
+                    /*imprimetab(tab);*/
                     tab[0][1]=vez;
                     vez*=-1;
                 }
@@ -256,7 +257,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
             case 3:
                 if(tab[0][2]==0)
                 {
-                    imprimetab();
+                    /*imprimetab(tab);*/
                     tab[0][2]=vez;
                     vez*=-1;
                 }
@@ -266,7 +267,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
             case 4:
                 if(tab[1][0]==0)
                 {
-                    imprimetab();
+                    /*imprimetab(tab);*/
                     tab[1][0]=vez;
                     vez*=-1;
                 }
@@ -276,7 +277,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
             case 5:
                 if(tab[1][1]==0)
                 {
-                    imprimetab();
+                    /*imprimetab(tab);*/
                     tab[1][1]=vez;
                     vez*=-1;
                 }
@@ -286,7 +287,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
             case 6:
                 if(tab[1][2]==0)
                 {
-                    imprimetab();
+                    /*imprimetab(tab);*/
                     tab[1][2]=vez;
                     vez*=-1;
                 }
@@ -296,7 +297,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
             case 7:
                 if(tab[2][0]==0)
                 {
-                    imprimetab();
+                    /*imprimetab(tab);*/
                     tab[2][0]=vez;
                     vez*=-1;
                 }
@@ -306,7 +307,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
             case 8:
                 if(tab[2][1]==0)
                 {
-                    imprimetab();
+                    /*imprimetab(tab);*/
                     tab[2][1]=vez;
                     vez*=-1;
                 }
@@ -316,7 +317,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
             case 9:
                 if(tab[2][2]==0)
                 {
-                    imprimetab();
+                    /*imprimetab(tab);*/
                     tab[2][2]=vez;
                     vez*=-1;
                 }
@@ -365,7 +366,7 @@ char start(void)/*Seleciona qm ira fazer a primeira jogada*/
 int humanoVShumano(int tab[3][3])
 {
     int parada=0, vez = XIS;
-    printf("O primeiro Player sera X e o segundo Player sera O\n");
+    printf("O primeiro Player sera X e o segundo Player sera O.\n");
     while(parada != 1)
     {
         parada = humanojoga(tab, vez);      
