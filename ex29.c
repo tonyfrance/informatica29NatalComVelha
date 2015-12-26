@@ -220,7 +220,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
     do
     {
         printf("Escolha valores entre 1 e 9\n");
-        for(linha=0; linha<TAMTAB; linha++)
+       /* for(linha=0; linha<TAMTAB; linha++)
         {
             for(coluna=0; coluna<TAMTAB; coluna++)
             {
@@ -228,62 +228,98 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
                 if(tab[linha][coluna] == 0)
                     printf("%d",x);
             }
-        }
+        }*/
 
         scanf("%d",&numero);
         switch(numero)
         {
             case 1:
                 if(tab[0][0]==0)
-                    tab[0][0]=vez;     
+                {
+                    imprimetab();
+                    tab[0][0]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
             case 2:
                 if(tab[0][1]==0)
+                {
+                    imprimetab();
                     tab[0][1]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
             case 3:
                 if(tab[0][2]==0)
+                {
+                    imprimetab();
                     tab[0][2]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
             case 4:
                 if(tab[1][0]==0)
+                {
+                    imprimetab();
                     tab[1][0]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
             case 5:
                 if(tab[1][1]==0)
+                {
+                    imprimetab();
                     tab[1][1]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
             case 6:
                 if(tab[1][2]==0)
+                {
+                    imprimetab();
                     tab[1][2]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
             case 7:
                 if(tab[2][0]==0)
+                {
+                    imprimetab();
                     tab[2][0]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
             case 8:
                 if(tab[2][1]==0)
+                {
+                    imprimetab();
                     tab[2][1]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
             case 9:
                 if(tab[2][2]==0)
+                {
+                    imprimetab();
                     tab[2][2]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
