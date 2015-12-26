@@ -45,7 +45,7 @@ int nivelmedio(int tab[TAMTAB][TAMTAB]); /* funcao do nivel medio */
 int niveldificil(int tab[TAMTAB][TAMTAB]); /* funcao do nivel dificil */
 int imprimetab(int tab[TAMTAB][TAMTAB]); /* imprime tabuleiro de jogo da velha */
 int tabaux(int tab[TAMTAB][TAMTAB]); /* auxiliar para a funcao imprimetab */
-int imprimemenunivel(int arg); /* imprime o menu de selecao de nivel */
+int imprimemenunivel(void); /* imprime o menu de selecao de nivel */
 int imprimemenu(int tab[TAMTAB][TAMTAB], int vez); /* imprime o menu principal */
 int humanoVShumano(int tab[TAMTAB][TAMTAB]); /*chama a funcao multiplayer*/
 int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez); /*chama a funcao humano contra o computador*/
@@ -58,7 +58,7 @@ int main(void)
 {
     int tab[TAMTAB][TAMTAB], jogada=0, x, nivel, vez=-1;
     srand(time(NULL));
-    incio(tab);
+    inicio(tab);
     imprimemenu(tab, vez);
     imprimetab(tab);
 
@@ -74,7 +74,6 @@ void inicio(int tab[TAMTAB][TAMTAB])
     for(i=0;i<TAMTAB;i++)      /*faz todas as casas receberem 0 para deixar o tabuleiro em branco */
         for(j=0;j<TAMTAB;j++)
             tab[i][j]=0;
-    return 0;
 }
 
 int imprimemenu(int tab[TAMTAB][TAMTAB], int vez)/*imprime menu*/
@@ -159,17 +158,16 @@ int tabaux(int tab[TAMTAB][TAMTAB])  /*auxiliar para a funcao imprimetab para mo
 }
 
 
-int imprimemenunivel(int arg)
+int imprimemenunivel(void)
 {
     /* qual a utilidade da variavel arg?? */
     
-    int *nivel;
-    nivel = arg;
+    int nivel;
 
     printf("Escolha um nivel de dificuldade: \n");
     printf("1-facil \n2-medio \n3-dificil\n");
     scanf("%d", &nivel);
-    switch(*nivel)
+    switch(nivel)
     {
         case 1:
             printf("nivel facil\n");
@@ -294,6 +292,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
                 break;
         }          
     }while(numero>0 && numero<10);
+    return 0;
 }
 
 int humanojoga(int tab[TAMTAB][TAMTAB], int vez)
@@ -341,44 +340,54 @@ int humanoVShumano(int tab[3][3])
         printf(" Parabens jogador xis voce venceu! \n");
     if( vez == BOLA)
         printf(" Parabens jogador bola voce venceu! \n");
+    return 0;
 }
 
 int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez)
 {
-    imprimemenunivel(arg);
+    imprimemenunivel();
     start();
-    printf("O primeiro Player sera X e o segundo Player sera O\n");    
+    printf("O primeiro Player sera X e o segundo Player sera O\n");   
+    return 0;
 }
 
 int pcVSpc(int tab[TAMTAB][TAMTAB], int vez)/*modo de jogo pc vs pc*/
 {
     int x,y,r=1,jogada=0;
 
-    imprimemenunivel(arg);
+    imprimemenunivel();
     printf("O primeiro Player sera X e o segundo Player sera O\n");
 
     do
     {
-        if(vez==1)
+        if(vez==-1)
         {
-            printf("\nJogador 1:\n");
             x=rand()%3;
             y=rand()%3;
             if(tab[x][y]==0)
+            {
+                printf("\nJogador 1:\n");
                 tab[x][y] = 1;
-            jogada=jogada+1;
+                jogada=jogada+1;
+                vez=vez*-1;
+                imprimetab(tab);
+            }
         }
         else
         {
-            printf("\nJogador 2:\n");
             x=rand()%3;
             y=rand()%3;
             if(tab[x][y]==0)
+            {
+                printf("\nJogador 2:\n");
                 tab[x][y] = 2;
-            jogada=jogada+1;
+                jogada=jogada+1;
+                vez=vez*-1;
+                imprimetab(tab);
+            }
         }
-        vez=vez*-1;
-        imprimetab(tab);
+
+        vence(tab, vez);
 
     }while(jogada<9);
 
