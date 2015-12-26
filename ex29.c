@@ -201,7 +201,8 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
             if(vez==-1)
                 printf("jogador 'O' ganhou\n");
         
-            return 1;
+            exit(0);
+            //return 1;
         }
     }
     for(n1=0; n1<3; n1++)/* Analisa se tem coluna completa */
@@ -213,7 +214,8 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
             if(vez==-1)
                 printf("jogador 'O' ganhou\n");
         
-            return 1;  
+            exit(0);
+            //return 1;  
         }
     }
     if((tab[0][0] == vez && tab[1][1] == vez) && tab[2][2])/* Analisa se as casas da diagonal principal estão todas preenchidas */
@@ -222,7 +224,8 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
             printf("jogador 'X' ganhou\n");
         if(vez==-1)
             printf("jogador 'O' ganhou\n");
-        return 1;
+        exit(0);
+        //return 1;
     }
     else if((tab[0][2] == vez && tab[1][1] == vez) && tab[2][0]) /* Analisa se as casas da diagonal secundaria estão todas preenchidas */
     {
@@ -230,7 +233,8 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
             printf("jogador 'X' ganhou\n");
         if(vez==-1)
             printf("jogador 'O' ganhou\n");
-        return 1;
+        exit(0);
+        //return 1;
     }
 
     return 0;
@@ -354,7 +358,7 @@ int humanojoga(int tab[TAMTAB][TAMTAB], int vez)
 { 
     int artificio;
     entrada(tab, vez);
-    //imprimetab();// caso for usar tem que entrar com a tabela como argumento ou seja imprimetab(tab);
+    /*imprimetab();// caso for usar tem que entrar com a tabela como argumento ou seja imprimetab(tab);*/
     artificio = vence(tab, vez);
     if(artificio == 1)
         return 1;
@@ -390,11 +394,11 @@ int humanoVShumano(int tab[3][3])
         parada = humanojoga(tab, vez);      
         vez = vez *(-1);
     }
-    vez = vez*(-1); // Para anular o mesmo comando anterior 
-    // if( vez == XIS )
-    //   printf(" Parabens jogador xis voce venceu! \n");
-    // if( vez == BOLA)
-    //  printf(" Parabens jogador bola voce venceu! \n");
+    vez = vez*(-1); /* Para anular o mesmo comando anterior 
+     if( vez == XIS )
+        printf(" Parabens jogador xis voce venceu! \n");
+     if( vez == BOLA)
+        printf(" Parabens jogador bola voce venceu! \n");*/
     return 0;
 }
 
