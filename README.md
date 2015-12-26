@@ -12,6 +12,9 @@ Neste programa haverá 3 modos principais:
 
 3- Computador vs Computador
 
+A sequencia do tabuleiro e a seguinte: 
+
+
      1 | 2 | 3 
     ---|---|---
      4 | 5 | 6 
