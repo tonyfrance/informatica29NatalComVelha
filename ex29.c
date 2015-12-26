@@ -39,7 +39,9 @@ OBS: Esse programa e protegido pela GNU LICENSE V2.0, para maiores informacoes c
 #define PRINTGRAF_OFF ;
 
 /* Prototipos */
+void entrada(int tab[TAMTAB][TAMTAB], int vez);/*chama a funcao de entrada de dados do usuario(jogador)*/
 void inicio(int tab[TAMTAB][TAMTAB]); /* zera o tabuleiro */
+
 int nivelfacil(int tab[TAMTAB][TAMTAB]); /* funcao do nivel facil */
 int nivelmedio(int tab[TAMTAB][TAMTAB]); /* funcao do nivel medio */
 int niveldificil(int tab[TAMTAB][TAMTAB]); /* funcao do nivel dificil */
@@ -51,7 +53,7 @@ int humanoVShumano(int tab[TAMTAB][TAMTAB]); /*chama a funcao multiplayer*/
 int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez); /*chama a funcao humano contra o computador*/
 int pcVSpc(int tab[TAMTAB][TAMTAB], int vez); /*chama a funcao computador contra o computador*/
 int vence(int tab[TAMTAB][TAMTAB],int vez);/*chama a funcao q determinara o final do jogo*/
-void entrada(int tab[TAMTAB][TAMTAB], int vez);/*chama a funcao de entrada de dados do usuario(jogador)*/
+
 char start(void);/*chama a funcao qm ira fazer a primeira jogada*/
 
 int main(void)
@@ -202,7 +204,7 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
                 printf("jogador 'O' ganhou\n");
         
             exit(0);
-            //return 1;
+            /*return 1;*/
         }
     }
     for(n1=0; n1<3; n1++)/* Analisa se tem coluna completa */
@@ -215,7 +217,7 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
                 printf("jogador 'O' ganhou\n");
         
             exit(0);
-            //return 1;  
+            /*return 1;*/ 
         }
     }
     if((tab[0][0] == vez && tab[1][1] == vez) && tab[2][2])/* Analisa se as casas da diagonal principal estão todas preenchidas */
@@ -225,7 +227,7 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
         if(vez==-1)
             printf("jogador 'O' ganhou\n");
         exit(0);
-        //return 1;
+        /*return 1;*/
     }
     else if((tab[0][2] == vez && tab[1][1] == vez) && tab[2][0]) /* Analisa se as casas da diagonal secundaria estão todas preenchidas */
     {
@@ -234,7 +236,7 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
         if(vez==-1)
             printf("jogador 'O' ganhou\n");
         exit(0);
-        //return 1;
+        /*return 1;*/
     }
 
     return 0;
