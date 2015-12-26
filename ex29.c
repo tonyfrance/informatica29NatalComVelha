@@ -242,6 +242,10 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
     do
     {
         imprimetab(tab);
+        if(vez==1)
+            printf("jogador 'X': ");
+        if(vez==-1)
+            printf("jogador 'O': ");
         printf("Escolha valores entre 1 e 9\n");
         /* for(linha=0; linha<TAMTAB; linha++)
            {
