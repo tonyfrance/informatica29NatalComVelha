@@ -161,7 +161,7 @@ int tabaux(int tab[TAMTAB][TAMTAB])  /*auxiliar para a funcao imprimetab para mo
 int imprimemenunivel(void)
 {
     /* qual a utilidade da variavel arg?? */
-    
+
     int nivel;
 
     printf("Escolha um nivel de dificuldade: \n");
@@ -195,20 +195,46 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
     for(n1=0; n1<3; n1++)/* Analisa se tem linha completa */
     {
         if((tab[n1][0] == vez && tab[n1][1] == vez) && tab[n1][2] == vez)
-            return 1;
+        {
+            if(vez==1)
+                printf("Jogador 'X' ganhou\n");
+            if(vez==-1)
+                printf("jogador 'O' ganhou\n");
+        
+            exit(0);
+            //return 1;
+        }
     }
     for(n1=0; n1<3; n1++)/* Analisa se tem coluna completa */
     {
         if((tab[0][n1] == vez && tab[1][n1] == vez) && tab[2][n1] == vez)
-            return 1;  
+        {
+            if(vez==1)
+                printf("Jogador 'X' ganhou\n");
+            if(vez==-1)
+                printf("jogador 'O' ganhou\n");
+        
+            exit(0);
+            //return 1;  
+        }
     }
     if((tab[0][0] == vez && tab[1][1] == vez) && tab[2][2])/* Analisa se as casas da diagonal principal estão todas preenchidas */
     {
-        return 1;
+        if(vez==1)
+            printf("jogador 'X' ganhou\n");
+        if(vez==-1)
+            printf("jogador 'O' ganhou\n");
+        exit(0);
+        //return 1;
     }
     else if((tab[0][2] == vez && tab[1][1] == vez) && tab[2][0]) /* Analisa se as casas da diagonal secundaria estão todas preenchidas */
     {
-        return 1;
+        if(vez==1)
+            printf("jogador 'X' ganhou\n");
+        if(vez==-1)
+            printf("jogador 'O' ganhou\n");
+        exit(0);
+        //return 1;
     }
 
     return 0;
@@ -219,78 +245,111 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
     int numero,linha,coluna,x;
     do
     {
+        imprimetab(tab);
+        if(vez==1)
+            printf("jogador 'X': ");
+        if(vez==-1)
+            printf("jogador 'O': ");
         printf("Escolha valores entre 1 e 9\n");
-        for(linha=0; linha<TAMTAB; linha++)
-        {
-            for(coluna=0; coluna<TAMTAB; coluna++)
-            {
-                x++;
-                if(tab[linha][coluna] == 0)
-                    printf("%d",x);
-            }
-        }
+        /* for(linha=0; linha<TAMTAB; linha++)
+           {
+           for(coluna=0; coluna<TAMTAB; coluna++)
+           {
+           x++;
+           if(tab[linha][coluna] == 0)
+           printf("%d",x);
+           }
+           }*/
 
         scanf("%d",&numero);
         switch(numero)
         {
             case 1:
                 if(tab[0][0]==0)
-                    tab[0][0]=vez;     
+                {
+                    tab[0][0]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
             case 2:
                 if(tab[0][1]==0)
+                {
                     tab[0][1]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
             case 3:
                 if(tab[0][2]==0)
+                {
                     tab[0][2]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
             case 4:
                 if(tab[1][0]==0)
+                {
                     tab[1][0]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
             case 5:
                 if(tab[1][1]==0)
+                {
                     tab[1][1]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
             case 6:
                 if(tab[1][2]==0)
+                {
                     tab[1][2]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
             case 7:
                 if(tab[2][0]==0)
+                {
                     tab[2][0]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
             case 8:
                 if(tab[2][1]==0)
+                {
                     tab[2][1]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
             case 9:
                 if(tab[2][2]==0)
+                {
                     tab[2][2]=vez;
+                    vez*=-1;
+                }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
                 break;
             default:
                 printf("Opcao invalida...escolha uma opcao valida!!!\n");
                 break;
-        }          
+        }
+        vence(tab, vez);
     }while(numero>0 && numero<10);
     return 0;
 }
@@ -299,7 +358,7 @@ int humanojoga(int tab[TAMTAB][TAMTAB], int vez)
 { 
     int artificio;
     entrada(tab, vez);
-    //imprimetab();// caso for usar tem que entrar com a tabela como argumento ou seja imprimetab(tab);
+    /*imprimetab();// caso for usar tem que entrar com a tabela como argumento ou seja imprimetab(tab);*/
     artificio = vence(tab, vez);
     if(artificio == 1)
         return 1;
@@ -329,17 +388,17 @@ char start(void)/*Seleciona qm ira fazer a primeira jogada*/
 int humanoVShumano(int tab[3][3])
 {
     int parada=0, vez = XIS;
-    printf("O primeiro Player sera X e o segundo Player sera O\n");
+    printf("O primeiro Player sera X e o segundo Player sera O.\n");
     while(parada != 1)
     {
         parada = humanojoga(tab, vez);      
         vez = vez *(-1);
     }
-    vez = vez*(-1); // Para anular o mesmo comando anterior 
-    if( vez == XIS )
+    vez = vez*(-1); /* Para anular o mesmo comando anterior 
+     if( vez == XIS )
         printf(" Parabens jogador xis voce venceu! \n");
-    if( vez == BOLA)
-        printf(" Parabens jogador bola voce venceu! \n");
+     if( vez == BOLA)
+        printf(" Parabens jogador bola voce venceu! \n");*/
     return 0;
 }
 
