@@ -161,7 +161,7 @@ int tabaux(int tab[TAMTAB][TAMTAB])  /*auxiliar para a funcao imprimetab para mo
 int imprimemenunivel(void)
 {
     /* qual a utilidade da variavel arg?? */
-    
+
     int nivel;
 
     printf("Escolha um nivel de dificuldade: \n");
@@ -195,19 +195,41 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
     for(n1=0; n1<3; n1++)/* Analisa se tem linha completa */
     {
         if((tab[n1][0] == vez && tab[n1][1] == vez) && tab[n1][2] == vez)
+        {
+            if(vez==1)
+                printf("Jogador 'X' ganhou\n");
+            if(vez==-1)
+                printf("jogador 'O' ganhou\n");
+        
             return 1;
+        }
     }
     for(n1=0; n1<3; n1++)/* Analisa se tem coluna completa */
     {
         if((tab[0][n1] == vez && tab[1][n1] == vez) && tab[2][n1] == vez)
+        {
+            if(vez==1)
+                printf("Jogador 'X' ganhou\n");
+            if(vez==-1)
+                printf("jogador 'O' ganhou\n");
+        
             return 1;  
+        }
     }
     if((tab[0][0] == vez && tab[1][1] == vez) && tab[2][2])/* Analisa se as casas da diagonal principal estão todas preenchidas */
     {
+        if(vez==1)
+            printf("jogador 'X' ganhou\n");
+        if(vez==-1)
+            printf("jogador 'O' ganhou\n");
         return 1;
     }
     else if((tab[0][2] == vez && tab[1][1] == vez) && tab[2][0]) /* Analisa se as casas da diagonal secundaria estão todas preenchidas */
     {
+        if(vez==1)
+            printf("jogador 'X' ganhou\n");
+        if(vez==-1)
+            printf("jogador 'O' ganhou\n");
         return 1;
     }
 
@@ -221,15 +243,15 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
     {
         imprimetab(tab);
         printf("Escolha valores entre 1 e 9\n");
-       /* for(linha=0; linha<TAMTAB; linha++)
-        {
-            for(coluna=0; coluna<TAMTAB; coluna++)
-            {
-                x++;
-                if(tab[linha][coluna] == 0)
-                    printf("%d",x);
-            }
-        }*/
+        /* for(linha=0; linha<TAMTAB; linha++)
+           {
+           for(coluna=0; coluna<TAMTAB; coluna++)
+           {
+           x++;
+           if(tab[linha][coluna] == 0)
+           printf("%d",x);
+           }
+           }*/
 
         scanf("%d",&numero);
         switch(numero)
@@ -320,7 +342,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
                 break;
         }
         vence(tab, vez);
-    }while(numero>0 && numero==9);
+    }while(numero>0 && numero<10);
     return 0;
 }
 
@@ -365,10 +387,10 @@ int humanoVShumano(int tab[3][3])
         vez = vez *(-1);
     }
     vez = vez*(-1); // Para anular o mesmo comando anterior 
-   // if( vez == XIS )
-     //   printf(" Parabens jogador xis voce venceu! \n");
-   // if( vez == BOLA)
-      //  printf(" Parabens jogador bola voce venceu! \n");
+    // if( vez == XIS )
+    //   printf(" Parabens jogador xis voce venceu! \n");
+    // if( vez == BOLA)
+    //  printf(" Parabens jogador bola voce venceu! \n");
     return 0;
 }
 
