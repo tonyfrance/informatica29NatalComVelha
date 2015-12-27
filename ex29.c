@@ -432,40 +432,52 @@ int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez)
     int x, y, recstart, jogada=0;
     imprimemenunivel(tab,vez);
     recstart=start();
+    printf("O primeiro Player sera X e o segundo Player sera O\n");   
     do
     {
         if(vez==1)
         {
             if(recstart=='s')
+            {
                 entrada(tab, vez);
+                jogada++;
+            }
             if(recstart=='n')
             {
                 x=rand()%3;
                 y=rand()%3;
                 if(tab[x][y]==0)
+                {
                     tab[x][y]=vez;
+                    imprimetab(tab);
+                    jogada++;
+                }
             }
-            jogada++;
-
         }
 
         if(vez==-1)
         {
             if(recstart=='n')
+            {
                 entrada(tab, vez);
+                jogada++;
+            }
+            
             if(recstart=='s')
             {
                 x=rand()%3;
                 y=rand()%3;
                 if(tab[x][y]==0)
+                {
                     tab[x][y]=vez;
+                    imprimetab(vez);
+                    jogada++;
+                }
             }
-            jogada++;
         }
         vence(tab, vez);
 
-    }while();
-    printf("O primeiro Player sera X e o segundo Player sera O\n");   
+    }while(jogada<9);
     return 0;
 }
 
