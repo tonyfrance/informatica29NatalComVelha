@@ -61,21 +61,28 @@ char start(void);/*chama a funcao qm ira fazer a primeira jogada*/
 int main(void)
 {
     int tab[TAMTAB][TAMTAB], jogada=0, x, nivel, vez=-1;
-    int parada=1;
-    char nov,y;
-    while(parada!=0)
-    {
-        srand(time(NULL));
-        inicio(tab);
-        imprimemenu(tab, vez);
-        imprimetab(tab);
-        printf("deseja joga novamente\n nao=0\n sim=1\n");
-        scanf("%d",&parada);
-    }
+
+    srand(time(NULL));
+    inicio(tab);
+    imprimemenu(tab, vez);
+    imprimetab(tab);
     printf("Obrigado por jogar o Jogo da Velha\n");
     
         return EXIT_SUCCESS;
 }
+void jogarnovamente()
+{
+    int parada;
+
+    printf("deseja jogar novamente?\n1-sim\n0-nao\n");
+    scanf("%d",&parada);
+    if(parada==1)
+        main();
+    if(parada==0)
+        exit(0);
+}
+
+
 void inicio(int tab[TAMTAB][TAMTAB])
 {
     int i,j;
@@ -240,6 +247,7 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
                 printf("Jogador 'X' ganhou\n");
             if(vez==-1)
                 printf("jogador 'O' ganhou\n");
+            jogarnovamente();
             /*return 1;*/
         }
     }
@@ -251,6 +259,7 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
                 printf("Jogador 'X' ganhou\n");
             if(vez==-1)
                 printf("jogador 'O' ganhou\n");
+            jogarnovamente();
         
             /*return 1;*/ 
         }
@@ -277,21 +286,25 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
     {
         imprimetab(tab);
         printf("Jogador 'X' ganhou\n");
+        jogarnovamente();
     }
     if(tab[0][0]==-1 && tab[1][1]==-1 && tab[2][2]==-1)
     {   
         imprimetab(tab);
         printf("Jogador 'O' ganhou\n");
+        jogarnovamente();
     }
     if(tab[0][2]==1 && tab[1][1]==1 && tab[2][0]==1)
     {   
         imprimetab(tab);
         printf("Jogador 'X' ganhou\n");
+        jogarnovamente();
     }
     if(tab[0][2]==-1 && tab[1][1]==-1 && tab[2][0]==-1)
     {
         imprimetab(tab);
         printf("Jogador 'O' ganhou\n");
+        jogarnovamente();
     }
     //return 0;
 }
