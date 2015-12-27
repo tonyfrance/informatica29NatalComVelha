@@ -240,21 +240,25 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
     }*/
     if(tab[0][0]==1 && tab[1][1]==1 && tab[2][2]==1)
     {
+        imprimetab(tab);
         printf("Jogador 'X' ganhou\n");
         exit(1);
     }
     if(tab[0][0]==-1 && tab[1][1]==-1 && tab[2][2]==-1)
     {   
+        imprimetab(tab);
         printf("Jogador 'O' ganhou\n");
         exit(1);
     }
     if(tab[0][2]==1 && tab[1][1]==1 && tab[2][0]==1)
     {   
+        imprimetab(tab);
         printf("Jogador 'X' ganhou\n");
         exit(1);
     }
     if(tab[0][2]==-1 && tab[1][1]==-1 && tab[2][0]==-1)
     {
+        imprimetab(tab);
         printf("Jogador 'O' ganhou\n");
         exit(1);
     }
