@@ -61,14 +61,20 @@ char start(void);/*chama a funcao qm ira fazer a primeira jogada*/
 int main(void)
 {
     int tab[TAMTAB][TAMTAB], jogada=0, x, nivel, vez=-1;
-    srand(time(NULL));
-    inicio(tab);
-    imprimemenu(tab, vez);
-    imprimetab(tab);
-
+    int parada=1;
+    char nov,y;
+    while(parada!=0)
+    {
+        srand(time(NULL));
+        inicio(tab);
+        imprimemenu(tab, vez);
+        imprimetab(tab);
+        printf("deseja joga novamente\n nao=0\n sim=1\n");
+        scanf("%d",&parada);
+    }
     printf("Obrigado por jogar o Jogo da Velha\n");
-
-    return EXIT_SUCCESS;
+    
+        return EXIT_SUCCESS;
 }
 void inicio(int tab[TAMTAB][TAMTAB])
 {
@@ -225,7 +231,7 @@ int humanonivel(int tab[TAMTAB][TAMTAB], int vez)
 int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
 {
     int n1;
-    char nov,y;
+   // char nov,y;
     for(n1=0; n1<3; n1++)/* Analisa se tem linha completa */
     {
         if((tab[n1][0] == vez && tab[n1][1] == vez) && tab[n1][2] == vez)
@@ -234,15 +240,6 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
                 printf("Jogador 'X' ganhou\n");
             if(vez==-1)
                 printf("jogador 'O' ganhou\n");
-            printf("deseja joga novamente y/n\n");
-            nov=getchar();
-            getchar();
-            if(nov==y)
-            {
-                imprimemenu(tab, vez);
-            }
-            else
-                exit(1);
             /*return 1;*/
         }
     }
@@ -254,15 +251,6 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
                 printf("Jogador 'X' ganhou\n");
             if(vez==-1)
                 printf("jogador 'O' ganhou\n");
-            printf("deseja joga novamente y/n\n");
-            nov=getchar();
-            getchar();
-            if(nov==y)
-            {
-                imprimemenu(tab, vez);
-            }
-            else
-                exit(1);
         
             /*return 1;*/ 
         }
@@ -289,57 +277,21 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
     {
         imprimetab(tab);
         printf("Jogador 'X' ganhou\n");
-        printf("deseja joga novamente y/n\n");
-        nov=getchar();
-        getchar();
-        if(nov==y)
-        {
-            imprimemenu(tab, vez);
-        }
-        else
-            exit(1);
     }
     if(tab[0][0]==-1 && tab[1][1]==-1 && tab[2][2]==-1)
     {   
         imprimetab(tab);
         printf("Jogador 'O' ganhou\n");
-        printf("deseja joga novamente y/n\n");
-        nov=getchar();
-        getchar();
-        if(nov==y)
-        {
-            imprimemenu(tab, vez);
-        }
-        else
-            exit(1);
     }
     if(tab[0][2]==1 && tab[1][1]==1 && tab[2][0]==1)
     {   
         imprimetab(tab);
         printf("Jogador 'X' ganhou\n");
-        printf("deseja joga novamente y/n\n");
-        nov=getchar();
-        getchar();
-        if(nov==y)
-        {
-            imprimemenu(tab, vez);
-        }
-        else
-            exit(1);
     }
     if(tab[0][2]==-1 && tab[1][1]==-1 && tab[2][0]==-1)
     {
         imprimetab(tab);
         printf("Jogador 'O' ganhou\n");
-        printf("deseja joga novamente y/n\n");
-        nov=getchar();
-        getchar();
-        if(nov==y)
-        {
-            imprimemenu(tab, vez);
-        }
-        else
-            exit(1);
     }
     //return 0;
 }
