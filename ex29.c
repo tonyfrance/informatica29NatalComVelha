@@ -235,9 +235,8 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
             if(vez==-1)
                 printf("jogador 'O' ganhou\n");
             printf("deseja joga novamente y/n\n");
-            scanf("%c",&nov);
-            scanf("%c",&nov);
-            
+            nov=getchar();
+            getchar();
             if(nov==y)
             {
                 main();
@@ -256,9 +255,8 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
             if(vez==-1)
                 printf("jogador 'O' ganhou\n");
             printf("deseja joga novamente y/n\n");
-            scanf("%c",&nov);
-            scanf("%c",&nov);
-            
+            nov=getchar();
+            getchar();
             if(nov==y)
             {
                 main();
@@ -292,9 +290,8 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
         imprimetab(tab);
         printf("Jogador 'X' ganhou\n");
         printf("deseja joga novamente y/n\n");
-        scanf("%c",&nov);
-        scanf("%c",&nov);
-        
+        nov=getchar();
+        getchar();
         if(nov==y)
         {
             main();
@@ -307,9 +304,8 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
         imprimetab(tab);
         printf("Jogador 'O' ganhou\n");
         printf("deseja joga novamente y/n\n");
-        scanf("%c",&nov);
-        scanf("%c",&nov);
-        
+        nov=getchar();
+        getchar();
         if(nov==y)
         {
             main();
@@ -322,9 +318,8 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
         imprimetab(tab);
         printf("Jogador 'X' ganhou\n");
         printf("deseja joga novamente y/n\n");
-        scanf("%c",&nov);
-        scanf("%c",&nov);
-        
+        nov=getchar();
+        getchar();
         if(nov==y)
         {
             main();
@@ -337,9 +332,8 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
         imprimetab(tab);
         printf("Jogador 'O' ganhou\n");
         printf("deseja joga novamente y/n\n");
-        scanf("%c",&nov);
-        scanf("%c",&nov);
-        
+        nov=getchar();
+        getchar();
         if(nov==y)
         {
             main();
