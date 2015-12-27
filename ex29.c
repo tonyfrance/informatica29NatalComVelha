@@ -42,12 +42,12 @@ OBS: Esse programa e protegido pela GNU LICENSE V2.0, para maiores informacoes c
 void entrada(int tab[TAMTAB][TAMTAB], int vez);/*chama a funcao de entrada de dados do usuario(jogador)*/
 void inicio(int tab[TAMTAB][TAMTAB]); /* zera o tabuleiro */
 
-int nivelfacil(int tab[TAMTAB][TAMTAB]); /* funcao do nivel facil */
+int nivelfacil(int tab[TAMTAB][TAMTAB], int vez); /* funcao do nivel facil */
 int nivelmedio(int tab[TAMTAB][TAMTAB]); /* funcao do nivel medio */
 int niveldificil(int tab[TAMTAB][TAMTAB]); /* funcao do nivel dificil */
 int imprimetab(int tab[TAMTAB][TAMTAB]); /* imprime tabuleiro de jogo da velha */
 int tabaux(int tab[TAMTAB][TAMTAB]); /* auxiliar para a funcao imprimetab */
-int imprimemenunivel(void); /* imprime o menu de selecao de nivel */
+int imprimemenunivel(int [TAMTAB][TAMTAB], int vez); /* imprime o menu de selecao de nivel */
 int imprimemenu(int tab[TAMTAB][TAMTAB], int vez); /* imprime o menu principal */
 int humanoVShumano(int tab[TAMTAB][TAMTAB]); /*chama a funcao multiplayer*/
 int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez); /*chama a funcao humano contra o computador*/
@@ -160,7 +160,7 @@ int tabaux(int tab[TAMTAB][TAMTAB])  /*auxiliar para a funcao imprimetab para mo
 }
 
 
-int imprimemenunivel(void)
+int imprimemenunivel(int tab[TAMTAB][TAMTAB], int vez)
 {
     /* qual a utilidade da variavel arg?? */
 
@@ -173,7 +173,7 @@ int imprimemenunivel(void)
     {
         case 1:
             printf("nivel facil\n");
-            /*nivelfacil();*/
+            nivelfacil(tab, vez);
             break;
         case 2:
             printf("nivel medio\n");
@@ -425,7 +425,7 @@ int humanoVShumano(int tab[3][3])
 
 int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez)
 {
-    imprimemenunivel();
+    imprimemenunivel(tab,vez);
     start();
     printf("O primeiro Player sera X e o segundo Player sera O\n");   
     return 0;
@@ -433,9 +433,13 @@ int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez)
 
 int pcVSpc(int tab[TAMTAB][TAMTAB], int vez)/*modo de jogo pc vs pc*/
 {
+    imprimemenunivel(tab,vez);
+}
+int nivelfacil(int tab[TAMTAB][TAMTAB], int vez)/*modo de jogo pc vs pc*/
+{
     int x,y,r=1,jogada=0;
 
-    imprimemenunivel();
+    /*imprimemenunivel();*/
     printf("O primeiro Player sera X e o segundo Player sera O\n");
 
     do
