@@ -429,8 +429,42 @@ int humanoVShumano(int tab[3][3])
 
 int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez)
 {
+    int x, y, recstart, jogada=0;
     imprimemenunivel(tab,vez);
-    start();
+    recstart=start();
+    do
+    {
+        if(vez==1)
+        {
+            if(recstart=='s')
+                entrada(tab, vez);
+            if(recstart=='n')
+            {
+                x=rand()%3;
+                y=rand()%3;
+                if(tab[x][y]==0)
+                    tab[x][y]=vez;
+            }
+            jogada++;
+
+        }
+
+        if(vez==-1)
+        {
+            if(recstart=='n')
+                entrada(tab, vez);
+            if(recstart=='s')
+            {
+                x=rand()%3;
+                y=rand()%3;
+                if(tab[x][y]==0)
+                    tab[x][y]=vez;
+            }
+            jogada++;
+        }
+        vence(tab, vez);
+
+    }while();
     printf("O primeiro Player sera X e o segundo Player sera O\n");   
     return 0;
 }
@@ -456,8 +490,8 @@ int nivelfacil(int tab[TAMTAB][TAMTAB], int vez)/*modo de jogo pc vs pc*/
             {
                 printf("\nJogador 1:\n");
                 tab[x][y] = 1;
-                jogada=jogada+1;
-                vez=vez*-1;
+                jogada++;
+                vez*=-1;
                 imprimetab(tab);
             }
         }
@@ -468,9 +502,9 @@ int nivelfacil(int tab[TAMTAB][TAMTAB], int vez)/*modo de jogo pc vs pc*/
             if(tab[x][y]==0)
             {
                 printf("\nJogador 2:\n");
-                tab[x][y] = 2;
-                jogada=jogada+1;
-                vez=vez*-1;
+                tab[x][y] = -1;
+                jogada++;
+                vez*=-1;
                 imprimetab(tab);
             }
         }
