@@ -203,7 +203,7 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
             if(vez==-1)
                 printf("jogador 'O' ganhou\n");
         
-            exit(0);
+            exit(1);
             /*return 1;*/
         }
     }
@@ -216,29 +216,48 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
             if(vez==-1)
                 printf("jogador 'O' ganhou\n");
         
-            exit(0);
+            exit(1);
             /*return 1;*/ 
         }
     }
-    if((tab[0][0] == vez && tab[1][1] == vez) && tab[2][2])/* Analisa se as casas da diagonal principal estão todas preenchidas */
+    /*if((tab[0][0] == vez && tab[1][1] == vez) && tab[2][2])* Analisa se as casas da diagonal principal estão todas preenchidas *
     {
         if(vez==1)
             printf("jogador 'X' ganhou\n");
         if(vez==-1)
             printf("jogador 'O' ganhou\n");
-        exit(0);
-        /*return 1;*/
+        exit(1);
+       * return 1;*
     }
-    else if((tab[0][2] == vez && tab[1][1] == vez) && tab[2][0]) /* Analisa se as casas da diagonal secundaria estão todas preenchidas */
+    else if((tab[0][2] == vez && tab[1][1] == vez) && tab[2][0]) * Analisa se as casas da diagonal secundaria estão todas preenchidas* 
     {
         if(vez==1)
             printf("jogador 'X' ganhou\n");
         if(vez==-1)
             printf("jogador 'O' ganhou\n");
-        exit(0);
-        /*return 1;*/
+        exit(1);
+       * return 1;*
+    }*/
+    if(tab[0][0]==1 && tab[1][1]==1 && tab[2][2]==1)
+    {
+        printf("Jogador 'X' ganhou\n");
+        exit(1);
     }
-
+    if(tab[0][0]==-1 && tab[1][1]==-1 && tab[2][2]==-1)
+    {   
+        printf("Jogador 'O' ganhou\n");
+        exit(1);
+    }
+    if(tab[0][2]==1 && tab[1][1]==1 && tab[2][0]==1)
+    {   
+        printf("Jogador 'X' ganhou\n");
+        exit(1);
+    }
+    if(tab[0][2]==-1 && tab[1][1]==-1 && tab[2][0]==-1)
+    {
+        printf("Jogador 'O' ganhou\n");
+        exit(1);
+    }
     return 0;
 }
 
