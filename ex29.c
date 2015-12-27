@@ -239,7 +239,7 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
             getchar();
             if(nov==y)
             {
-                main();
+                imprimemenu(tab, vez);
             }
             else
                 exit(1);
@@ -259,7 +259,7 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
             getchar();
             if(nov==y)
             {
-                main();
+                imprimemenu(tab, vez);
             }
             else
                 exit(1);
@@ -294,7 +294,7 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
         getchar();
         if(nov==y)
         {
-            main();
+            imprimemenu(tab, vez);
         }
         else
             exit(1);
@@ -308,7 +308,7 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
         getchar();
         if(nov==y)
         {
-            main();
+            imprimemenu(tab, vez);
         }
         else
             exit(1);
@@ -322,7 +322,7 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
         getchar();
         if(nov==y)
         {
-            main();
+            imprimemenu(tab, vez);
         }
         else
             exit(1);
@@ -336,7 +336,7 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
         getchar();
         if(nov==y)
         {
-            main();
+            imprimemenu(tab, vez);
         }
         else
             exit(1);
@@ -462,7 +462,7 @@ int humanojoga(int tab[TAMTAB][TAMTAB], int vez)
 { 
     int artificio;
     entrada(tab, vez);
-    /*imprimetab();// caso for usar tem que entrar com a tabela como argumento ou seja imprimetab(tab);*/
+    /*imprimetab(); caso for usar tem que entrar com a tabela como argumento ou seja imprimetab(tab);*/
     artificio = vence(tab, vez);
     if(artificio == 1)
         return 1;
