@@ -1,18 +1,26 @@
-# informatica29NatalComVelha
+# Informatica29NatalComVelha
 
-Desenvolvimento de um jogo da velha para a disciplina de informática para automação e controle da UPE (Universidade de Pernambuco)
+Desenvolvimento de um Jogo da Velha para a Disciplina de Informática para Automação e Controle da UPE (Universidade de Pernambuco), sob a Orientacao do Professor Ruben Carlo Benante.
 
-## detalhamento
+## Detalhamento
+
+O objetivo do jogo e' conseguir tres marcas em linha, quer seja horizontal, vertical ou diagonal e, ao mesmo tempo, quando possivel impedir o adversario de ganhar na proxima jogada. Essa marcacao geralmente e' feita com um circulo(O) e um xis(X).
 
 Neste programa haverá 3 modos principais:
 
 1- Humano vs Humano
 
 2- Humano vs Computador
+   Nivel Facil
+   Nivel Medio
+   Nivel Dificil
 
 3- Computador vs Computador
+   Nivel Facil
+   Nivel Medio
+   Nivel Dificil
 
-A sequencia do tabuleiro e a seguinte: 
+Abaixo a sequencia do tabuleiro: 
 
 
      1 | 2 | 3 
@@ -21,7 +29,7 @@ A sequencia do tabuleiro e a seguinte:
      7 | 8 | 9 
 
 
-## autores
+## Autores
 
 1- Hericles Gabriel Escoteiro e Silva
 
