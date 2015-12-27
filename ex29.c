@@ -43,7 +43,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez);/*chama a funcao de entrada de da
 void inicio(int tab[TAMTAB][TAMTAB]); /* zera o tabuleiro */
 
 int nivelfacil(int tab[TAMTAB][TAMTAB], int vez); /* funcao do nivel facil */
-int humanofacil(int tab[TAMTAB][TAMTAB], int vez)
+int humanofacil(int tab[TAMTAB][TAMTAB], int vez);
 int humanonivel(int tab[TAMTAB][TAMTAB], int vez);
 int nivelmedio(int tab[TAMTAB][TAMTAB]); /* funcao do nivel medio */
 int niveldificil(int tab[TAMTAB][TAMTAB]); /* funcao do nivel dificil */
@@ -54,7 +54,7 @@ int imprimemenu(int tab[TAMTAB][TAMTAB], int vez); /* imprime o menu principal *
 int humanoVShumano(int tab[TAMTAB][TAMTAB]); /*chama a funcao multiplayer*/
 int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez); /*chama a funcao humano contra o computador*/
 int pcVSpc(int tab[TAMTAB][TAMTAB], int vez); /*chama a funcao computador contra o computador*/
-nt vence(int tab[TAMTAB][TAMTAB],int vez);/*chama a funcao q determinara o final do jogo*/
+int vence(int tab[TAMTAB][TAMTAB],int vez);/*chama a funcao q determinara o final do jogo*/
 
 char start(void);/*chama a funcao qm ira fazer a primeira jogada*/
 
