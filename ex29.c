@@ -66,7 +66,6 @@ int main(void)
     inicio(tab);
     imprimemenu(tab, vez);
     imprimetab(tab);
-    printf("Obrigado por jogar o Jogo da Velha\n");
     
         return EXIT_SUCCESS;
 }
@@ -79,7 +78,10 @@ void jogarnovamente()
     if(parada==1)
         main();
     if(parada==0)
+    {
+        printf("Obrigado por jogar o Jogo da Velha\n");
         exit(0);
+    }
 }
 
 
