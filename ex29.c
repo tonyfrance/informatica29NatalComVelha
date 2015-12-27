@@ -191,6 +191,36 @@ int imprimemenunivel(int tab[TAMTAB][TAMTAB], int vez)
     return 0;
 }
 
+int humanonivel(int tab[TAMTAB][TAMTAB], int vez)
+{
+    /* qual a utilidade da variavel arg?? */
+
+    int nivel;
+
+    printf("Escolha um nivel de dificuldade: \n");
+    printf("1-facil \n2-medio \n3-dificil\n");
+    scanf("%d", &nivel);
+    switch(nivel)
+    {
+        case 1:
+            printf("nivel facil\n");
+            humanofacil(tab, vez);
+            break;
+        case 2:
+            printf("nivel medio\n");
+            /*nivelmedio();*/
+            break;
+        case 3:
+            printf("nivel dificil\n");
+            /*niveldificil();*/
+            break;
+        default:
+            printf("ERRO.\nObrigado por jogar\n");
+            break;
+    }
+
+    return 0;
+}
 int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
 {
     int n1;
@@ -429,8 +459,12 @@ int humanoVShumano(int tab[3][3])
 
 int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez)
 {
+    humanonivel(tab,vez);
+}
+int humanofacil(int tab[TAMTAB][TAMTAB], int vez)
+{
     int x, y, recstart, jogada=0;
-    imprimemenunivel(tab,vez);
+    //humanonivel(tab,vez);
     recstart=start();
     printf("O primeiro Player sera X e o segundo Player sera O\n");   
     do
@@ -451,6 +485,7 @@ int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez)
                     tab[x][y]=vez;
                     imprimetab(tab);
                     jogada++;
+ 
                 }
             }
         }
@@ -472,6 +507,7 @@ int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez)
                     tab[x][y]=vez;
                     imprimetab(vez);
                     jogada++;
+         
                 }
             }
         }
