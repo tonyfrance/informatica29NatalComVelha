@@ -10,15 +10,15 @@ Neste programa haverá 3 modos principais:
 
 1- Humano vs Humano
 
-2- Humano vs Computador
-   Nivel Facil
-   Nivel Medio
-   Nivel Dificil
+2- Humano vs Computador:
+  . Nivel Facil
+  . Nivel Medio
+  . Nivel Dificil
 
 3- Computador vs Computador
-   Nivel Facil
-   Nivel Medio
-   Nivel Dificil
+  . Nivel Facil
+  . Nivel Medio
+  . Nivel Dificil
 
 Abaixo a sequencia do tabuleiro: 
 
