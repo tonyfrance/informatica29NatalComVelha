@@ -451,7 +451,8 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
         if(jogada==9)
         {
             imprimetab(tab);
-            printf("deu velha\n");
+            printf("Vishhhhhh...deu velha...vamos jogar novamente!\n");
+            jogarnovamente();
             exit(0);
         }
     }while(numero>0 && numero<10);
