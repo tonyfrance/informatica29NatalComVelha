@@ -331,7 +331,7 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
 
 void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do jogador por tecla para cada espaço livre no #*/
 {
-    int numero,linha,coluna,x;
+    int numero,linha,coluna,x,jogada=0;
     do
     {
         imprimetab(tab);
@@ -358,6 +358,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
                 {
                     tab[0][0]=vez;
                     vez*=-1;
+                    jogada++;
                 }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
@@ -367,6 +368,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
                 {
                     tab[0][1]=vez;
                     vez*=-1;
+                    jogada++;
                 }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
@@ -376,6 +378,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
                 {
                     tab[0][2]=vez;
                     vez*=-1;
+                    jogada++;
                 }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
@@ -385,6 +388,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
                 {
                     tab[1][0]=vez;
                     vez*=-1;
+                    jogada++;
                 }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
@@ -394,6 +398,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
                 {
                     tab[1][1]=vez;
                     vez*=-1;
+                    jogada++;
                 }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
@@ -403,6 +408,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
                 {
                     tab[1][2]=vez;
                     vez*=-1;
+                    jogada++;
                 }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
@@ -412,6 +418,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
                 {
                     tab[2][0]=vez;
                     vez*=-1;
+                    jogada++;
                 }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
@@ -421,6 +428,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
                 {
                     tab[2][1]=vez;
                     vez*=-1;
+                    jogada++;
                 }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
@@ -430,6 +438,7 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
                 {
                     tab[2][2]=vez;
                     vez*=-1;
+                    jogada++;
                 }
                 else
                     printf("Opcao invalida.. Faca outro movimento \n");
@@ -439,6 +448,12 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
                 break;
         }
         vence(tab, vez);
+        if(jogada==9)
+        {
+            imprimetab(tab);
+            printf("deu velha\n");
+            exit(0);
+        }
     }while(numero>0 && numero<10);
     return 0;
 }
