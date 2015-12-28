@@ -550,8 +550,10 @@ int niveldificil(int tab[TAMTAB][TAMTAB], int vez) /* funcao do nivel dificil */
 }
 int vezhumano(int tab[TAMTAB][TAMTAB],int vez)
 {
-    int tc;
+    int tc, parada=0;
 
+    do
+    {
     imprimetab(tab);
     printf("Escolha de 1 a 9\n");
     scanf("%d",&tc);
@@ -565,7 +567,10 @@ int vezhumano(int tab[TAMTAB][TAMTAB],int vez)
                 vezpc(tab, vez);
             }
             else
+            {
                 printf("Opcao invalida.. Faca outro movimento \n");
+                parada=1;
+            }
             break;
 
         case 2:
@@ -576,7 +581,10 @@ int vezhumano(int tab[TAMTAB][TAMTAB],int vez)
                 vezpc(tab, vez);
             }
             else
+            {
                 printf("Opcao invalida.. Faca outro movimento \n");
+                parada=1;
+            }
             break;
 
         case 3:
@@ -587,7 +595,10 @@ int vezhumano(int tab[TAMTAB][TAMTAB],int vez)
                 vezpc(tab, vez);
             }
             else
+            {
                 printf("Opcao invalida.. Faca outro movimento \n");
+                parada=1;
+            }
             break;
         case 4:
             if(tab[1][0]==0)
@@ -597,7 +608,10 @@ int vezhumano(int tab[TAMTAB][TAMTAB],int vez)
                 vezpc(tab, vez);
             }
             else
+            {
                 printf("Opcao invalida.. Faca outro movimento \n");
+                parada=1;
+            }
             break;
         case 5:
             if(tab[1][1]==0)
@@ -607,7 +621,10 @@ int vezhumano(int tab[TAMTAB][TAMTAB],int vez)
                 vezpc(tab, vez);
             }
             else
+            {
                 printf("Opcao invalida.. Faca outro movimento \n");
+                parada=1;
+            }
             break;
         case 6:
             if(tab[1][2]==0)
@@ -617,7 +634,10 @@ int vezhumano(int tab[TAMTAB][TAMTAB],int vez)
                 vezpc(tab, vez);
             }
             else
+            {
                 printf("Opcao invalida.. Faca outro movimento \n");
+                parada=1;
+            }
             break;
         case 7:
             if(tab[2][0]==0)
@@ -627,7 +647,10 @@ int vezhumano(int tab[TAMTAB][TAMTAB],int vez)
                 vezpc(tab, vez);
             }
             else
+            {
                 printf("Opcao invalida.. Faca outro movimento \n");
+                parada=1;
+            }
             break;
         case 8:
             if(tab[2][1]==0)
@@ -637,7 +660,10 @@ int vezhumano(int tab[TAMTAB][TAMTAB],int vez)
                 vezpc(tab, vez);
             }
             else
+            {
                 printf("Opcao invalida.. Faca outro movimento \n");
+                parada=1;
+            }
             break;
         case 9:
             if(tab[2][2]==0)
@@ -647,12 +673,17 @@ int vezhumano(int tab[TAMTAB][TAMTAB],int vez)
                 vezpc(tab, vez);
             }
             else
+            {
                 printf("Opcao invalida.. Faca outro movimento \n");
+                parada=1;
+            }
             break;
         default:
             printf("valor invalido\n");
+            parada=1;
             break;
     }
+    }while(parada==1);
     vence(tab, vez);
 }
 int vezpc(int tab[TAMTAB][TAMTAB], int vez)
