@@ -1099,3 +1099,132 @@ void vezpcdificil(int tab[TAMTAB][TAMTAB], int vez)
     vezhumanomedio(tab, vez);
 }
 
+int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
+{
+    int tc, parada=0;
+
+    do
+    {
+        imprimetab(tab);
+        printf("Escolha de 1 a 9\n");
+        scanf("%d",&tc);
+        switch(tc)
+        {
+            case 1:
+                if(tab[0][0]==0)
+                {
+                    tab[0][0]=vez;
+                    vez*=-1;
+                    vezpcdificil(tab, vez);
+                }
+                else
+                {
+                    printf("Opcao invalida.. Faca outro movimento \n");
+                }
+                break;
+
+            case 2:
+                if(tab[0][1]==0)
+                {
+                    tab[0][1]=vez;
+                    vez*=-1;
+                    vezpcdificil(tab, vez);
+                }
+                else
+                {
+                    printf("Opcao invalida.. Faca outro movimento \n");
+                }
+                break;
+
+            case 3:
+                if(tab[0][2]==0)
+                {
+                    tab[0][2]=vez;
+                    vez*=-1;
+                    vezpcdificil(tab, vez);
+                }
+                else
+                {
+                    printf("Opcao invalida.. Faca outro movimento \n");
+                }
+                break;
+            case 4:
+                if(tab[1][0]==0)
+                {
+                    tab[1][0]=vez;
+                    vez*=-1;
+                    vezpcdificil(tab, vez);
+                }
+                else
+                {
+                    printf("Opcao invalida.. Faca outro movimento \n");
+                }
+                break;
+            case 5:
+                if(tab[1][1]==0)
+                {
+                    tab[1][1]=vez;
+                    vez*=-1;
+                    vezpcdificil(tab, vez);
+                }
+                else
+                {
+                    printf("Opcao invalida.. Faca outro movimento \n");
+                }
+                break;
+            case 6:
+                if(tab[1][2]==0)
+                {
+                    tab[1][2]=vez;
+                    vez*=-1;
+                    vezpcdificil(tab, vez);
+                }
+                else
+                {
+                    printf("Opcao invalida.. Faca outro movimento \n");
+                }
+                break;
+            case 7:
+                if(tab[2][0]==0)
+                {
+                    tab[2][0]=vez;
+                    vez*=-1;
+                    vezpcdificil(tab, vez);
+                }
+                else
+                {
+                    printf("Opcao invalida.. Faca outro movimento \n");
+                }
+                break;
+            case 8:
+                if(tab[2][1]==0)
+                {
+                    tab[2][1]=vez;
+                    vez*=-1;
+                    vezpcdificil(tab, vez);
+                }
+                else
+                {
+                    printf("Opcao invalida.. Faca outro movimento \n");
+                }
+                break;
+            case 9:
+                if(tab[2][2]==0)
+                {
+                    tab[2][2]=vez;
+                    vez*=-1;
+                    vezpcdificil(tab, vez);
+                }
+                else
+                {
+                    printf("Opcao invalida.. Faca outro movimento \n");
+                }
+                break;
+            default:
+                printf("valor invalido\n");
+                break;
+        }
+        vence(tab, vez);
+    }while(tc>0 && tc<10);
+}
+
