@@ -1097,7 +1097,7 @@ void vezpcdificil(int tab[TAMTAB][TAMTAB], int vez)
         if(tab[x][y]==0)
         {
             tab[x][y]=vez;
-            imprimetab(tab);
+            //imprimetab(tab);
             parada=1;
         }
     }while(parada==0);
@@ -1113,7 +1113,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
 
     do
     {
-        imprimetab(tab);
+        //imprimetab(tab);
         printf("Escolha de 1 a 9\n");
         scanf("%d",&tc);
         switch(tc)
