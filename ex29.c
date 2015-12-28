@@ -225,7 +225,7 @@ int humanonivel(int tab[TAMTAB][TAMTAB], int vez)
                 printf("nivel facil\n");
                 printf("voce quer comecar jogando?: 1-s\t0-n\n");
                 scanf("%d",&jogar);
-    
+                vez*=-1; 
                 if(jogar==1)
                 {   
                     vezhumano(tab, vez);
@@ -657,19 +657,24 @@ int vezhumano(int tab[TAMTAB][TAMTAB],int vez)
 }
 int vezpc(int tab[TAMTAB][TAMTAB], int vez)
 {
-    int x,y;
+    int x,y, parada=0;
     //vez=-1;
 
     imprimetab(tab);
-    x=rand()%3;
-    y=rand()%3;
-    if(tab[x][y]==0)
+    do
     {
-        tab[x][y]=vez;
-        imprimetab(tab);
-        //vezhumano(tab, vez);
-    }
+        x=rand()%3;
+        y=rand()%3;
+        if(tab[x][y]==0)
+        {
+            tab[x][y]=vez;
+            imprimetab(tab);
+            parada=1;
+            //vezhumano(tab, vez);
+        }
+    }while(parada==0);
     vence(tab, vez);
+    vez*=-1;
     vezhumano(tab, vez);
 }
 
