@@ -66,8 +66,8 @@ int main(void)
     inicio(tab);
     imprimemenu(tab, vez);
     imprimetab(tab);
-    
-        return EXIT_SUCCESS;
+
+    return EXIT_SUCCESS;
 }
 void jogarnovamente()
 {
@@ -219,8 +219,26 @@ int humanonivel(int tab[TAMTAB][TAMTAB], int vez)
     switch(nivel)
     {
         case 1:
-            printf("nivel facil\n");
-            humanofacil(tab, vez);
+            {
+                int jogar;
+                
+                printf("nivel facil\n");
+                printf("voce quer comecar jogando?: 1-s\t0-n\n");
+                scanf("%d",&jogar);
+    
+                if(jogar==1)
+                {   
+                    vezhumano(tab, vez);
+                    vez=1;
+                }   
+                else if(jogar==0)
+                {
+                    vezpc(tab, vez);
+                    vez=1;
+                }
+            //humanofacil(tab, vez);
+            //facilhumano(tab, vez);
+            }
             break;
         case 2:
             printf("nivel medio\n");
@@ -240,7 +258,7 @@ int humanonivel(int tab[TAMTAB][TAMTAB], int vez)
 int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
 {
     int n1;
-   // char nov,y;
+    // char nov,y;
     for(n1=0; n1<3; n1++)/* Analisa se tem linha completa */
     {
         if((tab[n1][0] == vez && tab[n1][1] == vez) && tab[n1][2] == vez)
@@ -262,28 +280,28 @@ int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
             if(vez==-1)
                 printf("jogador 'O' ganhou\n");
             jogarnovamente();
-        
+
             /*return 1;*/ 
         }
     }
     /*if((tab[0][0] == vez && tab[1][1] == vez) && tab[2][2])* Analisa se as casas da diagonal principal estão todas preenchidas *
-    {
-        if(vez==1)
-            printf("jogador 'X' ganhou\n");
-        if(vez==-1)
-            printf("jogador 'O' ganhou\n");
-        exit(1);
-       * return 1;*
-    }
-    else if((tab[0][2] == vez && tab[1][1] == vez) && tab[2][0]) * Analisa se as casas da diagonal secundaria estão todas preenchidas* 
-    {
-        if(vez==1)
-            printf("jogador 'X' ganhou\n");
-        if(vez==-1)
-            printf("jogador 'O' ganhou\n");
-        exit(1);
-       * return 1;*
-    }*/
+      {
+      if(vez==1)
+      printf("jogador 'X' ganhou\n");
+      if(vez==-1)
+      printf("jogador 'O' ganhou\n");
+      exit(1);
+     * return 1;*
+     }
+     else if((tab[0][2] == vez && tab[1][1] == vez) && tab[2][0]) * Analisa se as casas da diagonal secundaria estão todas preenchidas* 
+     {
+     if(vez==1)
+     printf("jogador 'X' ganhou\n");
+     if(vez==-1)
+     printf("jogador 'O' ganhou\n");
+     exit(1);
+     * return 1;*
+     }*/
     if(tab[0][0]==1 && tab[1][1]==1 && tab[2][2]==1)
     {
         imprimetab(tab);
@@ -452,7 +470,7 @@ char start(void)/*Seleciona qm ira fazer a primeira jogada*/
         else               
             x=2;
     }while(x==2);
-
+    
     return r;
 }
 
@@ -466,10 +484,10 @@ int humanoVShumano(int tab[3][3])
         vez = vez *(-1);
     }
     vez = vez*(-1); /* Para anular o mesmo comando anterior 
-     if( vez == XIS )
-        printf(" Parabens jogador xis voce venceu! \n");
-     if( vez == BOLA)
-        printf(" Parabens jogador bola voce venceu! \n");*/
+                       if( vez == XIS )
+                       printf(" Parabens jogador xis voce venceu! \n");
+                       if( vez == BOLA)
+                       printf(" Parabens jogador bola voce venceu! \n");*/
     return 0;
 }
 
@@ -477,62 +495,6 @@ int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez)
 {
     humanonivel(tab,vez);
 }
-int humanofacil(int tab[TAMTAB][TAMTAB], int vez)
-{
-    int x, y, recstart, jogada=0;
-    //humanonivel(tab,vez);
-    recstart=start();
-    printf("O primeiro Player sera X e o segundo Player sera O\n");   
-    do
-    {
-        if(vez==1)
-        {
-            if(recstart=='s')
-            {
-                entrada(tab, vez);
-                jogada++;
-            }
-            if(recstart=='n')
-            {
-                x=rand()%3;
-                y=rand()%3;
-                if(tab[x][y]==0)
-                {
-                    tab[x][y]=vez;
-                    imprimetab(tab);
-                    jogada++;
- 
-                }
-            }
-        }
-
-        if(vez==-1)
-        {
-            if(recstart=='n')
-            {
-                entrada(tab, vez);
-                jogada++;
-            }
-            
-            if(recstart=='s')
-            {
-                x=rand()%3;
-                y=rand()%3;
-                if(tab[x][y]==0)
-                {
-                    tab[x][y]=vez;
-                    imprimetab(vez);
-                    jogada++;
-         
-                }
-            }
-        }
-        vence(tab, vez);
-
-    }while(jogada<9);
-    return 0;
-}
-
 int pcVSpc(int tab[TAMTAB][TAMTAB], int vez)/*modo de jogo pc vs pc*/
 {
     imprimemenunivel(tab,vez);
@@ -585,5 +547,129 @@ int nivelmedio(int tab[TAMTAB][TAMTAB], int vez) /* funcao do nivel medio */
 int niveldificil(int tab[TAMTAB][TAMTAB], int vez) /* funcao do nivel dificil */
 {
     printf("imprimindo a funcao niveldificil\n");
+}
+int vezhumano(int tab[TAMTAB][TAMTAB],int vez)
+{
+    int tc;
+
+    imprimetab(tab);
+    printf("Escolha de 1 a 9\n");
+    scanf("%d",&tc);
+    switch(tc)
+    {
+        case 1:
+            if(tab[0][0]==0)
+            {
+                tab[0][0]=vez;
+                vez*=-1;
+                vezpc(tab, vez);
+            }
+            else
+                printf("Opcao invalida.. Faca outro movimento \n");
+            break;
+
+        case 2:
+            if(tab[0][1]==0)
+            {
+                tab[0][1]=vez;
+                vez*=-1;
+                vezpc(tab, vez);
+            }
+            else
+                printf("Opcao invalida.. Faca outro movimento \n");
+            break;
+
+        case 3:
+            if(tab[0][2]==0)
+            {
+                tab[0][2]=vez;
+                vez*=-1;
+                vezpc(tab, vez);
+            }
+            else
+                printf("Opcao invalida.. Faca outro movimento \n");
+            break;
+        case 4:
+            if(tab[1][0]==0)
+            {
+                tab[1][0]=vez;
+                vez*=-1;
+                vezpc(tab, vez);
+            }
+            else
+                printf("Opcao invalida.. Faca outro movimento \n");
+            break;
+        case 5:
+            if(tab[1][1]==0)
+            {
+                tab[1][1]=vez;
+                vez*=-1;
+                vezpc(tab, vez);
+            }
+            else
+                printf("Opcao invalida.. Faca outro movimento \n");
+            break;
+        case 6:
+            if(tab[1][2]==0)
+            {
+                tab[1][2]=vez;
+                vez*=-1;
+                vezpc(tab, vez);
+            }
+            else
+                printf("Opcao invalida.. Faca outro movimento \n");
+            break;
+        case 7:
+            if(tab[2][0]==0)
+            {
+                tab[2][0]=vez;
+                vez*=-1;
+                vezpc(tab, vez);
+            }
+            else
+                printf("Opcao invalida.. Faca outro movimento \n");
+            break;
+        case 8:
+            if(tab[2][1]==0)
+            {
+                tab[2][1]=vez;
+                vez*=-1;
+                vezpc(tab, vez);
+            }
+            else
+                printf("Opcao invalida.. Faca outro movimento \n");
+            break;
+        case 9:
+            if(tab[2][2]==0)
+            {
+                tab[2][2]=vez;
+                vez*=-1;
+                vezpc(tab, vez);
+            }
+            else
+                printf("Opcao invalida.. Faca outro movimento \n");
+            break;
+        default:
+            printf("valor invalido\n");
+            break;
+    }
+    vence(tab, vez);
+}
+int vezpc(int tab[TAMTAB][TAMTAB], int vez)
+{
+    int x,y;
+    //vez=-1;
+
+    imprimetab(tab);
+    x=rand()%3;
+    y=rand()%3;
+    if(tab[x][y]==0)
+    {
+        tab[x][y]=vez;
+        imprimetab(tab);
+        //vezhumano(tab, vez);
+    }
+    vence(tab, vez);
+    vezhumano(tab, vez);
 }
 
