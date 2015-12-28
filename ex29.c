@@ -47,7 +47,7 @@ void vezpcdificil(int tab[TAMTAB][TAMTAB], int vez);
 
 int nivelfacil(int tab[TAMTAB][TAMTAB], int vez); /* funcao do nivel facil */
 int humanonivel(int tab[TAMTAB][TAMTAB], int vez);
-int nivelmedio(int tab[TAMTAB][TAMTAB], int vez); /* funcao do nivel medio */
+int nivelmedio(int tab[TAMTAB][TAMTAB], int vez, int novamente); /* funcao do nivel medio */
 int niveldificil(int tab[TAMTAB][TAMTAB], int vez, int novamente); /* funcao do nivel dificil */
 int imprimetab(int tab[TAMTAB][TAMTAB]); /* imprime tabuleiro de jogo da velha */
 int tabaux(int tab[TAMTAB][TAMTAB]); /* auxiliar para a funcao imprimetab */
@@ -201,7 +201,7 @@ int imprimemenunivel(int tab[TAMTAB][TAMTAB], int vez)
             break;
         case 2:
             printf("nivel medio\n");
-            nivelmedio(tab, vez);
+            nivelmedio(tab, vez, novamente);
             break;
         case 3:
             printf("nivel dificil\n");
@@ -1242,7 +1242,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
     }while(tc>0 && tc<10);
 }
 
-int nivelmedio(int tab[TAMTAB][TAMTAB], int vez) /* funcao do nivel medio */
+int nivelmedio(int tab[TAMTAB][TAMTAB], int vez, int novamente) /* funcao do nivel medio */
 {
     int n1,n2,x,y, parada=0;
 
@@ -1334,8 +1334,15 @@ int nivelmedio(int tab[TAMTAB][TAMTAB], int vez) /* funcao do nivel medio */
     }while(parada==0);
     imprimetab(tab);
     vence(tab, vez);
+    novamente++;
+    if(novamente==9)
+    {
+        printf("DEU VELHA!! VAMOS NOVAMENTE?\n");
+        jogarnovamente();
+        exit(0);
+    }
     vez*=-1;
-    nivelmedio(tab, vez);
+    nivelmedio(tab, vez, novamente);
 
 }
 
