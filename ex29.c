@@ -1020,72 +1020,72 @@ void vezpcdificil(int tab[TAMTAB][TAMTAB], int vez)
         imprimetab(tab);
         for(n1=0;n1<TAMTAB;n1++)
         {
-            if((tab[n1][0] == vez*-1 && tab[n1][1] == vez*-1) && tab[n1][2]==0)
+            if((tab[n1][0] == (vez*-1) && tab[n1][1] == (vez*-1)) && tab[n1][2]==0)
             {
 
                 tab[n1][2] = vez;
                 parada=1;
             }
-            else if((tab[n1][0] == vez*-1 && tab[n1][2] == vez*-1) && tab[n1][0]==0)
+            else if((tab[n1][0] == (vez*-1) && tab[n1][2] == (vez*-1)) && tab[n1][0]==0)
             {
                 tab[n1][1] = vez;
                 parada=1;
             }
-            else  if((tab[n1][1] == vez*-1 && tab[n1][2] == vez*-1) && tab[n1][0]==0)
+            else  if((tab[n1][1] == (vez*-1) && tab[n1][2] == (vez*-1)) && tab[n1][0]==0)
             {
                 tab[n1][0] = vez;
                 parada=1;
 
             }
-            if((tab[0][n1] == vez*-1 && tab[1][n1] == vez*-1) && tab[2][n1]==0)
+            if((tab[0][n1] == (vez*-1) && tab[1][n1] == (vez*-1)) && tab[2][n1]==0)
             {
                 tab[2][n1] = vez;
                 parada=1;
 
             }
-            else if((tab[0][n1] == vez*-1 && tab[2][n1] == vez*-1) && tab[1][n1]==0)
+            else if((tab[0][n1] == (vez*-1) && tab[2][n1] == (vez*-1)) && tab[1][n1]==0)
             {
                 tab[1][n1] = vez;
                 parada=1;
 
             }
-            else  if((tab[1][n1] == vez*-1 && tab[2][n1] == vez*-1) && tab[0][n1]==0)
+            else  if((tab[1][n1] == (vez*-1) && tab[2][n1] == (vez*-1)) && tab[0][n1]==0)
             {
                 tab[0][n1] = vez;
                 parada=1;
 
             }
-            if((tab[0][0] == vez*-1 && tab[1][1] == vez*-1) && tab[2][2]==0)
+            if((tab[0][0] == (vez*-1) && tab[1][1] == (vez*-1)) && tab[2][2]==0)
             {
                 tab[2][2] = vez;
                 parada=1;
 
             }
-            else if((tab[0][0] == vez*-1 && tab[2][2] == vez*-1) && tab[1][1]==0)
+            else if((tab[0][0] == (vez*-1) && tab[2][2] == (vez*-1)) && tab[1][1]==0)
             {
                 tab[1][1] = vez;
                 parada=1;
 
             }
-            else if((tab[2][2] == vez*-1 && tab[1][1] == vez*-1) && tab[0][0]==0)
+            else if((tab[2][2] == (vez*-1) && tab[1][1] == (vez*-1)) && tab[0][0]==0)
             {
                 tab[0][0] = vez;
                 parada=1;
 
             }
-            if((tab[0][2] == vez*-1 && tab[1][1] == vez*-1) && tab[2][0]==0)
+            if((tab[0][2] == (vez*-1) && tab[1][1] == (vez*-1)) && tab[2][0]==0)
             {
                 tab[2][0] = vez;
                 parada=1;
 
             }
-            else if((tab[0][2] == vez*-1 && tab[2][0] == vez*-1) && tab[1][1]==0)
+            else if((tab[0][2] == (vez*-1) && tab[2][0] == (vez*-1)) && tab[1][1]==0)
 
             {
                 tab[1][1] = vez;
                 parada=1;
             }
-            else if((tab[2][0] == vez*-1 && tab[1][1] == vez*-1) && tab[0][2]==0)
+            else if((tab[2][0] == (vez*-1) && tab[1][1] == (vez*-1)) && tab[0][2]==0)
             {
                 tab[0][2] = vez;
                 parada=1;
