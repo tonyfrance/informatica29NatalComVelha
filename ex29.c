@@ -617,14 +617,12 @@ int nivelfacil(int tab[TAMTAB][TAMTAB], int vez)/*modo de jogo pc vs pc*/
 
     return 0;
 }
-int nivelmedio(int tab[TAMTAB][TAMTAB], int vez) /* funcao do nivel medio */
-{
-    printf("chamando a funcao nivelmedio\n");
-}
+
 int niveldificil(int tab[TAMTAB][TAMTAB], int vez) /* funcao do nivel dificil */
 {
     printf("imprimindo a funcao niveldificil\n");
 }
+
 int vezhumano(int tab[TAMTAB][TAMTAB],int vez)
 {
     int tc, parada=0;
@@ -1245,7 +1243,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
     }while(tc>0 && tc<10);
 }
 
-int nivelmedio(int tab[TAMTAB][TAMTAB], int vez); /* funcao do nivel medio */
+int nivelmedio(int tab[TAMTAB][TAMTAB], int vez) /* funcao do nivel medio */
 {
     int n1,n2,x,y, parada=0;
 
