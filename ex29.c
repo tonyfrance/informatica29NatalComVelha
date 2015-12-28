@@ -241,8 +241,24 @@ int humanonivel(int tab[TAMTAB][TAMTAB], int vez)
             }
             break;
         case 2:
-            printf("nivel medio\n");
-            /*humanomedio();*/
+            {
+                int jogar;
+
+                printf("nivel medio\n");
+                printf("voce quer comecar jogando?: 1-s\t0-n\n");
+                scanf("%d",&jogar);
+                vez*=-1; 
+                if(jogar==1)
+                {   
+                    vezhumano(tab, vez);
+                    vez=1;
+                }   
+                else if(jogar==0)
+                {
+                    vezpcmedio(tab, vez);
+                    vez=1;
+                }
+            }
             break;
         case 3:
             printf("nivel dificil\n");
@@ -456,7 +472,6 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
             exit(0);
         }
     }while(numero>0 && numero<10);
-    return 0;
 }
 
 int humanojoga(int tab[TAMTAB][TAMTAB], int vez)
@@ -714,4 +729,85 @@ int vezpc(int tab[TAMTAB][TAMTAB], int vez)
     vez*=-1;
     vezhumano(tab, vez);
 }
+void vezpcmedio(int tab[TAMTAB][TAMTAB], int vez)
+{
+    int n1,n2,x,y, parada=0;
 
+    do
+    {
+        imprimetab(tab);
+        for(n1=0;n1<TAMTAB;n1++)
+        {
+            if(tab[n1][0] == vez && tab[n1][1] == vez)
+            {
+                tab[n1][2] = vez;
+                parada=1;
+            }
+            else if(tab[n1][0] == vez && tab[n1][2] == vez)
+            {
+                tab[n1][1] = vez;
+                parada=1;
+            }
+            else  if(tab[n1][1] == vez && tab[n1][2] == vez)
+            {
+                tab[n1][0] = vez;
+                parada=1;
+            }
+            if(tab[0][n1] == vez && tab[1][n1] == vez)
+            {
+                tab[2][n1] = vez;
+                parada=1;
+            }
+            else if(tab[0][n1] == vez && tab[2][n1] == vez)
+            {
+                tab[1][n1] = vez;
+                parada=1;
+            }
+            else  if(tab[1][n1] == vez && tab[2][n1] == vez)
+            {
+                tab[0][n1] = vez;
+                parada=1;
+            }
+            if(tab[0][0] == vez && tab[1][1] == vez)
+            {
+                tab[2][2] = vez;
+                parada=1;
+            }
+            else if(tab[0][0] == vez && tab[2][2] == vez)
+            {
+                tab[1][1] = vez
+                    parada=1;
+            }
+            else if(tab[2][2] == vez && tab[1][1] == vez)
+            {
+                tab[0][0] = vez;
+                parada=1;
+            }
+            if(tab[0][2] == vez && tab[1][1] == vez)
+            {
+                tab[2][0] = vez;
+                parada=1;
+            }
+            else if(tab[0][2] == vez && tab[2][0] == vez)
+            {
+                tab[1][1] = vez
+                    parada=1;
+            }
+            else if(tab[2][0] == vez && tab[1][1] == vez)
+            {
+                tab[0][2] = vez;
+                parada=1;
+            }
+        }
+        x=rand()%3;
+        y=rand()%3;
+        if(tab[x][y]==0)
+        {
+            tab[x][y]=vez;
+            imprimetab(tab);
+            parada=1;
+        }
+    }while(parada==0)
+    vence(tab, vez);
+
+}
