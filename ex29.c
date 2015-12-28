@@ -43,9 +43,9 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez);/*chama a funcao de entrada de da
 void inicio(int tab[TAMTAB][TAMTAB]); /* zera o tabuleiro */
 void jogarnovamente(void); /* roda o programa novamente caso o usuario queira usa-lo novamente */
 void vezpcmedio(int tab[TAMTAB][TAMTAB], int vez);
+void vezpcdificil(int tab[TAMTAB][TAMTAB], int vez);
 
 int nivelfacil(int tab[TAMTAB][TAMTAB], int vez); /* funcao do nivel facil */
-int humanofacil(int tab[TAMTAB][TAMTAB], int vez);
 int humanonivel(int tab[TAMTAB][TAMTAB], int vez);
 int nivelmedio(int tab[TAMTAB][TAMTAB], int vez); /* funcao do nivel medio */
 int niveldificil(int tab[TAMTAB][TAMTAB], int vez); /* funcao do nivel dificil */
@@ -61,6 +61,7 @@ int humanojoga(int tab[TAMTAB][TAMTAB], int vez);
 int vezhumano(int tab[TAMTAB][TAMTAB], int vez);
 int vezpc(int tab[TAMTAB][TAMTAB], int vez);
 int vezhumanomedio(int tab[TAMTAB][TAMTAB], int vez);
+int vezhumanodificil(int tab[TAMTAB][TAMTAB], int vez);
 
 
 char start(void);/*chama a funcao qm ira fazer a primeira jogada*/
