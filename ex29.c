@@ -48,7 +48,7 @@ void vezpcdificil(int tab[TAMTAB][TAMTAB], int vez);
 int nivelfacil(int tab[TAMTAB][TAMTAB], int vez); /* funcao do nivel facil */
 int humanonivel(int tab[TAMTAB][TAMTAB], int vez);
 int nivelmedio(int tab[TAMTAB][TAMTAB], int vez); /* funcao do nivel medio */
-int niveldificil(int tab[TAMTAB][TAMTAB], int vez); /* funcao do nivel dificil */
+int niveldificil(int tab[TAMTAB][TAMTAB], int vez, int novamente); /* funcao do nivel dificil */
 int imprimetab(int tab[TAMTAB][TAMTAB]); /* imprime tabuleiro de jogo da velha */
 int tabaux(int tab[TAMTAB][TAMTAB]); /* auxiliar para a funcao imprimetab */
 int imprimemenunivel(int [TAMTAB][TAMTAB], int vez); /* imprime o menu de selecao de nivel */
@@ -188,6 +188,7 @@ int imprimemenunivel(int tab[TAMTAB][TAMTAB], int vez)
 {
 
     int nivel;
+    int novamente=0;
 
     printf("Escolha um nivel de dificuldade: \n");
     printf("1-facil \n2-medio \n3-dificil\n");
@@ -204,7 +205,7 @@ int imprimemenunivel(int tab[TAMTAB][TAMTAB], int vez)
             break;
         case 3:
             printf("nivel dificil\n");
-            niveldificil(tab, vez);
+            niveldificil(tab, vez, novamente);
             break;
         default:
             printf("ERRO.\nObrigado por jogar\n");
@@ -1338,9 +1339,9 @@ int nivelmedio(int tab[TAMTAB][TAMTAB], int vez) /* funcao do nivel medio */
 
 }
 
-int niveldificil(int tab[TAMTAB][TAMTAB], int vez) /* funcao do nivel dificil */
+int niveldificil(int tab[TAMTAB][TAMTAB], int vez, int novamente) /* funcao do nivel dificil */
 {
-    int parada=0,jogada=0;
+    int parada=0;
     int n1,x,y;
 
     do
@@ -1431,13 +1432,14 @@ int niveldificil(int tab[TAMTAB][TAMTAB], int vez) /* funcao do nivel dificil */
     }while(parada==0);
     imprimetab(tab);
     vence(tab, vez);
-    jogada++;
-    if(jogada==9)
+    novamente++;
+    if(novamente==9)
     {
-        printf("DEU VELHA!! VAMOS NOVAMENTE\n");
+        printf("DEU VELHA!! VAMOS NOVAMENTE?\n");
         jogarnovamente();
+        exit(0);
     }
     vez*=-1;
-    niveldificil(tab, vez);
+    niveldificil(tab, vez, novamente);
 }
 
