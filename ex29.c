@@ -41,6 +41,8 @@ OBS: Esse programa e protegido pela GNU LICENSE V2.0, para maiores informacoes c
 /* Prototipos */
 void entrada(int tab[TAMTAB][TAMTAB], int vez);/*chama a funcao de entrada de dados do usuario(jogador)*/
 void inicio(int tab[TAMTAB][TAMTAB]); /* zera o tabuleiro */
+void jogarnovamente(void); /* roda o programa novamente caso o usuario queira usa-lo novamente */
+void vezpcmedio(int tab[TAMTAB][TAMTAB], int vez);
 
 int nivelfacil(int tab[TAMTAB][TAMTAB], int vez); /* funcao do nivel facil */
 int humanofacil(int tab[TAMTAB][TAMTAB], int vez);
@@ -55,6 +57,11 @@ int humanoVShumano(int tab[TAMTAB][TAMTAB]); /*chama a funcao multiplayer*/
 int humanoVSpc(int tab[TAMTAB][TAMTAB], int vez); /*chama a funcao humano contra o computador*/
 int pcVSpc(int tab[TAMTAB][TAMTAB], int vez); /*chama a funcao computador contra o computador*/
 int vence(int tab[TAMTAB][TAMTAB],int vez);/*chama a funcao q determinara o final do jogo*/
+int humanojoga(int tab[TAMTAB][TAMTAB], int vez);
+int vezhumano(int tab[TAMTAB][TAMTAB], int vez);
+int vezpc(int tab[TAMTAB][TAMTAB], int vez);
+int vezhumanomedio(int tab[TAMTAB][TAMTAB], int vez);
+
 
 char start(void);/*chama a funcao qm ira fazer a primeira jogada*/
 
@@ -69,7 +76,7 @@ int main(void)
 
     return EXIT_SUCCESS;
 }
-void jogarnovamente()
+void jogarnovamente(void)
 {
     int parada;
 
