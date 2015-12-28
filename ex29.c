@@ -1017,7 +1017,6 @@ void vezpcdificil(int tab[TAMTAB][TAMTAB], int vez)
 
     do
     {
-        imprimetab(tab);
         for(n1=0;n1<TAMTAB;n1++)
         {
             if((tab[n1][0] == (vez*-1) && tab[n1][1] == (vez*-1)) && tab[n1][2]==0)
@@ -1092,6 +1091,15 @@ void vezpcdificil(int tab[TAMTAB][TAMTAB], int vez)
 
             }
         }
+        
+        x=rand()%3;
+        y=rand()%3;
+        if(tab[x][y]==0)
+        {
+            tab[x][y]=vez;
+            imprimetab(tab);
+            parada=1;
+        }
     }while(parada==0);
     imprimetab(tab);
     vence(tab, vez);
@@ -1114,6 +1122,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[0][0]==0)
                 {
                     tab[0][0]=vez;
+                    imprimetab(tab);
                     vez*=-1;
                     vezpcdificil(tab, vez);
                 }
@@ -1127,6 +1136,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[0][1]==0)
                 {
                     tab[0][1]=vez;
+                    imprimetab(tab);
                     vez*=-1;
                     vezpcdificil(tab, vez);
                 }
@@ -1140,6 +1150,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[0][2]==0)
                 {
                     tab[0][2]=vez;
+                    imprimetab(tab);
                     vez*=-1;
                     vezpcdificil(tab, vez);
                 }
@@ -1152,6 +1163,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[1][0]==0)
                 {
                     tab[1][0]=vez;
+                    imprimetab(tab);
                     vez*=-1;
                     vezpcdificil(tab, vez);
                 }
@@ -1164,6 +1176,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[1][1]==0)
                 {
                     tab[1][1]=vez;
+                    imprimetab(tab);
                     vez*=-1;
                     vezpcdificil(tab, vez);
                 }
@@ -1176,6 +1189,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[1][2]==0)
                 {
                     tab[1][2]=vez;
+                    imprimetab(tab);
                     vez*=-1;
                     vezpcdificil(tab, vez);
                 }
@@ -1188,6 +1202,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[2][0]==0)
                 {
                     tab[2][0]=vez;
+                    imprimetab(tab);
                     vez*=-1;
                     vezpcdificil(tab, vez);
                 }
@@ -1200,6 +1215,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[2][1]==0)
                 {
                     tab[2][1]=vez;
+                    imprimetab(tab);
                     vez*=-1;
                     vezpcdificil(tab, vez);
                 }
@@ -1212,6 +1228,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[2][2]==0)
                 {
                     tab[2][2]=vez;
+                    imprimetab(tab);
                     vez*=-1;
                     vezpcdificil(tab, vez);
                 }
