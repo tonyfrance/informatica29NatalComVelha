@@ -1334,13 +1334,16 @@ int nivelmedio(int tab[TAMTAB][TAMTAB], int vez, int novamente) /* funcao do niv
     }while(parada==0);
     imprimetab(tab);
     vence(tab, vez);
-    novamente++;
-    if(novamente==9)
+    novamente=0;
+    for(i=0;i<3;i++)
+        for(j=0;j<3;j++)
+            if(tab[i][j]==0)
+                novamente++;
+    if(novamente==0)
     {
         printf("DEU VELHA!! VAMOS NOVAMENTE?\n");
         jogarnovamente();
         exit(0);
-    }
     vez*=-1;
     nivelmedio(tab, vez, novamente);
 
@@ -1349,7 +1352,7 @@ int nivelmedio(int tab[TAMTAB][TAMTAB], int vez, int novamente) /* funcao do niv
 int niveldificil(int tab[TAMTAB][TAMTAB], int vez, int novamente) /* funcao do nivel dificil */
 {
     int parada=0;
-    int n1,x,y;
+    int n1,x,y,i,j;
 
     do
     {
@@ -1439,8 +1442,12 @@ int niveldificil(int tab[TAMTAB][TAMTAB], int vez, int novamente) /* funcao do n
     }while(parada==0);
     imprimetab(tab);
     vence(tab, vez);
-    novamente++;
-    if(novamente==9)
+    novamente=0;
+    for(i=0;i<3;i++)
+        for(j=0;j<3;j++)
+            if(tab[i][j]==0)
+                novamente++;
+    if(novamente==0)
     {
         printf("DEU VELHA!! VAMOS NOVAMENTE?\n");
         jogarnovamente();
