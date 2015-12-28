@@ -178,7 +178,6 @@ int tabaux(int tab[TAMTAB][TAMTAB])  /*auxiliar para a funcao imprimetab para mo
 
 int imprimemenunivel(int tab[TAMTAB][TAMTAB], int vez)
 {
-    /* qual a utilidade da variavel arg?? */
 
     int nivel;
 
@@ -209,7 +208,6 @@ int imprimemenunivel(int tab[TAMTAB][TAMTAB], int vez)
 
 int humanonivel(int tab[TAMTAB][TAMTAB], int vez)
 {
-    /* qual a utilidade da variavel arg?? */
 
     int nivel;
 
@@ -273,51 +271,6 @@ int humanonivel(int tab[TAMTAB][TAMTAB], int vez)
 }
 int vence(int tab[TAMTAB][TAMTAB],int vez)/*Determina como finalizara o jogo*/
 {
-    //int n1;
-    // char nov,y;
-   /* for(n1=0; n1<3; n1++)* Analisa se tem linha completa *
-    {
-        if((tab[n1][0] == vez && tab[n1][1] == vez) && tab[n1][2] == vez)
-        {
-            if(vez==1)
-                printf("Jogador 'X' ganhou\n");
-            if(vez==-1)
-                printf("jogador 'O' ganhou\n");
-            jogarnovamente();
-            *return 1;*
-        }
-    }
-    for(n1=0; n1<3; n1++)* Analisa se tem coluna completa *
-    {
-        if((tab[0][n1] == vez && tab[1][n1] == vez) && tab[2][n1] == vez)
-        {
-            if(vez==1)
-                printf("Jogador 'X' ganhou\n");
-            if(vez==-1)
-                printf("jogador 'O' ganhou\n");
-            jogarnovamente();
-
-           *return 1;*
-        }
-    }
-    *if((tab[0][0] == vez && tab[1][1] == vez) && tab[2][2])* Analisa se as casas da diagonal principal estão todas preenchidas *
-      {
-      if(vez==1)
-      printf("jogador 'X' ganhou\n");
-      if(vez==-1)
-      printf("jogador 'O' ganhou\n");
-      exit(1);
-     * return 1;*
-     }
-     else if((tab[0][2] == vez && tab[1][1] == vez) && tab[2][0]) * Analisa se as casas da diagonal secundaria estão todas preenchidas* 
-     {
-     if(vez==1)
-     printf("jogador 'X' ganhou\n");
-     if(vez==-1)
-     printf("jogador 'O' ganhou\n");
-     exit(1);
-     * return 1;*
-     }*/
     /*linhas X*/
     if(tab[0][0]==1 && tab[0][1]==1 && tab[0][2]==1)
     {
@@ -434,15 +387,6 @@ void entrada(int tab[TAMTAB][TAMTAB], int vez)/*Determina a entrada de dados do 
         if(vez==-1)
             printf("jogador 'O': ");
         printf("Escolha valores entre 1 e 9\n");
-        /* for(linha=0; linha<TAMTAB; linha++)
-           {
-           for(coluna=0; coluna<TAMTAB; coluna++)
-           {
-           x++;
-           if(tab[linha][coluna] == 0)
-           printf("%d",x);
-           }
-           }*/
 
         scanf("%d",&numero);
         switch(numero)
@@ -806,7 +750,7 @@ int vezpc(int tab[TAMTAB][TAMTAB], int vez)
     vence(tab, vez);
     vez*=-1;
     vezhumano(tab, vez);
-}
+} 
 void vezpcmedio(int tab[TAMTAB][TAMTAB], int vez)
 {
     int n1,n2,x,y, parada=0;
@@ -816,65 +760,76 @@ void vezpcmedio(int tab[TAMTAB][TAMTAB], int vez)
         imprimetab(tab);
         for(n1=0;n1<TAMTAB;n1++)
         {
-            if(tab[n1][0] == vez && tab[n1][1] == vez)
+            if((tab[n1][0] == vez && tab[n1][1] == vez) && tab[n1][2]==0)
             {
+
                 tab[n1][2] = vez;
                 parada=1;
             }
-            else if(tab[n1][0] == vez && tab[n1][2] == vez)
+            else if((tab[n1][0] == vez && tab[n1][2] == vez) && tab[n1][0]==0)
             {
                 tab[n1][1] = vez;
                 parada=1;
             }
-            else  if(tab[n1][1] == vez && tab[n1][2] == vez)
+            else  if((tab[n1][1] == vez && tab[n1][2] == vez) && tab[n1][0]==0)
             {
                 tab[n1][0] = vez;
                 parada=1;
+     
             }
-            if(tab[0][n1] == vez && tab[1][n1] == vez)
+            if((tab[0][n1] == vez && tab[1][n1] == vez) && tab[2][n1]==0)
             {
                 tab[2][n1] = vez;
                 parada=1;
+ 
             }
-            else if(tab[0][n1] == vez && tab[2][n1] == vez)
+            else if((tab[0][n1] == vez && tab[2][n1] == vez) && tab[1][n1]==0)
             {
                 tab[1][n1] = vez;
                 parada=1;
+            
             }
-            else  if(tab[1][n1] == vez && tab[2][n1] == vez)
+            else  if((tab[1][n1] == vez && tab[2][n1] == vez) && tab[0][n1]==0)
             {
                 tab[0][n1] = vez;
                 parada=1;
+            
             }
-            if(tab[0][0] == vez && tab[1][1] == vez)
+            if((tab[0][0] == vez && tab[1][1] == vez) && tab[2][2]==0)
             {
                 tab[2][2] = vez;
                 parada=1;
+            
             }
-            else if(tab[0][0] == vez && tab[2][2] == vez)
+            else if((tab[0][0] == vez && tab[2][2] == vez) && tab[1][1]==0)
             {
                 tab[1][1] = vez;
                 parada=1;
+            
             }
-            else if(tab[2][2] == vez && tab[1][1] == vez)
+            else if((tab[2][2] == vez && tab[1][1] == vez) && tab[0][0]==0)
             {
                 tab[0][0] = vez;
                 parada=1;
+            
             }
-            if(tab[0][2] == vez && tab[1][1] == vez)
+            if((tab[0][2] == vez && tab[1][1] == vez) && tab[2][0]==0)
             {
                 tab[2][0] = vez;
                 parada=1;
+            
             }
-            else if(tab[0][2] == vez && tab[2][0] == vez)
+            else if((tab[0][2] == vez && tab[2][0] == vez) && tab[1][1]==0)
+            
             {
                 tab[1][1] = vez;
                 parada=1;
             }
-            else if(tab[2][0] == vez && tab[1][1] == vez)
+            else if((tab[2][0] == vez && tab[1][1] == vez) && tab[0][2]==0)
             {
                 tab[0][2] = vez;
                 parada=1;
+         
             }
         }
         x=rand()%3;
@@ -908,6 +863,7 @@ int vezhumanomedio(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[0][0]==0)
                 {
                     tab[0][0]=vez;
+                    vence(tab, vez);
                     vez*=-1;
                     vezpcmedio(tab, vez);
                 }
@@ -921,6 +877,7 @@ int vezhumanomedio(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[0][1]==0)
                 {
                     tab[0][1]=vez;
+                    vence(tab, vez);
                     vez*=-1;
                     vezpcmedio(tab, vez);
                 }
@@ -934,6 +891,7 @@ int vezhumanomedio(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[0][2]==0)
                 {
                     tab[0][2]=vez;
+                    vence(tab, vez);
                     vez*=-1;
                     vezpcmedio(tab, vez);
                 }
@@ -946,6 +904,7 @@ int vezhumanomedio(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[1][0]==0)
                 {
                     tab[1][0]=vez;
+                    vence(tab, vez);
                     vez*=-1;
                     vezpcmedio(tab, vez);
                 }
@@ -958,6 +917,7 @@ int vezhumanomedio(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[1][1]==0)
                 {
                     tab[1][1]=vez;
+                    vence(tab, vez);
                     vez*=-1;
                     vezpcmedio(tab, vez);
                 }
@@ -970,6 +930,7 @@ int vezhumanomedio(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[1][2]==0)
                 {
                     tab[1][2]=vez;
+                    vence(tab, vez);
                     vez*=-1;
                     vezpcmedio(tab, vez);
                 }
@@ -982,6 +943,7 @@ int vezhumanomedio(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[2][0]==0)
                 {
                     tab[2][0]=vez;
+                    vence(tab, vez);
                     vez*=-1;
                     vezpcmedio(tab, vez);
                 }
@@ -994,6 +956,7 @@ int vezhumanomedio(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[2][1]==0)
                 {
                     tab[2][1]=vez;
+                    vence(tab, vez);
                     vez*=-1;
                     vezpcmedio(tab, vez);
                 }
@@ -1006,6 +969,7 @@ int vezhumanomedio(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[2][2]==0)
                 {
                     tab[2][2]=vez;
+                    vence(tab, vez);
                     vez*=-1;
                     vezpcmedio(tab, vez);
                 }
