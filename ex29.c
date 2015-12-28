@@ -1435,7 +1435,7 @@ int niveldificil(int tab[TAMTAB][TAMTAB], int vez) /* funcao do nivel dificil */
     if(jogada==9)
     {
         printf("DEU VELHA!! VAMOS NOVAMENTE\n");
-        joganovamente();
+        jogarnovamente();
     }
     vez*=-1;
     niveldificil(tab, vez);
