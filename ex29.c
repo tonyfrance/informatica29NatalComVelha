@@ -266,11 +266,28 @@ int humanonivel(int tab[TAMTAB][TAMTAB], int vez)
             }
             break;
         case 3:
-            printf("nivel dificil\n");
-            /*humanodificil();*/
+            {
+
+                int jogar;
+
+                printf("nivel dificil\n");
+                printf("voce quer comecar jogando?: 1-s\t0-n\n");
+                scanf("%d",&jogar);
+                vez*=-1;
+                if(jogar==1)
+                {
+                    //vezhumanodificil(tab, vez);
+                    vez=1;
+                }
+                else if(jogar==0)
+                {
+                    vezpcdificil(tab, vez);
+                    vez=1;
+                }
+            }
             break;
         default:
-            printf("ERRO.\nObrigado por jogar\n");
+            printf("ERRO.\nÉ DE 1 ATÉ 3\nObrigado por jogar\n");
             break;
     }
 
@@ -782,52 +799,52 @@ void vezpcmedio(int tab[TAMTAB][TAMTAB], int vez)
             {
                 tab[n1][0] = vez;
                 parada=1;
-     
+
             }
             if((tab[0][n1] == vez && tab[1][n1] == vez) && tab[2][n1]==0)
             {
                 tab[2][n1] = vez;
                 parada=1;
- 
+
             }
             else if((tab[0][n1] == vez && tab[2][n1] == vez) && tab[1][n1]==0)
             {
                 tab[1][n1] = vez;
                 parada=1;
-            
+
             }
             else  if((tab[1][n1] == vez && tab[2][n1] == vez) && tab[0][n1]==0)
             {
                 tab[0][n1] = vez;
                 parada=1;
-            
+
             }
             if((tab[0][0] == vez && tab[1][1] == vez) && tab[2][2]==0)
             {
                 tab[2][2] = vez;
                 parada=1;
-            
+
             }
             else if((tab[0][0] == vez && tab[2][2] == vez) && tab[1][1]==0)
             {
                 tab[1][1] = vez;
                 parada=1;
-            
+
             }
             else if((tab[2][2] == vez && tab[1][1] == vez) && tab[0][0]==0)
             {
                 tab[0][0] = vez;
                 parada=1;
-            
+
             }
             if((tab[0][2] == vez && tab[1][1] == vez) && tab[2][0]==0)
             {
                 tab[2][0] = vez;
                 parada=1;
-            
+
             }
             else if((tab[0][2] == vez && tab[2][0] == vez) && tab[1][1]==0)
-            
+
             {
                 tab[1][1] = vez;
                 parada=1;
@@ -836,7 +853,7 @@ void vezpcmedio(int tab[TAMTAB][TAMTAB], int vez)
             {
                 tab[0][2] = vez;
                 parada=1;
-         
+
             }
         }
         x=rand()%3;
@@ -1018,52 +1035,52 @@ void vezpcdificil(int tab[TAMTAB][TAMTAB], int vez)
             {
                 tab[n1][0] = vez;
                 parada=1;
-     
+
             }
             if((tab[0][n1] == vez*-1 && tab[1][n1] == vez*-1) && tab[2][n1]==0)
             {
                 tab[2][n1] = vez;
                 parada=1;
- 
+
             }
             else if((tab[0][n1] == vez*-1 && tab[2][n1] == vez*-1) && tab[1][n1]==0)
             {
                 tab[1][n1] = vez;
                 parada=1;
-            
+
             }
             else  if((tab[1][n1] == vez*-1 && tab[2][n1] == vez*-1) && tab[0][n1]==0)
             {
                 tab[0][n1] = vez;
                 parada=1;
-            
+
             }
             if((tab[0][0] == vez*-1 && tab[1][1] == vez*-1) && tab[2][2]==0)
             {
                 tab[2][2] = vez;
                 parada=1;
-            
+
             }
             else if((tab[0][0] == vez*-1 && tab[2][2] == vez*-1) && tab[1][1]==0)
             {
                 tab[1][1] = vez;
                 parada=1;
-            
+
             }
             else if((tab[2][2] == vez*-1 && tab[1][1] == vez*-1) && tab[0][0]==0)
             {
                 tab[0][0] = vez;
                 parada=1;
-            
+
             }
             if((tab[0][2] == vez*-1 && tab[1][1] == vez*-1) && tab[2][0]==0)
             {
                 tab[2][0] = vez;
                 parada=1;
-            
+
             }
             else if((tab[0][2] == vez*-1 && tab[2][0] == vez*-1) && tab[1][1]==0)
-            
+
             {
                 tab[1][1] = vez;
                 parada=1;
@@ -1072,7 +1089,7 @@ void vezpcdificil(int tab[TAMTAB][TAMTAB], int vez)
             {
                 tab[0][2] = vez;
                 parada=1;
-         
+
             }
         }
     }while(parada==0);
