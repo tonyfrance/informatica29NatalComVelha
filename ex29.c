@@ -276,7 +276,7 @@ int humanonivel(int tab[TAMTAB][TAMTAB], int vez)
                 vez*=-1;
                 if(jogar==1)
                 {
-                    //vezhumanodificil(tab, vez);
+                    vezhumanodificil(tab, vez);
                     vez=1;
                 }
                 else if(jogar==0)
