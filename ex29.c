@@ -1108,7 +1108,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
 
     do
     {
-        //imprimetab(tab);
+        imprimetab(tab);
         printf("Escolha de 1 a 9\n");
         scanf("%d",&tc);
         switch(tc)
