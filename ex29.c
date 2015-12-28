@@ -1091,6 +1091,15 @@ void vezpcdificil(int tab[TAMTAB][TAMTAB], int vez)
 
             }
         }
+        
+        x=rand()%3;
+        y=rand()%3;
+        if(tab[x][y]==0)
+        {
+            tab[x][y]=vez;
+            imprimetab(tab);
+            parada=1;
+        }
     }while(parada==0);
     imprimetab(tab);
     vence(tab, vez);
