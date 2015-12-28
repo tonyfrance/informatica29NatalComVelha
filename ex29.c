@@ -811,14 +811,6 @@ void vezpcmedio(int tab[TAMTAB][TAMTAB], int vez)
 {
     int n1,n2,x,y, parada=0;
 
-    x=rand()%3;
-    y=rand()%3;
-    if(tab[x][y]==0)
-    {
-        tab[x][y]=vez;
-        imprimetab(tab);
-        parada=1;
-    }
     do
     {
         imprimetab(tab);
@@ -885,14 +877,14 @@ void vezpcmedio(int tab[TAMTAB][TAMTAB], int vez)
                 parada=1;
             }
         }
-       /* x=rand()%3;
+        x=rand()%3;
         y=rand()%3;
         if(tab[x][y]==0)
         {
             tab[x][y]=vez;
             imprimetab(tab);
             parada=1;
-        }*/
+        }
     }while(parada==0);
     imprimetab(tab);
     vence(tab, vez);
@@ -1029,3 +1021,4 @@ int vezhumanomedio(int tab[TAMTAB][TAMTAB],int vez)
         vence(tab, vez);
     }while(tc>0 && tc<10);
 }
+
