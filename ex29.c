@@ -62,6 +62,9 @@ int vezhumano(int tab[TAMTAB][TAMTAB], int vez);
 int vezpc(int tab[TAMTAB][TAMTAB], int vez);
 int vezhumanomedio(int tab[TAMTAB][TAMTAB], int vez);
 int vezhumanodificil(int tab[TAMTAB][TAMTAB], int vez);
+int pcdificil(int tab[TAMTAB][TAMTAB], int vez, int novamente); /* funcao do nivel dificil */
+int pcmedio(int tab[TAMTAB][TAMTAB], int vez, int novamente); /* funcao do nivel medio */
+int humanodificil(int tab[TAMTAB][TAMTAB],int vez);
 
 
 char start(void);/*chama a funcao qm ira fazer a primeira jogada*/
@@ -1104,7 +1107,7 @@ void vezpcdificil(int tab[TAMTAB][TAMTAB], int vez)
     vezhumanomedio(tab, vez);
 }
 
-int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
+int humanodificil(int tab[TAMTAB][TAMTAB],int vez)
 {
     int tc, parada=0;
 
@@ -1119,9 +1122,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[0][0]==0)
                 {
                     tab[0][0]=vez;
-                    imprimetab(tab);
-                    vez*=-1;
-                    vezpcdificil(tab, vez);
+                    return;
                 }
                 else
                 {
@@ -1133,9 +1134,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[0][1]==0)
                 {
                     tab[0][1]=vez;
-                    imprimetab(tab);
-                    vez*=-1;
-                    vezpcdificil(tab, vez);
+                    return;
                 }
                 else
                 {
@@ -1147,9 +1146,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[0][2]==0)
                 {
                     tab[0][2]=vez;
-                    imprimetab(tab);
-                    vez*=-1;
-                    vezpcdificil(tab, vez);
+                    return;
                 }
                 else
                 {
@@ -1160,9 +1157,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[1][0]==0)
                 {
                     tab[1][0]=vez;
-                    imprimetab(tab);
-                    vez*=-1;
-                    vezpcdificil(tab, vez);
+                    return;
                 }
                 else
                 {
@@ -1173,9 +1168,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[1][1]==0)
                 {
                     tab[1][1]=vez;
-                    imprimetab(tab);
-                    vez*=-1;
-                    vezpcdificil(tab, vez);
+                    return;
                 }
                 else
                 {
@@ -1186,9 +1179,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[1][2]==0)
                 {
                     tab[1][2]=vez;
-                    imprimetab(tab);
-                    vez*=-1;
-                    vezpcdificil(tab, vez);
+                    return;
                 }
                 else
                 {
@@ -1199,9 +1190,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[2][0]==0)
                 {
                     tab[2][0]=vez;
-                    imprimetab(tab);
-                    vez*=-1;
-                    vezpcdificil(tab, vez);
+                    return;
                 }
                 else
                 {
@@ -1212,9 +1201,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[2][1]==0)
                 {
                     tab[2][1]=vez;
-                    imprimetab(tab);
-                    vez*=-1;
-                    vezpcdificil(tab, vez);
+                    return;
                 }
                 else
                 {
@@ -1225,9 +1212,7 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
                 if(tab[2][2]==0)
                 {
                     tab[2][2]=vez;
-                    imprimetab(tab);
-                    vez*=-1;
-                    vezpcdificil(tab, vez);
+                    return;
                 }
                 else
                 {
@@ -1242,96 +1227,156 @@ int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
     }while(tc>0 && tc<10);
 }
 
-int nivelmedio(int tab[TAMTAB][TAMTAB], int vez, int novamente) /* funcao do nivel medio */
+int vezhumanodificil(int tab[TAMTAB][TAMTAB],int vez)
 {
-    int n1,n2,x,y, parada=0,i,j;
+    int x,y,r=1,jogada=0,i,j,novamente;
+    vez=XIS;
+
+    printf("O primeiro Player sera X e o segundo Player sera O\n");
 
     do
     {
-        imprimetab(tab);
+        if(vez==1)
+        {
+            humanodificil(tab, vez);
+        }
+        else
+        {
+            pcdificil(tab, vez, novamente);
+        }
+
+    imprimetab(tab);
+    vence(tab, vez);
+    novamente=0;
+    for(i=0;i<3;i++)
+        for(j=0;j<3;j++)
+            if(tab[i][j]==0)
+                novamente++;
+    if(novamente==0)
+    {
+        printf("DEU VELHA!! VAMOS NOVAMENTE?\n");
+        jogarnovamente();
+        exit(0);
+    }
+    vez*=-1;
+
+
+    }while(jogada<9);
+
+    return 0;
+}
+
+int pcmedio(int tab[TAMTAB][TAMTAB], int vez, int novamente) /* funcao do nivel medio */
+{
+    int n1,n2,x,y, parada=0,i,j;
+
+        //imprimetab(tab);
         for(n1=0;n1<TAMTAB;n1++)
         {
             if((tab[n1][0] == vez && tab[n1][1] == vez) && tab[n1][2]==0)
             {
 
                 tab[n1][2] = vez;
-                parada=1;
+                return;
             }
             else if((tab[n1][0] == vez && tab[n1][2] == vez) && tab[n1][0]==0)
             {
                 tab[n1][1] = vez;
-                parada=1;
+                return;
             }
             else  if((tab[n1][1] == vez && tab[n1][2] == vez) && tab[n1][0]==0)
             {
                 tab[n1][0] = vez;
-                parada=1;
+                return;
 
             }
             if((tab[0][n1] == vez && tab[1][n1] == vez) && tab[2][n1]==0)
             {
                 tab[2][n1] = vez;
-                parada=1;
+                return;
 
             }
             else if((tab[0][n1] == vez && tab[2][n1] == vez) && tab[1][n1]==0)
             {
                 tab[1][n1] = vez;
-                parada=1;
+                return;
 
             }
             else  if((tab[1][n1] == vez && tab[2][n1] == vez) && tab[0][n1]==0)
             {
                 tab[0][n1] = vez;
-                parada=1;
+                return;
 
             }
             if((tab[0][0] == vez && tab[1][1] == vez) && tab[2][2]==0)
             {
                 tab[2][2] = vez;
-                parada=1;
+                return;
 
             }
             else if((tab[0][0] == vez && tab[2][2] == vez) && tab[1][1]==0)
             {
                 tab[1][1] = vez;
-                parada=1;
+                return;
 
             }
             else if((tab[2][2] == vez && tab[1][1] == vez) && tab[0][0]==0)
             {
                 tab[0][0] = vez;
-                parada=1;
+                return;
 
             }
             if((tab[0][2] == vez && tab[1][1] == vez) && tab[2][0]==0)
             {
                 tab[2][0] = vez;
-                parada=1;
+                return;
 
             }
             else if((tab[0][2] == vez && tab[2][0] == vez) && tab[1][1]==0)
 
             {
                 tab[1][1] = vez;
-                parada=1;
+                return;
             }
             else if((tab[2][0] == vez && tab[1][1] == vez) && tab[0][2]==0)
             {
                 tab[0][2] = vez;
-                parada=1;
+                return;
 
             }
         }
+
+        do
+        {
         x=rand()%3;
         y=rand()%3;
         if(tab[x][y]==0)
         {
             tab[x][y]=vez;
-            imprimetab(tab);
-            parada=1;
+            return;
         }
-    }while(parada==0);
+        }while(XIS==1);
+
+}
+
+int nivelmedio(int tab[TAMTAB][TAMTAB], int vez, int novamente) /* funcao do nivel medio */
+{
+    int x,y,r=1,jogada=0,i,j;
+    vez=XIS;
+
+    printf("O primeiro Player sera X e o segundo Player sera O\n");
+
+    do
+    {
+        if(vez==-1)
+        {
+            pcmedio(tab, vez, novamente);
+        }
+        else
+        {
+            pcmedio(tab, vez, novamente);
+        }
+
     imprimetab(tab);
     vence(tab, vez);
     novamente=0;
@@ -1346,90 +1391,126 @@ int nivelmedio(int tab[TAMTAB][TAMTAB], int vez, int novamente) /* funcao do niv
         exit(0);
     }
     vez*=-1;
-    nivelmedio(tab, vez, novamente);
+
+
+    }while(jogada<9);
+
+    return 0;
+}
+
+int pcdificil(int tab[TAMTAB][TAMTAB], int vez, int novamente) /* funcao do nivel dificil */
+{
+    int n1,n2,x,y, parada=0,i,j;
+    int antivez;
+    antivez=vez*-1;
+
+        //imprimetab(tab);
+        for(n1=0;n1<TAMTAB;n1++)
+        {
+            if((tab[n1][0] == antivez && tab[n1][1] == antivez) && tab[n1][2]==0)
+            {
+
+                tab[n1][2] = vez;
+                return  ;
+            }
+            else if((tab[n1][0] == antivez && tab[n1][2] == antivez) && tab[n1][0]==0)
+            {
+                tab[n1][1] = vez;
+                return  ;
+            }
+            else  if((tab[n1][1] == antivez && tab[n1][2] == antivez) && tab[n1][0]==0)
+            {
+                tab[n1][0] = vez;
+                return  ;
+
+            }
+            if((tab[0][n1] == antivez && tab[1][n1] == antivez) && tab[2][n1]==0)
+            {
+                tab[2][n1] = vez;
+                return  ;
+
+            }
+            else if((tab[0][n1] == antivez && tab[2][n1] == antivez) && tab[1][n1]==0)
+            {
+                tab[1][n1] = vez;
+                return  ;
+
+            }
+            else  if((tab[1][n1] == antivez && tab[2][n1] == antivez) && tab[0][n1]==0)
+            {
+                tab[0][n1] = vez;
+                return  ;
+
+            }
+            if((tab[0][0] == antivez && tab[1][1] == antivez) && tab[2][2]==0)
+            {
+                tab[2][2] = vez;
+                return  ;
+
+            }
+            else if((tab[0][0] == antivez && tab[2][2] == antivez) && tab[1][1]==0)
+            {
+                tab[1][1] = vez;
+                return  ;
+
+            }
+            else if((tab[2][2] == antivez && tab[1][1] == antivez) && tab[0][0]==0)
+            {
+                tab[0][0] = vez;
+                return  ;
+
+            }
+            if((tab[0][2] == antivez && tab[1][1] == antivez) && tab[2][0]==0)
+            {
+                tab[2][0] = vez;
+                return  ;
+
+            }
+            else if((tab[0][2] == antivez && tab[2][0] == antivez) && tab[1][1]==0)
+
+            {
+                tab[1][1] = vez;
+                return  ;
+            }
+            else if((tab[2][0] == antivez && tab[1][1] == antivez) && tab[0][2]==0)
+            {
+                tab[0][2] = vez;
+                return  ;
+
+            }
+        }
+        do
+        {
+        x=rand()%3;
+        y=rand()%3;
+        if(tab[x][y]==0)
+        {
+            tab[x][y]=vez;
+            //imprimetab(tab);
+            return  ;
+        }
+        }while(XIS==1);
 
 }
 
 int niveldificil(int tab[TAMTAB][TAMTAB], int vez, int novamente) /* funcao do nivel dificil */
 {
-    int parada=0;
-    int n1,x,y,i,j;
+    int x,y,r=1,jogada=0,i,j;
+    vez=XIS;
+
+    printf("O primeiro Player sera X e o segundo Player sera O\n");
 
     do
     {
-        for(n1=0;n1<TAMTAB;n1++)
+        if(vez==-1)
         {
-            if((tab[n1][0] == (vez*-1) && tab[n1][1] == (vez*-1)) && tab[n1][2]==0)
-            {
-                tab[n1][2] = vez;
-                parada=1;
-            }
-            else if((tab[n1][0] == (vez*-1) && tab[n1][2] == (vez*-1)) && tab[n1][0]==0)
-            {
-                tab[n1][1] = vez;
-                parada=1;
-            }
-            else  if((tab[n1][1] == (vez*-1) && tab[n1][2] == (vez*-1)) && tab[n1][0]==0)
-            {
-                tab[n1][0] = vez;
-                parada=1;
-            }
-            if((tab[0][n1] == (vez*-1) && tab[1][n1] == (vez*-1)) && tab[2][n1]==0)
-            {
-                tab[2][n1] = vez;
-                parada=1;
-            }
-            else if((tab[0][n1] == (vez*-1) && tab[2][n1] == (vez*-1)) && tab[1][n1]==0)
-            {
-                tab[1][n1] = vez;
-                parada=1;
-            }
-            else  if((tab[1][n1] == (vez*-1) && tab[2][n1] == (vez*-1)) && tab[0][n1]==0)
-            {
-                tab[0][n1] = vez;
-                parada=1;
-            }
-            if((tab[0][0] == (vez*-1) && tab[1][1] == (vez*-1)) && tab[2][2]==0)
-            {
-                tab[2][2] = vez;
-                parada=1;
-            }
-            else if((tab[0][0] == (vez*-1) && tab[2][2] == (vez*-1)) && tab[1][1]==0)
-            {
-                tab[1][1] = vez;
-                parada=1;
-            }
-            else if((tab[2][2] == (vez*-1) && tab[1][1] == (vez*-1)) && tab[0][0]==0)
-            {
-                tab[0][0] = vez;
-                parada=1;
-            }
-            if((tab[0][2] == (vez*-1) && tab[1][1] == (vez*-1)) && tab[2][0]==0)
-            {
-                tab[2][0] = vez;
-                parada=1;
-            }
-            else if((tab[0][2] == (vez*-1) && tab[2][0] == (vez*-1)) && tab[1][1]==0)
+            pcdificil(tab, vez, novamente);
+        }
+        else
+        {
+            pcdificil(tab, vez, novamente);
+        }
 
-            {
-                tab[1][1] = vez;
-                parada=1;
-            }
-            else if((tab[2][0] == (vez*-1) && tab[1][1] == (vez*-1)) && tab[0][2]==0)
-            {
-                tab[0][2] = vez;
-                parada=1;
-            }
-        }
-        
-        x=rand()%3;
-        y=rand()%3;
-        if(tab[x][y]==0)
-        {
-            tab[x][y]=vez;
-            parada=1;
-        }
-    }while(parada==0);
     imprimetab(tab);
     vence(tab, vez);
     novamente=0;
@@ -1444,6 +1525,10 @@ int niveldificil(int tab[TAMTAB][TAMTAB], int vez, int novamente) /* funcao do n
         exit(0);
     }
     vez*=-1;
-    niveldificil(tab, vez, novamente);
+
+
+    }while(jogada<9);
+
+    return 0;
 }
 
